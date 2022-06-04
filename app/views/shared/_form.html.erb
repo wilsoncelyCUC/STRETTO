@@ -1,1 +1,17 @@
-<%= simple_form_for(@orchestra) %>
+<%= simple_form_for(@orchestra) do |f| %>
+  <%= f.input :name, label: "Name of Orchestra" %>
+  <%= f.input :type_orchestra, label: "Type of Orchestra", collection: Orchestra::TYPE_ORCHESTRA %>
+  <%= f.input :style, label: "What is the style?", collection: Orchestra::STYLE%>
+  <%= f.input :zip_code, label: "Zipcode" %>
+  <%= f.input :frequency , label: "how often do you play"%>
+  <%= f.input :description, label: "Tell us more about the Orchestra" %>
+  <%= f.input :bio, label: "Describe the Orchestra in one line" %>
+  <%= f.input :size, label: "How many people play with you?" %>
+  <div class="buttons">
+    <%= f.submit class:" " %>
+    <button class= " " href="#">
+      <%= link_to "Return to home page", root_path %>
+    </button>
+  </div>
+
+<% end %>
