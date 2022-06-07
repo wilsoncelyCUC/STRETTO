@@ -1,0 +1,21 @@
+<%= simple_form_for(@musician) do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <%= f.label :birthday %>
+  <%= f.date_field :birthday %>
+  <%= f.label :level %>
+  <%= f.text_field :level %>
+  <%= f.label :instrument %>
+  <%= f.text_field :instrument %>
+  <%= f.label :style %>
+  <%= f.text_field :style %>
+  <%= f.label :photo %>
+  <%= f.text_field :photo %>
+  <%= f.label :bio %>
+  <%= f.text_field :bio %>
+  <%= f.label :zip_code %>
+  <%= f.number_field :zip_code %>
+  <%= f.submit %>
+<% end %>
