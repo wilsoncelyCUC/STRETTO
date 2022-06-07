@@ -1,26 +1,28 @@
-<div class="">
-  <div class="container">
-    <div>
-      <h1><%=@orchestra.name %></h1>
-      <h2>BIO: <%= @orchestra.bio %></h2>
-      <h2>Style <%= @orchestra.style %></strong> Type <strong><%= @orchestra.type_orchestra  %>!</h2>
-      <h2>Rehearsals <strong><%= @orchestra.frequency %></strong></h2>
-      <h2><strong>We are <%= @orchestra.size %> people</strong></h2>
-    </div>
+<h2>Orchestra Sction</h2>
+<!-- Orchestra section-->
 
-    <div class="left">
-      <a class="" href="#">Poke us</a>
-      <a class="" href="#">return</a>
-    </div>
-
+<div class="container">
+  <div>
+    <h1><%=@orchestra.name %></h1>
+    <h2>BIO: <%= @orchestra.bio %></h2>
+    <h2>Style <%= @orchestra.style %></strong> Type <strong><%= @orchestra.type_orchestra  %>!</h2>
+    <h2>Rehearsals <strong><%= @orchestra.frequency %></strong></h2>
+    <h2><strong>We are <%= @orchestra.size %> people</strong></h2>
+  </div>
+  <div class="left">
+    <a class="" href="#">Poke us</a>
+    <a class="" href="#">return</a>
   </div>
 </div>
 
+<h2>My Posts</h2>
+<!-- post section-->
 <div class="container">
- <div class="row">
-    <div class="col-6">
-      <p><%= @orchestra.description %></p>
-
-    </div>
+  <div class="row">
+    <% @posts.each do |post|  %>
+      <%= post.id %>
+      <%= post.instrument %>
+      <%= post.description %>
+    <%end  %>
   </div>
 </div>
