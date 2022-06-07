@@ -1,12 +1,10 @@
 <% @orchestras.each do |orchestra| %>
-    <div class="card-trip">
-      <div class="card-trip-infos">
-        <div>
-          <h2><%=orchestra.name %></h2>
-          <p><%= orchestra.bio  %></p>
-          <p><%= orchestra.zip_code  %></p>
-        </div>
-        <h3 class="card-trip-pricing"><%= link_to 'More Info', orchestra_path(orchestra) %></h3>
-      </div>
+  <div class="">
+    <div>
+      <h2><%=orchestra.name %></h2>
+      <p><%= orchestra.bio  %></p>
+      <p><%= orchestra.zip_code  %></p>
+    </div>
+    <h3 class=""><%= link_to 'More Info', orchestra_path(orchestra) %></h3>
   </div>
 <% end %>
