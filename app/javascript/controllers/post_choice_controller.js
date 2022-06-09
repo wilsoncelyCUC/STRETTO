@@ -13,6 +13,7 @@ export default class extends Controller {
     // console.log(this.displayTarget)
     this.displayTarget.classList.remove("d-none");
     console.log(this.displayTarget);
+    console.log('hello');
   }
 
   showdate() {
