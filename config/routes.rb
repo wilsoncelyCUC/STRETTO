@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :invitations, only: [:new, :create]
   end
 
+  resources :posts, only: [:update, :destroy]
+
   resources :orchestras do
     resources :posts, only: [:new, :create]
     resources :invitations, only: [:new, :create]
