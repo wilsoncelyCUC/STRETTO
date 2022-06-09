@@ -3,3 +3,15 @@
 <ul class="nav">
   <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
 </ul>
+
+<%= simple_form_for [@orchestra] do |f| %>
+  <%= f.input :style %>
+  <%= f.input :type_orchestra %>
+  <%= f.input :size %>
+  <%= f.input :zip_code %>
+  <%= f.input :frequency %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :bio %>
+  <%= f.submit %>
+<% end %>
