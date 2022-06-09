@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_135154) do
+ActiveRecord::Schema.define(version: 2022_06_07_181146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_06_04_135154) do
     t.string "level"
     t.string "periodicity"
     t.date "date"
-    t.string "type"
+    t.string "type_post"
     t.string "style"
     t.bigint "orchestra_id", null: false
     t.datetime "created_at", precision: 6, null: false

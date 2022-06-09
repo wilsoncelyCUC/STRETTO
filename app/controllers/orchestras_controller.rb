@@ -6,7 +6,8 @@ before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-
+    @posts = @orchestra.posts
+    @post = Post.new
   end
 
   def new
