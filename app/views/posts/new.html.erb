@@ -1,5 +1,32 @@
 <h1>Create Post</h1>
-<%= render "shared/formpost" , post: @post %>
-<ul class="nav">
-  <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
-</ul>
+<h3>Choose the type of post</h3>
+<div class="row" data-controller="post-choice">
+  <button data-action="click->post-choice#showperiodicity">
+    One-time!
+  </button>
+  <button data-action="click->post-choice#showdate">
+    periodic!
+  </button>
+
+  <% display =  "oneshot" %>
+  <h3>Info of the post</h3>
+  <div class="d-none" data-post-choice-target="display">
+    <% display = "recurrent" %>
+  </div>
+
+  <% if display == "recurrent" %>
+    <%= render "shared/formoneshot"%>
+  <% else %>
+    <%= render "shared/formpost"%>
+  <% end %>
+
+<!--
+  <div class="form" data-post-choice-target="formRecurrent">
+    <%= render "shared/formpost"%>
+  </div>
+-->
+    <ul class="nav">
+      <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
+    </ul>
+
+</div>

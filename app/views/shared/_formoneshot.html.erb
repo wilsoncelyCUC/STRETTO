@@ -1,10 +1,10 @@
 <%= simple_form_for([@orchestra, @post]) do |f| %>
   <%= f.input :instrument %>
   <%= f.input :level%>
-  <%= f.input :periodicity,
-              class: "d-none",
-              data: { post_choice_target: 'periodicity' }
-              %>
+  <%= f.input :date,
+              html5: true,
+              data: { post_choice_target: 'oneshot' }
+               %>
   <%= f.input :type_post%>
   <%= f.input :style%>
   <%= f.input :description, label: "Tell us more" %>
