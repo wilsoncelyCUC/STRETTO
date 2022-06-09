@@ -1,4 +1,5 @@
 <%= simple_form_for([@orchestra, @post]) do |f| %>
+  <%= f.input :date%>
   <%= f.input :instrument %>
   <%= f.input :level%>
   <%= f.input :periodicity,
@@ -6,7 +7,6 @@
               data: { post_choice_target: 'periodicity' }
               %>
   <%= f.input :type_post%>
-  <%= f.input :style%>
   <%= f.input :description, label: "Tell us more" %>
   <div class="buttons">
     <%= f.submit%>
@@ -14,5 +14,4 @@
       <%= link_to "Return to home page", root_path %>
     </button>
   </div>
-
 <% end %>

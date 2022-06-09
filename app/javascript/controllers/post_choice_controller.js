@@ -1,24 +1,27 @@
+import { end } from "@popperjs/core";
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["display"]
+  static targets = ["choice", "date", "periodicity"]
 
   connect() {
-    //console.log(this.formTarget)
-    //console.log(this.oneshotTarget)
-    //console.log(this.listTarget)
+    console.log("connected to my controller")
   }
 
-  showperiodicity() {
-    // console.log(this.displayTarget)
-    this.displayTarget.classList.remove("d-none");
-    console.log(this.displayTarget);
-    console.log('hello');
+  displayfield() {
+      console.log("display field");
+      const selection = this.choiceTarget.value;
+      if (selection === 'One time') {
+        this.dateTarget.classList.remove("d-none");
+        this.periodicityTarget.classList.add("d-none");
+
+      } else {
+        this.periodicityTarget.classList.remove("d-none");
+        this.dateTarget.classList.add("d-none");
+      }
+
   }
 
-  showdate() {
-    this.displayTarget.classList.add("d-none");
-    console.log(this.displayTarget);
-  }
+
 
 }
