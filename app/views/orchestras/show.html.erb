@@ -1,4 +1,4 @@
-<h2>Orchestra Sction</h2>
+<h2>Orchestra section</h2>
 <!-- Orchestra section-->
 
 <div class="container">
@@ -17,12 +17,15 @@
 
 <h2>My Posts</h2>
 <!-- post section-->
+<%= link_to "New post",new_orchestra_post_path(@orchestra)  %>
+
+
 <div class="container">
-  <div class="row">
-    <% @posts.each do |post|  %>
+  <% @posts.each do |post|  %>
+    <div class="">
       <%= post.id %>
       <%= post.instrument %>
       <%= post.description %>
-    <%end  %>
-  </div>
+    </div>
+  <%end  %>
 </div>

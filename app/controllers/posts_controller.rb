@@ -9,7 +9,6 @@ class PostsController < ApplicationController
   def create
     find_orchestra
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
     @post.orchestra = @orchestra
     if @post.save
       redirect_to orchestra_path(@orchestra)

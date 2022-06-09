@@ -1,5 +1,28 @@
 <h1>Create Post</h1>
-<%= render "shared/formpost" , post: @post %>
+<div class="row" data-controller="post-choice">
+  <%= simple_form_for([@orchestra, @post]) do |f| %>
+    <h3>Choose the type of post</h3>
+    <%= f.input :type_post,
+                collection: Post::POST_TYPE,
+                input_html: {  data: { post_choice_target: 'choice',
+                               action: 'change->post-choice#displayfield'}
+                } %>
+    <h3>Tell us more</h3>
+    <%= f.input :instrument %>
+    <%= f.input :level%>
+    <%= f.input :date,
+                 wrapper_html: { class: 'd-none', data: { post_choice_target: 'date' } }
+                 %>
+    <%= f.input :periodicity,
+                wrapper_html: { class: 'd-none', data: { post_choice_target: 'periodicity' } }
+                %>
+    <%= f.input :description, label: "Tell us more" %>
+    <div class="buttons">
+      <%= f.submit%>
+    </div>
+  <% end %>
+</div>
+
 <ul class="nav">
   <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
 </ul>
