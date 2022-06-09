@@ -1,10 +1,17 @@
+<div class="row">
 <% @orchestras.each do |orchestra| %>
-  <div class="">
-    <div>
-      <h2><%=orchestra.name %></h2>
-      <p><%= orchestra.bio  %></p>
-      <p><%= orchestra.zip_code  %></p>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+         <h5 class="card-title"><%=orchestra.name %></h5>
+         <ul>
+         <li>Bio: <%= orchestra.bio  %></li>
+         <li>Frequency: <%= orchestra.frequency %></li>
+         <li>Size: <%= orchestra.size %></li>
+         <li>Zip code: <%= orchestra.zip_code %></li>
+         </ul>
+        <%= link_to "Send an invitation", new_orchestra_invitation_path(orchestra), class:"btn btn-primary"%>
+      </div>
     </div>
-    <h3 class=""><%= link_to 'More Info', orchestra_path(orchestra) %></h3>
   </div>
 <% end %>

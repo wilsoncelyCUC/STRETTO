@@ -1,6 +1,8 @@
 <h2>Orchestra section</h2>
 <!-- Orchestra section-->
 
+ <%= link_to "Send an invitation", new_orchestra_invitation_path(@orchestra), class:"btn btn-primary"%>
+
 <div class="container">
   <div>
     <h1><%=@orchestra.name %></h1>
