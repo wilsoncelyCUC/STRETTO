@@ -1,5 +1,16 @@
-<ul>
-  <% @musicians.each do |musician| %>
-    <li><%= musician.first_name %></li>
-  <% end %>
-</ul>
+<div class="row">
+<% @musicians.each do |musician| %>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+         <h5 class="card-title"><%= musician.first_name%> <%= musician.last_name%></h5>
+         <ul>
+         <li>Level: <%= musician.level %></li>
+         <li>Instrument: <%= musician.instrument %></li>
+         <li>Style: <%= musician.style %></li>
+         </ul>
+        <%= link_to "Send an invitation", new_musician_invitation_path(musician), class:"btn btn-primary"%>
+      </div>
+    </div>
+  </div>
+<% end %>
