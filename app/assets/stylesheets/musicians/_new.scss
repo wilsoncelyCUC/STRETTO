@@ -7,7 +7,7 @@
   background: linear-gradient(135deg, #73E0CA, white);
 }
 
-.container-mc {
+.block-mc {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -15,14 +15,14 @@
   border-radius: 30px;
 }
 
-.container-mc .title-mc {
+.block-mc .title-mc {
   font-size: 25px;
   font-weight: 500;
   position: relative;
   margin-bottom: 20px;
 }
 
-.container-mc .title-mc::before {
+.block-mc .title-mc::before {
   content: '';
   position: absolute;
   left: 0;
@@ -32,7 +32,7 @@
   background: linear-gradient(135deg, #73E0CA, white);
 }
 
-.container-mc .user-details-mc {
+.block-mc .user-details-mc {
   margin: 20px 0 12px 0;
   display: flex;
   align-content: space-around;

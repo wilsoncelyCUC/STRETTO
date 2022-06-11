@@ -7,7 +7,7 @@
   background: linear-gradient(135deg, #030435, white);
 }
 
-.container-col {
+.block-col {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -15,14 +15,14 @@
   border-radius: 30px;
 }
 
-.container-col .title-col {
+.block-col .title-col {
   font-size: 25px;
   font-weight: 500;
   position: relative;
   margin-bottom: 20px;
 }
 
-.container-col .title-col::before {
+.block-col .title-col::before {
   content: '';
   position: absolute;
   left: 0;
@@ -32,7 +32,7 @@
   background: linear-gradient(135deg, #030435, white);
 }
 
-.container-col .user-details-col {
+.block-col .user-details-col {
   margin: 20px 0 12px 0;
   display: flex;
   align-content: space-around;
