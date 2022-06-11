@@ -41,6 +41,6 @@ class MusiciansController < ApplicationController
   private
 
   def musician_params
-    params.require(:musician).permit.(:first_name, :last_name, :birthday, :level, :instrument, :style, :photo, :bio, :zip_code, :user)
+    params.require(:musician).permit.(:first_name, :last_name, :birthday, :level, :instrument, :style, :zip_code, :user)
   end
 end
