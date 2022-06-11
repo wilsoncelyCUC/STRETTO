@@ -1,0 +1,78 @@
+.body-mc {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #73E0CA, white);
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 30px;
+}
+
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.container .title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background: linear-gradient(135deg, #73E0CA, white);
+}
+
+.container .user-details {
+  margin: 20px 0 12px 0;
+  display: flex;
+  align-content: space-around;
+}
+
+.user-details .input-box .label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.user-details .input-box {
+  margin-bottom: 15px;
+}
+
+.user-details .input-box input {
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding-left: 15px;
+}
+
+.user-details label {
+  font-weight: 500;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+}
+
+.right {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.left {
+  width: 100%;
+  margin-right: 10px;
+}

@@ -1,0 +1,129 @@
+.btn-home {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.btn-home:hover {
+  opacity: 1;
+}
+
+
+.btn-search {
+  color: #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  border: 1px solid #4A4A4A;
+  text-align: center;
+}
+.btn-search:hover {
+  background: linear-gradient(black);
+  color: black;
+}
+
+.btn-poke {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: black;
+  transition: background 0.3s ease;
+}
+.btn-poke:hover {
+  background: black;
+  color: white;
+  opacity: 0.8;
+}
+
+
+.btn-return {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: gray;
+  transition: background 0.3s ease;
+  opacity: 0.8;
+}
+.btn-return:hover {
+  background:gray;
+  color: white;
+  opacity: 1;
+}
+
+.btn-accept-poke {
+  color: white;
+  border: 1px solid white;
+  padding: 8px 24px;
+  border-radius: 10px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  background-color: green;
+}
+.btn-accept-poke:hover {
+  opacity: 0.7;
+}
+
+.btn-refuse-poke {
+  color: white;
+  border: 1px solid white;
+  padding: 8px 24px;
+  border-radius: 10px;
+  font-weight: lighter;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  background-color: red;
+}
+.btn-refuse-poke:hover {
+  opacity: 0.7;
+}
+
+.btn-musician {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 30px ;
+  font-weight: bold ;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+.btn-orchestras {
+  background: linear-gradient(135deg, #030435, #acadd4);
+  color: white;
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 30px ;
+  font-weight: bold ;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+.nav-button-mc {
+  background: linear-gradient(135deg, #b1f5e7, rgb(209, 255, 216));
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 30px ;
+  font-weight: bold ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-button-col {
+  background: linear-gradient(135deg, #03043559, #242437);
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 30px ;
+  font-weight: bold ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: white;
+}

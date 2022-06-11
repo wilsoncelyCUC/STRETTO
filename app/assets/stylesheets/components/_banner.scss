@@ -1,0 +1,51 @@
+.home-banner {
+  height: 300px;
+  width: 100%;
+  background-color: #73E0CA;
+  margin-bottom: 50px;
+}
+
+
+.home-banner-firstcol {
+padding-top: 140px;
+padding-left: 20px;
+color: white;
+}
+
+
+
+.home-banner-secondcol {
+  padding-top: 40px;
+  color: white;
+  }
+
+ .home-banner-search {
+   padding-right: 20px;
+   padding-bottom: 20px;
+ }
+
+
+
+
+select {
+  background-color: #73E0CA;
+  width: 20px;
+  height: 20px;
+  color: #4A4A4A;
+  right: 0;
+}
+
+select#instrument-select {
+  font-size: 16px;
+  color: black;
+  background-color: white;
+}
+
+input,
+label {
+    margin: .4rem 0;
+    background-color: #73E0CA;
+    color: white;
+    font-size: 32px;
+    border-color: transparent;
+}
