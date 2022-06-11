@@ -23,11 +23,13 @@
           <%= f.input :bio, label: "Describe the Orchestra in one line", :placeholder => "What your orchestra is about ?" %>
           <%= f.input :description, label: "Tell us more about the Orchestra" %>
           <%= f.hint "What's your story ? How the founders met ? What is bringing you all together?" %>
-          <div class="button-col">
-            <%= f.submit class:"btn-orchestras" %>
-            <%= link_to "Back", root_path, :class => "nav-button-col"%>
-          </div>
         <% end %>
-      </div>
+    </div>
+    <div class="buttons-col">
+        <%= simple_form_for(@orchestra) do |f| %>
+            <%= f.submit class:"btn-orchestras", :id => 'btn-orchestras-submit'%>
+        <% end %>
+        <%= link_to "Back", root_path, :class => "nav-button-col"%>
+    </div>
   </div>
 </div>
