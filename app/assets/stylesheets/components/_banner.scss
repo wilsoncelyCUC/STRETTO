@@ -27,13 +27,6 @@ color: white;
 
 
 
-select {
-  background-color: #73E0CA;
-  width: 20px;
-  height: 20px;
-  color: #4A4A4A;
-  right: 0;
-}
 
 select#instrument-select {
   font-size: 16px;
@@ -42,7 +35,7 @@ select#instrument-select {
 }
 
 input,
-label {
+label#instrument-select {
     margin: .4rem 0;
     background-color: #73E0CA;
     color: white;
