@@ -38,29 +38,48 @@
   align-content: space-around;
 }
 
-
-.user-details-col .input-box {
-  margin-bottom: 15px;
-}
-
-.user-details-col .input-box input {
-  height: 42px;
+#new_orchestra input {
+  margin: 0;
   width: 100%;
   outline: none;
   border-radius: 10px;
-  border: 1px solid grey;
   padding-left: 15px;
 }
 
-.user-details-col label {
-
+#new_orchestra select {
+  margin: 0;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  padding-left: 15px;
 }
 
-.button-col {
+#orchestra_bio {
+  margin: 0;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  padding-left: 15px;
+}
+
+#orchestra_description {
+  margin: 0;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  padding-left: 15px;
+}
+
+.buttons-col {
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
   margin-top: 20px;
+}
+
+#btn-orchestras-submit {
+  font-size: var(--bs-body-font-size);
+  padding-left: 30px !important;
 }
 
 .right-col {

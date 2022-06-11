@@ -44,15 +44,28 @@
   margin-bottom: 5px;
 }
 
-.user-details-mc .input-box {
-  margin-bottom: 15px;
-}
 
-.user-details-mc .input-box input {
+#new_musician input {
+  margin: 0;
   width: 100%;
   outline: none;
   border-radius: 10px;
-  border: 1px solid grey;
+  padding-left: 15px;
+}
+
+#new_musician select {
+  margin: 0;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  padding-left: 15px;
+}
+
+#musician_bio {
+  margin: 0;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
   padding-left: 15px;
 }
 
@@ -60,11 +73,16 @@
   font-weight: 500;
 }
 
-.button-mc {
+.buttons-mc {
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
   margin-top: 20px;
+}
+
+#btn-musicians-submit {
+  font-size: var(--bs-body-font-size);
+  padding-left: 30px !important;
 }
 
 .right-mc {

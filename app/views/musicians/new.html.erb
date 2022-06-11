@@ -17,7 +17,7 @@
       <div class="right-mc">
         <%= simple_form_for(@musician) do |f| %>
           <div class="input-box">
-            <%= f.input :instrument, label: "Instrument", collection: Musician::INSTRUMENT %>
+            <%= f.input :instrument, label: "Instrument", collection: Musician::INSTRUMENT%>
           </div>
           <div class="input-box">
             <%= f.input :level, label: "Level", collection: Musician::LEVEL %>
@@ -35,11 +35,13 @@
             <%= f.input :bio, :as => :text %>
             <%= f.hint "Please describe you and what you're looking for in a collective music practice !" %>
           </div>
-          <div class="button-mc">
-            <%= f.submit class:"btn-musician" %>
-            <%= link_to "Back", root_path, :class => "nav-button-mc"%>
-          </div>
         <% end %>
-      </div>
+    </div>
+    <div class="buttons-mc">
+      <%= simple_form_for(@musician) do |f| %>
+        <%= f.submit class:"btn-musician", :id => 'btn-musicians-submit'%>
+      <% end %>
+      <%= link_to "Back", root_path, :class => "nav-button-mc"%>
+    </div>
   </div>
 </div>
