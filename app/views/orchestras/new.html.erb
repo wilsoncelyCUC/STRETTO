@@ -4,7 +4,7 @@
   <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
 </ul>
 
-<%= simple_form_for [@orchestra] do |f| %>
+<%= simple_form_for (@orchestra) do |f| %>
   <%= f.input :style %>
   <%= f.input :type_orchestra %>
   <%= f.input :size %>

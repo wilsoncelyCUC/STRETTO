@@ -1,21 +1,65 @@
-<%= simple_form_for(@musician) do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  <%= f.label :birthday %>
-  <%= f.date_field :birthday %>
-  <%= f.label :level %>
-  <%= f.text_field :level %>
-  <%= f.label :instrument %>
-  <%= f.text_field :instrument %>
-  <%= f.label :style %>
-  <%= f.text_field :style %>
-  <%= f.label :photo %>
-  <%= f.text_field :photo %>
-  <%= f.label :bio %>
-  <%= f.text_field :bio %>
-  <%= f.label :zip_code %>
-  <%= f.number_field :zip_code %>
-  <%= f.submit %>
-<% end %>
+
+
+<div class="container">
+  <div class="title">Create your musician profile</div>
+  <div class="user-details">
+    <%= simple_form_for(@musician) do |f| %>
+      <div class="input-box">
+        <div class="label">
+          <%= f.label :first_name %>
+        </div>
+        <%= f.text_field :first_name, :placeholder => 'Enter your first name' %>
+      </div>
+      <div class="input-box">
+        <div class="label">
+          <%= f.label :last_name %>
+        </div>
+        <%= f.text_field :last_name, :placeholder => 'Enter your last name' %>
+      </div>
+      <div class="input-box">
+        <div class="label">
+          <%= f.label :birthday %>
+        </div>
+        <%= f.date_field :birthday %>
+      </div>
+      <div class="input-box">
+        <div class="label">
+          <%= f.label :photo %>
+        </div>
+        <%= f.text_field :photo, :placeholder => "Copy-paste your picture's URL" %>
+      </div>
+      <div class="input-box">
+        <div class="label">
+          <%= f.label :instrument %>
+        </div>
+        <%= f.text_field :instrument, :placeholder => 'Piano, Guitar, Clarinet' %>
+      </div>
+      <div class="input-box">
+        <div class="label">
+          <%= f.label :level %>
+        </div>
+        <%= f.text_field :level, :placeholder => 'Beginner, Intermediate, Advanced' %>
+      </div>
+      <div class="input-box">
+        <div class="label">
+          <%= f.label :style %>
+        </div>
+        <%= f.text_field :style, :placeholder => 'Classical, Jazz...' %>
+      </div>
+      <div class="input-box">
+        <div class="label">
+          <%= f.label :zip_code %>
+        </div>
+        <%= f.number_field :zip_code %>
+      </div>
+      <div class="input-box" id="bio">
+        <%= f.input :bio, :as => :text %>
+        <%= f.hint "Please describe you and what you're looking for in a collective music practice !" %>
+      </div>
+      <div class="button">
+        <%= f.submit class:"btn-musician" %>
+        <%= link_to "Back", root_path, :class => "nav-button"%>
+      </div>
+    <% end %>
+  </div>
+</div>

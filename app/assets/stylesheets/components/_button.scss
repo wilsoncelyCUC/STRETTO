@@ -80,3 +80,26 @@
 .btn-refuse-poke:hover {
   opacity: 0.7;
 }
+
+.btn-musician {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 30px ;
+  font-weight: bold ;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+.nav-button {
+  background: linear-gradient(135deg, #b1f5e7, rgb(209, 255, 216));
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 30px ;
+  font-weight: bold ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: black;
+}
