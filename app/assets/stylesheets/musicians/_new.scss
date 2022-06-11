@@ -7,7 +7,7 @@
   background: linear-gradient(135deg, #73E0CA, white);
 }
 
-.container {
+.container-mc {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -15,14 +15,14 @@
   border-radius: 30px;
 }
 
-.container .title {
+.container-mc .title-mc {
   font-size: 25px;
   font-weight: 500;
   position: relative;
   margin-bottom: 20px;
 }
 
-.container .title::before {
+.container-mc .title-mc::before {
   content: '';
   position: absolute;
   left: 0;
@@ -32,23 +32,23 @@
   background: linear-gradient(135deg, #73E0CA, white);
 }
 
-.container .user-details {
+.container-mc .user-details-mc {
   margin: 20px 0 12px 0;
   display: flex;
   align-content: space-around;
 }
 
-.user-details .input-box .label {
+.user-details-mc .input-box .label {
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
 }
 
-.user-details .input-box {
+.user-details-mc .input-box {
   margin-bottom: 15px;
 }
 
-.user-details .input-box input {
+.user-details-mc .input-box input {
   width: 100%;
   outline: none;
   border-radius: 10px;
@@ -56,23 +56,23 @@
   padding-left: 15px;
 }
 
-.user-details label {
+.user-details-mc label {
   font-weight: 500;
 }
 
-.button {
+.button-mc {
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
   margin-top: 20px;
 }
 
-.right {
+.right-mc {
   width: 100%;
   margin-left: 10px;
 }
 
-.left {
+.left-mc {
   width: 100%;
   margin-right: 10px;
 }

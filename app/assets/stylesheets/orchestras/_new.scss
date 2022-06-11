@@ -7,7 +7,7 @@
   background: linear-gradient(135deg, #030435, white);
 }
 
-.container {
+.container-col {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -15,14 +15,14 @@
   border-radius: 30px;
 }
 
-.container .title {
+.container-col .title-col {
   font-size: 25px;
   font-weight: 500;
   position: relative;
   margin-bottom: 20px;
 }
 
-.container .title::before {
+.container-col .title-col::before {
   content: '';
   position: absolute;
   left: 0;
@@ -32,23 +32,18 @@
   background: linear-gradient(135deg, #030435, white);
 }
 
-.container .user-details {
+.container-col .user-details-col {
   margin: 20px 0 12px 0;
   display: flex;
   align-content: space-around;
 }
 
-.user-details .input-box .label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
 
-.user-details .input-box {
+.user-details-col .input-box {
   margin-bottom: 15px;
 }
 
-.user-details .input-box input {
+.user-details-col .input-box input {
   height: 42px;
   width: 100%;
   outline: none;
@@ -57,23 +52,23 @@
   padding-left: 15px;
 }
 
-.user-details label {
-  font-weight: 500;
+.user-details-col label {
+
 }
 
-.button {
+.button-col {
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
   margin-top: 20px;
 }
 
-.right {
+.right-col {
   width: 100%;
   margin-left: 10px;
 }
 
-.left {
+.left-col {
   width: 100%;
   margin-right: 10px;
 }
