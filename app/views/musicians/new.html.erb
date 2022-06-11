@@ -1,9 +1,9 @@
 <div class="body-mc">
-  <div class="container">
-    <div class="title">Create your Musician Profile</div>
-    <div class="user-details">
+  <div class="container-mc">
+    <div class="title-mc">Create your Musician Profile</div>
+    <div class="user-details-mc">
 
-      <div class="left">
+      <div class="left-mc">
         <%= simple_form_for(@musician) do |f| %>
           <%= f.input :first_name, label: "First name", :placeholder => 'Enter your first name' %>
           <%= f.input :last_name, label: "Last name", :placeholder => 'Enter your last name' %>
@@ -14,7 +14,7 @@
         <% end %>
       </div>
 
-      <div class="right">
+      <div class="right-mc">
         <%= simple_form_for(@musician) do |f| %>
           <div class="input-box">
             <%= f.input :instrument, label: "Instrument", collection: Musician::INSTRUMENT %>
@@ -29,13 +29,13 @@
         <% end %>
       </div>
     </div>
-    <div class="center">
+    <div class="center-mc">
         <%= simple_form_for(@musician) do |f| %>
           <div class="input-box" id="bio">
             <%= f.input :bio, :as => :text %>
             <%= f.hint "Please describe you and what you're looking for in a collective music practice !" %>
           </div>
-          <div class="button">
+          <div class="button-mc">
             <%= f.submit class:"btn-musician" %>
             <%= link_to "Back", root_path, :class => "nav-button-mc"%>
           </div>
