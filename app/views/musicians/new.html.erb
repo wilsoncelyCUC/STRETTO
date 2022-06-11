@@ -1,68 +1,45 @@
+<div class="body-mc">
+  <div class="container">
+    <div class="title">Create your Musician Profile</div>
+    <div class="user-details">
 
+      <div class="left">
+        <%= simple_form_for(@musician) do |f| %>
+          <%= f.input :first_name, label: "First name", :placeholder => 'Enter your first name' %>
+          <%= f.input :last_name, label: "Last name", :placeholder => 'Enter your last name' %>
+          <%= f.input :birthday, :as => :date, :start_year => Date.today.year - 80,
+                                :end_year => Date.today.year - 12,
+                                :order => [:day, :month, :year], label: "Birthday" %>
+          <%= f.input :photo, label: "Photo", :placeholder => "Copy-paste your picture's URL" %>
+        <% end %>
+      </div>
 
-<div class="container">
-  <div class="title">Create your musician profile</div>
-  <div class="user-details">
-
-    <div class="left">
-      <%= simple_form_for(@musician) do |f| %>
-        <div class="input-box">
-          <div class="label">
-            <%= f.label :first_name %>
+      <div class="right">
+        <%= simple_form_for(@musician) do |f| %>
+          <div class="input-box">
+            <%= f.input :instrument, label: "Instrument", collection: Musician::INSTRUMENT %>
           </div>
-          <%= f.text_field :first_name, :placeholder => 'Enter your first name' %>
-        </div>
-        <div class="input-box">
-          <div class="label">
-            <%= f.label :last_name %>
+          <div class="input-box">
+            <%= f.input :level, label: "Level", collection: Musician::LEVEL %>
           </div>
-          <%= f.text_field :last_name, :placeholder => 'Enter your last name' %>
-        </div>
-        <div class="input-box">
-          <div class="label">
-            <%= f.label :birthday %>
+          <div class="input-box">
+            <%= f.input :style, label: "Style", collection: Musician::STYLE %>
           </div>
-          <%= f.date_field :birthday %>
-        </div>
-        <div class="input-box">
-          <div class="label">
-            <%= f.label :photo %>
-          </div>
-          <%= f.text_field :photo, :placeholder => "Copy-paste your picture's URL" %>
-        </div>
-      <% end %>
+          <%= f.input :zip_code, label: "Zip-code", :placeholder => "Enter your Zipcode" %>
+        <% end %>
+      </div>
     </div>
-
-    <div class="right">
-      <%= simple_form_for(@musician) do |f| %>
-        <div class="input-box">
-          <%= f.input :instrument, label: "Instrument", collection: Musician::INSTRUMENT %>
-        </div>
-        <div class="input-box">
-          <%= f.input :level, label: "Level", collection: Musician::LEVEL %>
-        </div>
-        <div class="input-box">
-          <%= f.input :style, label: "Style", collection: Musician::STYLE %>
-        </div>
-        <div class="input-box">
-          <div class="label">
-            <%= f.label :zip_code %>
+    <div class="center">
+        <%= simple_form_for(@musician) do |f| %>
+          <div class="input-box" id="bio">
+            <%= f.input :bio, :as => :text %>
+            <%= f.hint "Please describe you and what you're looking for in a collective music practice !" %>
           </div>
-          <%= f.number_field :zip_code %>
-        </div>
-      <% end %>
-    </div>
+          <div class="button">
+            <%= f.submit class:"btn-musician" %>
+            <%= link_to "Back", root_path, :class => "nav-button-mc"%>
+          </div>
+        <% end %>
+      </div>
   </div>
-  <div class="center">
-      <%= simple_form_for(@musician) do |f| %>
-        <div class="input-box" id="bio">
-          <%= f.input :bio, :as => :text %>
-          <%= f.hint "Please describe you and what you're looking for in a collective music practice !" %>
-        </div>
-        <div class="button">
-          <%= f.submit class:"btn-musician" %>
-          <%= link_to "Back", root_path, :class => "nav-button"%>
-        </div>
-      <% end %>
-    </div>
 </div>

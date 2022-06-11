@@ -1,17 +1,33 @@
-<h1>Create Orchestra</h1>
-<%= render "shared/form" , orchestra: @orchestra %>
-<ul class="nav">
-  <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
-</ul>
+<div class="body-col">
+  <div class="container">
+    <div class="title">Create your Orchestra Profile</div>
+    <div class="user-details">
+      <div class="left">
+        <%= simple_form_for(@orchestra) do |f| %>
+          <%= f.input :name, label: "Name of Orchestra" %>
+          <%= f.input :type_orchestra, label: "Type of Orchestra", collection: Orchestra::TYPE_ORCHESTRA %>
+          <%= f.input :style, label: "What is the style?", collection: Orchestra::STYLE%>
+        <% end %>
+      </div>
 
-<%= simple_form_for (@orchestra) do |f| %>
-  <%= f.input :style %>
-  <%= f.input :type_orchestra %>
-  <%= f.input :size %>
-  <%= f.input :zip_code %>
-  <%= f.input :frequency %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :bio %>
-  <%= f.submit %>
-<% end %>
+      <div class="right">
+        <%= simple_form_for(@orchestra) do |f| %>
+          <%= f.input :size, label: "How many people play with you?" %>
+          <%= f.input :frequency , label: "How often do you play"%>
+          <%= f.input :zip_code, label: "Zipcode" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="center">
+        <%= simple_form_for(@orchestra) do |f| %>
+          <%= f.input :bio, label: "Describe the Orchestra in one line", :placeholder => "What your orchestra is about ?" %>
+          <%= f.input :description, label: "Tell us more about the Orchestra" %>
+          <%= f.hint "What's your story ? How the founders met ? What is bringing you all together?" %>
+          <div class="button">
+            <%= f.submit class:"btn-orchestras" %>
+            <%= link_to "Back", root_path, :class => "nav-button-col"%>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
