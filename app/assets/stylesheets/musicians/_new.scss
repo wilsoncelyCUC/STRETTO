@@ -34,6 +34,8 @@ body {
 
 .container .user-details {
   margin: 20px 0 12px 0;
+  display: flex;
+  align-content: space-around;
 }
 
 .user-details .input-box .label {
@@ -47,7 +49,7 @@ body {
 }
 
 .user-details .input-box input {
-  height: 30px;
+  height: 42px;
   width: 100%;
   outline: none;
   border-radius: 10px;
@@ -63,4 +65,15 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
+  margin-top: 20px;
+}
+
+.right {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.left {
+  width: 100%;
+  margin-right: 10px;
 }

@@ -3,63 +3,66 @@
 <div class="container">
   <div class="title">Create your musician profile</div>
   <div class="user-details">
-    <%= simple_form_for(@musician) do |f| %>
-      <div class="input-box">
-        <div class="label">
-          <%= f.label :first_name %>
+
+    <div class="left">
+      <%= simple_form_for(@musician) do |f| %>
+        <div class="input-box">
+          <div class="label">
+            <%= f.label :first_name %>
+          </div>
+          <%= f.text_field :first_name, :placeholder => 'Enter your first name' %>
         </div>
-        <%= f.text_field :first_name, :placeholder => 'Enter your first name' %>
-      </div>
-      <div class="input-box">
-        <div class="label">
-          <%= f.label :last_name %>
+        <div class="input-box">
+          <div class="label">
+            <%= f.label :last_name %>
+          </div>
+          <%= f.text_field :last_name, :placeholder => 'Enter your last name' %>
         </div>
-        <%= f.text_field :last_name, :placeholder => 'Enter your last name' %>
-      </div>
-      <div class="input-box">
-        <div class="label">
-          <%= f.label :birthday %>
+        <div class="input-box">
+          <div class="label">
+            <%= f.label :birthday %>
+          </div>
+          <%= f.date_field :birthday %>
         </div>
-        <%= f.date_field :birthday %>
-      </div>
-      <div class="input-box">
-        <div class="label">
-          <%= f.label :photo %>
+        <div class="input-box">
+          <div class="label">
+            <%= f.label :photo %>
+          </div>
+          <%= f.text_field :photo, :placeholder => "Copy-paste your picture's URL" %>
         </div>
-        <%= f.text_field :photo, :placeholder => "Copy-paste your picture's URL" %>
-      </div>
-      <div class="input-box">
-        <div class="label">
-          <%= f.label :instrument %>
+      <% end %>
+    </div>
+
+    <div class="right">
+      <%= simple_form_for(@musician) do |f| %>
+        <div class="input-box">
+          <%= f.input :instrument, label: "Instrument", collection: Musician::INSTRUMENT %>
         </div>
-        <%= f.text_field :instrument, :placeholder => 'Piano, Guitar, Clarinet' %>
-      </div>
-      <div class="input-box">
-        <div class="label">
-          <%= f.label :level %>
+        <div class="input-box">
+          <%= f.input :level, label: "Level", collection: Musician::LEVEL %>
         </div>
-        <%= f.text_field :level, :placeholder => 'Beginner, Intermediate, Advanced' %>
-      </div>
-      <div class="input-box">
-        <div class="label">
-          <%= f.label :style %>
+        <div class="input-box">
+          <%= f.input :style, label: "Style", collection: Musician::STYLE %>
         </div>
-        <%= f.text_field :style, :placeholder => 'Classical, Jazz...' %>
-      </div>
-      <div class="input-box">
-        <div class="label">
-          <%= f.label :zip_code %>
+        <div class="input-box">
+          <div class="label">
+            <%= f.label :zip_code %>
+          </div>
+          <%= f.number_field :zip_code %>
         </div>
-        <%= f.number_field :zip_code %>
-      </div>
-      <div class="input-box" id="bio">
-        <%= f.input :bio, :as => :text %>
-        <%= f.hint "Please describe you and what you're looking for in a collective music practice !" %>
-      </div>
-      <div class="button">
-        <%= f.submit class:"btn-musician" %>
-        <%= link_to "Back", root_path, :class => "nav-button"%>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
+  <div class="center">
+      <%= simple_form_for(@musician) do |f| %>
+        <div class="input-box" id="bio">
+          <%= f.input :bio, :as => :text %>
+          <%= f.hint "Please describe you and what you're looking for in a collective music practice !" %>
+        </div>
+        <div class="button">
+          <%= f.submit class:"btn-musician" %>
+          <%= link_to "Back", root_path, :class => "nav-button"%>
+        </div>
+      <% end %>
+    </div>
 </div>
