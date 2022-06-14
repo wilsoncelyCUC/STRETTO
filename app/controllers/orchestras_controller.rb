@@ -17,8 +17,8 @@ before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
   def create
     @orchestra = Orchestra.new(orchestra_params)
     @orchestra.user = current_user
-    if @orchestra.save
-      redirect_to root_path
+    if @orchestra.save!
+      redirect_to orchestra_path(@orchestra)
     else
       render :new
     end
@@ -48,7 +48,6 @@ before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
   end
 
   def orchestra_params
-    params.require(:orchestra).permit(:style, :type_orchestra, :size, :zip_code, :frequency, :name, :description, :bio)
+    params.require(:orchestra).permit(:style, :type, :size, :zip_code, :frequency, :name, :description, :bio)
   end
-
 end
