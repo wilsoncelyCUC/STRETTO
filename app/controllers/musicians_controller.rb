@@ -13,7 +13,8 @@ class MusiciansController < ApplicationController
 
   def create
     @musician = Musician.new(musician_params)
-    if @musician.save
+    @musician.user = current_user
+    if @musician.save!
     # Will raise ActiveModel::ForbiddenAttributesError
     redirect_to musician_path(@musician)
     else
@@ -41,6 +42,6 @@ class MusiciansController < ApplicationController
   private
 
   def musician_params
-    params.require(:musician).permit.(:first_name, :last_name, :birthday, :level, :instrument, :style, :zip_code, :user)
+    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :instrument, :style, :zip_code, :user, :photo, :bio)
   end
 end
