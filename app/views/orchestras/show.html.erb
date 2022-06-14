@@ -1,33 +1,76 @@
 <h2>Orchestra section</h2>
 <!-- Orchestra section-->
 
- <%= link_to "Send an invitation", new_orchestra_invitation_path(@orchestra), class:"btn btn-primary"%>
+<body>
+<br>
+  <div class="container">
+    <div class="musician-banner">
+      <div class="row">
+        <div class="col-9">
+          <div class="row">
+            <h1><%= @orchestra.name%> </h1>
+            <h3>We are a <strong><%= @orchestra.type_orchestra  %></strong> orchestra and we play <strong><%= @orchestra.style %></strong> style </h3>
+            <h2>There are <strong><%= @orchestra.size %></strong> persons in our band</h2>
+            <h2><%= @orchestra.frequency %></h2>
+          </div>
+        </div>
+        <div class="col-3">
+        <img class="avatar-large ;" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+        <div class="btn-poke-musician">
+          <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra)%>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="container">
+  <div class="container">
+    <div class="musician-info">
+      <div class="row">
+      <h1>Here is our bio folks:</h1>
+      <h2><%= @orchestra.bio %></h2>
+      </div>
+    </div>
+  </div>
+
+<%#
+   <div class="container">
+    <div class="orchestra-banner-post">
+      <div class="row">
+       <%# <% @posts.each do |post|  %>
+        <%# <div class=""> %>
+          <%# <h1><i><%= post.id %>:</i></h1>
+          <%# <h2><%= post.instrument %></h2>
+          <%# <h3><%= post.description %></h3>
+        <%# </div> %>
+      <%# <%end %>
+      <%# </div> %>
+    <%# </div> %>
+  <%# </div> %>
+
+
+
+
+
+
+
+
+ <%# <%= link_to "Send an invitation", new_orchestra_invitation_path(@orchestra), class:"btn btn-primary"%>
+
+<%# <div class="container">
   <div>
     <h1><%=@orchestra.name %></h1>
-    <h2>BIO: <%= @orchestra.bio %></h2>
-    <h2>Style <%= @orchestra.style %></strong> Type <strong><%= @orchestra.type_orchestra  %>!</h2>
-    <h2>Rehearsals <strong><%= @orchestra.frequency %></strong></h2>
-    <h2><strong>We are <%= @orchestra.size %> people</strong></h2>
+    <%# <h2>BIO: <%= @orchestra.bio %></h2>
+    <%# <h2>Style <%= @orchestra.style</strong> Type <strong><%= @orchestra.type_orchestra  %>!
+    <%# <h2>Rehearsals <strong><%= @orchestra.frequency %>
+    <%# <h2><strong>We are <%= @orchestra.size %> 
+  <%# </div> %>
+  <%# <div class="left">
+    <a class="" href="#">Poke us</a> %>
+    <%# <a class="" href="#">return</a>
   </div>
-  <div class="left">
-    <a class="" href="#">Poke us</a>
-    <a class="" href="#">return</a>
-  </div>
-</div>
+</div> %>
 
-<h2>My Posts</h2>
+<%# <h2>My Posts</h2>
 <!-- post section-->
-<%= link_to "New post",new_orchestra_post_path(@orchestra)  %>
-
-
-<div class="container">
-  <% @posts.each do |post|  %>
-    <div class="">
-      <%= post.id %>
-      <%= post.instrument %>
-      <%= post.description %>
-    </div>
-  <%end  %>
-</div>
+<%= link_to "New post",new_orchestra_post_path(@orchestra)  %> %>

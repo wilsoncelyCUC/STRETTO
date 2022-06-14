@@ -1,10 +1,41 @@
-<h2><%= @musician.first_name %></h2>
-<p><%= @musician.last_name %></p>
-<p><%= @musician.birthday %></p>
-<p><%= @musician.level %></p>
-<p><%= @musician.instrument %></p>
-<p><%= @musician.style %></p>
-<p><%= @musician.photo %></p>
-<p><%= @musician.bio %></p>
-<p><%= @musician.zip_code %></p>
-<%= link_to "Send an invitation", new_musician_invitation_path(@musician), class:"btn btn-primary"%>
+<H1>Show musician</H1>
+
+
+<body>
+<br>
+  <div class="container">
+    <div class="musician-banner">
+      <div class="row">
+        <div class="col-9">
+          <div class="row">
+            <h1><%= @musician.first_name%> <%= @musician.last_name %></h1>
+            <h3><%= @musician.birthday %></h3>
+            <h2>I play <strong><%= @musician.instrument %></strong></h2>
+            <h2>With a <strong><%= @musician.style %></strong> style</h2>
+            <h2>At a <strong><%= @musician.level %></strong> level</h2>
+          </div>
+        </div>
+        <div class="col-3">
+        <img class="avatar-large ;" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+        <div class="btn-poke-musician">
+          <%= link_to "Poke me", new_musician_invitation_path(@musician)%>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="musician-info">
+      <div class="row">
+      <h1>Here is my bio folks:</h1>
+      <h2><%= @musician.bio %></h2>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</body>
