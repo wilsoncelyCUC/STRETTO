@@ -1,10 +1,16 @@
 .home-banner {
   height: 300px;
   width: 100%;
-  background-color: #73E0CA;
+  background: linear-gradient(135deg, #73E0CA, white);
   margin-bottom: 50px;
 }
 
+.home-banner-orchestra {
+  height: 300px;
+  width: 100%;
+  background: linear-gradient(135deg, #030435, white);
+  margin-bottom: 50px;
+}
 
 .home-banner-firstcol {
 padding-top: 140px;
