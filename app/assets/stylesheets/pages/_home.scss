@@ -1,1 +1,67 @@
 // Specific CSS for your home-page
+
+.home-cta {
+  display: flex;
+  width: 100%;
+  height: 300px;
+}
+
+.hero-image {
+  width: 396px;
+  height: 168px;
+}
+
+.home-hero {
+  position: relative;
+  display: flex;
+  height: 300px;
+  color: #030435;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.home-infos {
+    display: flex;
+    flex-direction: row;
+    margin: 50px;
+}
+
+.onboarding-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin: 30px;
+  font-size: larger;
+}
+
+.onboarding-description {
+  margin: 40px;
+}
+
+.content {
+  padding: 35px;
+}
+
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.btn-1 {
+  border-radius: 30px;
+  background-color: #73E0CA;
+  font-weight: bold;
+  padding: 20px
+}
+
+.btn-2 {
+  border-radius: 30px;
+  background-color: #030435;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+}

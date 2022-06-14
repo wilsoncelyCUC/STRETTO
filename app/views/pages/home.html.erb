@@ -1,171 +1,42 @@
-<h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
-</div>
 
-
-<body>
-<div class="container">
-  <div class="home-banner">
-    <div class="row">
-      <div class="d-flex align-items-end">
-
-
-          <div class="col-5 d-flex align-items-end">
-            <div class="home-banner-firstcol">
-            <h1> Instrument
-                <label class="home-selection">
-                  <label for="instrument-select"></label>
-                  <select name="instrument" id="instrument-select">
-                    <option value="violon">Violon</option>
-                    <option value="guitar">Guitar</option>
-                    <option value="piano">Piano</option>
-                    <option value="flute">Flûte</option>
-                  </select>
-                </label>
-            </h1>
-              <input type="text" id="postalcode" name="name" required
-              minlength="5" maxlength="5" placeholder="Postal Code"/>
-            </div>
-          </div>
-
-          <div class="col-4 d-flex align-items-end">
-            <div class="home-banner-secondcol">
-              <h1>Style
-                <label for="style-select"></label>
-                  <select name="style" id="instrument-select">
-                    <option value="rock">Rock</option>
-                    <option value="classic">Classic</option>
-                    <option value="funk">Funk</option>
-                    <option value="opera">Opera</option>
-                  </select>
-              </h1>
-
-              <h1>Size
-                <label for="style-select"></label>
-                  <select name="style" id="instrument-select">
-                    <option value="1">1</option>
-                    <option value="4">4</option>
-                    <option value="10">10</option>
-                    <option value="more than 10">More than 10</option>
-                  </select>
-              </h1>
-
-
-            </div>
-          </div>
-
-          <div class="col-3">
-            <div class="align-self-center">
-              <div class="home-banner-search">
-                <div class="btn-search">
-                  <h1>Search</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-
+<body class="home-body">
+  <div class="home-container">
+    <div class="home-hero">
+      <h1>Welcome to</h1>
+      <%= image_tag "LOGO files-03.png", class: "hero-image" %>
+    </div>
+    <div class="home-cta">
+      <div class="onboarding-cta">
+        <div class="onboarding-description">
+          <p>If your a musician, and you'd like to find cool people to play with, create a musician profile now and meet some people.</p>
+        </div>
+        <div class="button-mc">
+          <%= link_to "Create a Musician Profile", "#", class: "btn-1" %>
+        </div>
+      </div>
+      <div class="onboarding-cta">
+        <div class="onboarding-description">
+          <p>If your an orchestra, and you want to find cool people to join you, create an orchestra profile now and meet some people.</p>
+        </div>
+        <div class="button-col">
+          <%= link_to "Create an Orchestra Profile", "#", class: "btn-2" %>
+        </div>
       </div>
     </div>
-</div>
-
-
-
-  <div class="container d-flex justify-content-start">
-    <div class="row">
-          <div class="card-profile col-4 m-3">
-            <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-              <div class="card-profile-infos">
-                <h1>The Rolling Stones</h1>
-                <h2>Bio: We play music</h2>
-                <h2>Syle: Jazz</h2>
-                <h2>Zip Code: 75010</h2>
-                <a href="#" class="card-link">More infos</a>
-                <a href="#" class="card-link">Send invitation</a>
-              </div>
-          </div>
-
-        <div class="card-profile col-4 m-3">
-          <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-            <div class="card-profile-infos">
-              <h1>The Rolling Stones</h1>
-              <h2>Bio: We play music</h2>
-              <h2>Syle: Jazz</h2>
-              <h2>Zip Code: 75010</h2>
-              <a href="#" class="card-link">More infos</a>
-              <a href="#" class="card-link">Send invitation</a>
-            </div>
-        </div>
-
-        <div class="card-profile col-4 m-3">
-          <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-            <div class="card-profile-infos">
-              <h1>The Rolling Stones</h1>
-              <h2>Bio: We play music</h2>
-              <h2>Syle: Jazz</h2>
-              <h2>Zip Code: 75010</h2>
-              <a href="#" class="card-link">More infos</a>
-              <a href="#" class="card-link">Send invitation</a>
-            </div>
-        </div>
-
-        <div class="card-profile col-4 m-3">
-          <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-            <div class="card-profile-infos">
-              <h1>The Rolling Stones</h1>
-              <h2>Bio: We play music</h2>
-              <h2>Syle: Jazz</h2>
-              <h2>Zip Code: 75010</h2>
-              <a href="#" class="card-link">More infos</a>
-              <a href="#" class="card-link">Send invitation</a>
-            </div>
-        </div>
-
-
-
-        <div class="card-profile col-4 m-3">
-          <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-            <div class="card-profile-infos">
-              <h1>The Rolling Stones</h1>
-              <h2>Bio: We play music</h2>
-              <h2>Syle: Jazz</h2>
-              <h2>Zip Code: 75010</h2>
-              <a href="#" class="card-link">More infos</a>
-              <a href="#" class="card-link">Send invitation</a>
-            </div>
-        </div>
-
-        <div class="card-profile col-4 m-3">
-          <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-            <div class="card-profile-infos">
-              <h1>The Rolling Stones</h1>
-              <h2>Bio: We play music</h2>
-              <h2>Syle: Jazz</h2>
-              <h2>Zip Code: 75010</h2>
-              <a href="#" class="card-link">More infos</a>
-              <a href="#" class="card-link">Send invitation</a>
-            </div>
-        </div>
-
-        <div class="card-profile col-4 m-3">
-          <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-            <div class="card-profile-infos">
-              <h1>The Rolling Stones</h1>
-              <h2>Bio: We play music</h2>
-              <h2>Syle: Jazz</h2>
-              <h2>Zip Code: 75010</h2>
-              <a href="#" class="card-link">More infos</a>
-              <a href="#" class="card-link">Send invitation</a>
-            </div>
-        </div>
-
-
-
-
-
-
+    <hr class="rounded">
+    <div class="home-infos">
+      <div class="content" id="a">
+        <h3>Here is some cool content about stretto</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed est lorem. Aliquam ut bibendum sapien. Donec vehicula libero id nisl dictum facilisis. Nunc malesuada mi vel hendrerit porta. Mauris.</p>
+      </div>
+      <div class="content" id="b">
+        <h3>Here is some cool content about stretto</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed est lorem. Aliquam ut bibendum sapien. Donec vehicula libero id nisl dictum facilisis. Nunc malesuada mi vel hendrerit porta. Mauris.</p>
+      </div>
+      <div class="content" id="c">
+        <h3>Here is some cool content about stretto</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed est lorem. Aliquam ut bibendum sapien. Donec vehicula libero id nisl dictum facilisis. Nunc malesuada mi vel hendrerit porta. Mauris.</p>
+      </div>
     </div>
   </div>
-
-
-
 </body>
