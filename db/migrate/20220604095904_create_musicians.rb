@@ -9,7 +9,7 @@ class CreateMusicians < ActiveRecord::Migration[6.1]
       t.string :style
       t.string :photo
       t.string :bio
-      t.number_field :zip_code
+      t.integer :zip_code
       t.references :user
 
       t.timestamps
