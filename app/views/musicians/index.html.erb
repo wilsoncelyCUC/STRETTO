@@ -73,17 +73,31 @@
  <div class="container d-flex justify-content-start">
     <div class="row">
       <% @musicians.each do |musician| %>
+
           <div class="card-profile col-4 m-3">
-              <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-                <div class="card-profile-infos">
-                  <h1><%= musician.first_name%> <%= musician.last_name%></h1>
-                  <h2><strong>Level:</strong> <%= musician.level %></h2>
-                  <h2><strong>Instrument:</strong> <%= musician.instrument %></h2>
-                  <h2><strong>Style:</strong> <%= musician.style %></h2>
-                  <%# <h2>Frequency: <%= orchestra.frequency %>
-                  <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
-                  <%= link_to "More info", new_musician_invitation_path(musician), class:"card-link"%>
+            <div class="musician-card-top-banner">
+              <div class="row">
+
+                <div class="musician-name col-8">
+                  <h1><%= musician.first_name%></h1>
+                  <h1> <%= musician.last_name%></h1>
                 </div>
+                <div class="col-4">
+                  <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                </div>
+              </div>
+            </div>
+
+
+                <div class="musician-infos">
+                          <h1><strong>Level:</strong> <%= musician.level %></h1>
+                          <h2><strong>Instrument:</strong> <%= musician.instrument %></h2>
+                          <h2><strong>Style:</strong> <%= musician.style %></h2>
+                          <%# <h2>Frequency: <%= orchestra.frequency %>
+                          <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
+                          <%= link_to "More info", new_musician_invitation_path(musician), class:"card-link"%>
+                </div>
+
           </div>
       <% end %>
     </div>

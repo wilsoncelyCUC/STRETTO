@@ -10,30 +10,6 @@
 
 }
 
-.card-img-top {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  margin-top: 15px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.card-profile h1 {
-  font-size: 24px;
-  font-weight: bold;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-top: 15px;
-}
-
-.card-profile h2 {
-  font-size: 16px;
-  text-align: left;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-top: 5px;
-}
 
 
 .card-link {
@@ -46,4 +22,37 @@
   margin-top: 10px;
   color: black;
   margin-bottom: 10px;
+}
+
+.avatar-large-musician {
+  width: 60px;
+  border-radius: 50%;
+  height: 60px;
+  margin-top: 15px;
+  margin-right: 20px;
+  opacity: 1;
+}
+
+.musician-card-top-banner {
+  background: #D7D7DF;
+  margin-top: 10px;
+  color: black;
+}
+
+.musician-infos {
+  color: black;
+}
+
+.musician-infos h1 {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.musician-infos h2 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.musician-name {
+  color: black;
 }
