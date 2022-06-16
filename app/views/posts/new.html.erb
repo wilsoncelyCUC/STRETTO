@@ -1,28 +1,38 @@
-<h1>Create Post</h1>
-<div class="row" data-controller="post-choice">
-  <%= simple_form_for([@orchestra, @post]) do |f| %>
-    <h3>Choose the type of post</h3>
-    <%= f.input :type_post,
+<div class="body-col">
+  <div class="block-col">
+    <div class="title-col">You need a musician ? Tell us more </div>
+    <div class="user-details-col">
+      <div class="post-row" data-controller="post-choice">
+        <%= simple_form_for([@orchestra, @post]) do |f| %>
+          <h3>Choose the type of post</h3>
+          <%= f.input :type_post,
                 collection: Post::POST_TYPE,
                 input_html: {  data: { post_choice_target: 'choice',
                                action: 'change->post-choice#displayfield'}
                 } %>
-    <h3>Tell us more</h3>
-    <%= f.input :instrument %>
-    <%= f.input :level%>
-    <%= f.input :date,
-                 wrapper_html: { class: 'd-none', data: { post_choice_target: 'date' } }
-                 %>
-    <%= f.input :periodicity,
-                wrapper_html: { class: 'd-none', data: { post_choice_target: 'periodicity' } }
-                %>
-    <%= f.input :description, label: "Tell us more" %>
-    <div class="buttons">
-      <%= f.submit%>
+          <%= f.input :date,
+                      wrapper_html: { class: 'd-none', data: { post_choice_target: 'date' } }
+                      %>
+          <%= f.input :periodicity,
+                      wrapper_html: { class: 'd-none', data: { post_choice_target: 'periodicity' } }
+                      %>
+          <h3>Requirements</h3>
+          <%= f.input :instrument, label: "Instrument", collection: Post::INSTRUMENT %>
+          <%= f.input :level , label: "Level", collection: Post::LEVEL%>
+          <%= f.input :description, label: "Tell us more"%>
+          <%= f.hint "A bit of context never hurts ! What's in it for your future music-mate ? What makes your orchestra unique and cool ?" %>
+          <div class="buttons-col">
+            <%= f.submit class:"btn-orchestras", :id => 'btn-orchestras-submit'%>
+            <%= link_to "Back", root_path, :class => "nav-button-col"%>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
+
 </div>
 
+
 <ul class="nav">
-  <li><%= link_to "Back", root_path, :class => "nav-item px-1"%></li>
+  <li></li>
 </ul>
