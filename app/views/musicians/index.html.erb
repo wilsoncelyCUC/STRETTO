@@ -1,71 +1,54 @@
-<h1>. </h1>
-<h1>. . . </h1>
 
-<h1>Welcome To STRETTO</h1>
-<p>Find here some groups that might interest you.</p>
-
-
-<body>
-
-
-<div class="container">
-  <div class="home-banner-orchestra">
+<div class="banner" style="background: linear-gradient(135deg, #030435, white);">
+  <div class="container">
+    <div class="info">
+      <h1>Welcome To STRETTO</h1>
+      <p>Tell us what kind of musicians you are looking for.</p>
+    </div>
     <div class="row">
-      <div class="d-flex align-items-end">
-
-          <div class="col-5 d-flex align-items-end">
-            <div class="home-banner-firstcol">
-            <h1> Instrument
-                <label class="home-selection">
-                  <label for="instrument-select"></label>
-                  <select name="instrument" id="instrument-select">
-                    <option value="violon">Violon</option>
-                    <option value="guitar">Guitar</option>
-                    <option value="piano">Piano</option>
-                    <option value="flute">Flûte</option>
-                  </select>
-                </label>
-            </h1>
+      <%= form_tag musicians_path, method: :get do %>
+        <div class="left">
+          <div class="d-flex">
+            <div class="col-3">
+              <%= text_field_tag :instrument,
+                params[:instrument],
+                class: "form-control",
+                placeholder: "Instrument"
+              %>
+            </div>
+            <div class="col-3 mx-3">
+              <%= text_field_tag :style,
+                params[:style],
+                class: "form-control",
+                placeholder: "style"
+              %>
             </div>
           </div>
-
-          <div class="col-4 d-flex align-items-end">
-            <div class="home-banner-secondcol">
-              <h1>Style
-                <label for="style-select"></label>
-                  <select name="style" id="instrument-select">
-                    <option value="rock">Rock</option>
-                    <option value="classic">Classic</option>
-                    <option value="funk">Funk</option>
-                    <option value="opera">Opera</option>
-                  </select>
-              </h1>
-
-              <h1>Size
-                <label for="style-select"></label>
-                  <select name="style" id="instrument-select">
-                    <option value="1">1</option>
-                    <option value="4">4</option>
-                    <option value="10">10</option>
-                    <option value="more than 10">More than 10</option>
-                  </select>
-              </h1>
-
-
-            </div>
-          </div>
-
-          <div class="col-3">
-            <div class="align-self-center">
-              <div class="home-banner-search">
+          <div class="row">
+            <div class="d-flex">
+              <div class="col-3">
+                <%= text_field_tag :level,
+                  params[:level],
+                  class: "form-control",
+                  placeholder: "level"
+                %>
+              </div>
+              <div class="col-3 mx-3">
+                <%= text_field_tag :zipcode,
+                  params[:zipcode],
+                  class: "form-control",
+                  placeholder: "level"
+                %>
               </div>
             </div>
-         <%= link_to "New POST",  new_orchestra_post_path(@orchestra), class: "btn-musician"%>
-
           </div>
-
-      </div>
+        </div>
+        <div class="right">
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
+  </div>
 </div>
 
 
@@ -100,4 +83,3 @@
       <% end %>
     </div>
  </div>
-</body>
