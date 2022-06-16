@@ -64,7 +64,7 @@ end
     mypost = Post.create!(
       instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
       description: Faker::Lorem.sentence(word_count: 20),
-      level: [1 ,2, 3, 4, 5].sample,
+      level: ["Beginner", "Intermediate", "Advanced"].sample,
       periodicity: my_orchestra.frequency,
       type_post: "Recurrent",
       style: my_orchestra.style,
@@ -76,7 +76,7 @@ end
   mypost = Post.create!(
     instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
     description: Faker::Lorem.sentence(word_count: 15),
-    level: [1 ,2, 3, 4, 5].sample,
+    level: ["Beginner", "Intermediate", "Advanced"].sample,
     date: Faker::Date.forward(days: 23),
     type_post: "One time",
     style: my_orchestra.style,
