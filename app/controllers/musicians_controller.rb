@@ -1,10 +1,12 @@
 class MusiciansController < ApplicationController
   def index
     @musicians = Musician.all
+    @orchestra = Orchestra.find_by(user: current_user)
   end
 
   def show
     @musician = Musician.find(params[:id])
+
   end
 
   def new
