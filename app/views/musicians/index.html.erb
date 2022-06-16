@@ -58,11 +58,10 @@
           <div class="col-3">
             <div class="align-self-center">
               <div class="home-banner-search">
-                <div class="btn-search">
-                  <h1>Search</h1>
-                </div>
               </div>
             </div>
+         <%= link_to "New POST",  new_orchestra_post_path(@orchestra), class: "btn-musician"%>
+
           </div>
 
       </div>
@@ -77,7 +76,6 @@
           <div class="card-profile col-4 m-3">
             <div class="musician-card-top-banner">
               <div class="row">
-
                 <div class="musician-name col-8">
                   <h1><%= musician.first_name%></h1>
                   <h1> <%= musician.last_name%></h1>
