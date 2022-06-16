@@ -18,7 +18,7 @@ before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
     @orchestra = Orchestra.new(orchestra_params)
     @orchestra.user = current_user
     if @orchestra.save!
-      redirect_to orchestra_path(@orchestra)
+      redirect_to musicians_path
     else
       render :new
     end

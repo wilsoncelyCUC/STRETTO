@@ -16,7 +16,7 @@ class MusiciansController < ApplicationController
     @musician.user = current_user
     if @musician.save!
     # Will raise ActiveModel::ForbiddenAttributesError
-    redirect_to musician_path(@musician)
+    redirect_to orchestras_path
     else
       render :new
     end
