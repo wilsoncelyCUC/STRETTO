@@ -27,7 +27,7 @@ user_musician = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     birthday: Faker::Date.between(from: '1948-09-23', to: '2000-09-25'),
-    level:  ["Beginner", "Intermediate", "Advanced"].sample,
+    level: ["Beginner", "Intermediate", "Advanced"].sample,
     instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
     style: ["Classic","Pop","Electronic", "Jazz"].sample,
     photo: "https://picsum.photos/200/300",
@@ -52,7 +52,7 @@ end
     size: [5, 15,10, 4 , 20].sample,
     zip_code: [75000, 75001, 75002, 75003, 75004, 75005, 75006, 75007, 75008, 75009, 75010, 75011, 75012, 75013, 75014, 75015, 75016, 75017, 75018, 75019, 75020].sample,
     frequency: "Rehearsals every #{['Monday', "Tuesday", "Wednesday", "Thursday", "Sunday"].sample} at 7 PM",
-    description: Faker::Lorem.sentence(word_count: 10),
+    description: Faker::Lorem.sentence(word_count: 30),
     name: Faker::Music.band,
     bio: Faker::Lorem.sentence(word_count: 6),
     user_id: user_orchestra.id
@@ -64,7 +64,7 @@ end
     mypost = Post.create!(
       instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
       description: Faker::Lorem.sentence(word_count: 20),
-      level:  ["Beginner", "Intermediate", "Advanced"].sample,
+      level: ["Beginner", "Intermediate", "Advanced"].sample,
       periodicity: my_orchestra.frequency,
       type_post: "Recurrent",
       style: my_orchestra.style,
@@ -76,7 +76,7 @@ end
   mypost = Post.create!(
     instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
     description: Faker::Lorem.sentence(word_count: 15),
-    level: [1 ,2, 3, 4, 5].sample,
+    level: ["Beginner", "Intermediate", "Advanced"].sample,
     date: Faker::Date.forward(days: 23),
     type_post: "One time",
     style: my_orchestra.style,
