@@ -2,7 +2,18 @@ class MusiciansController < ApplicationController
   def index
     @musicians = Musician.all
     @orchestra = Orchestra.find_by(user: current_user)
+
+    if params[:search]
+      @filter =  "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}"
+      @musicians = Musician.search_with_bar(@filter)
+    end
+#    respond_to do |format|
+#      format.html
+#      format.js
+#    end
   end
+
+
 
   def show
     @musician = Musician.find(params[:id])
@@ -36,14 +47,15 @@ class MusiciansController < ApplicationController
   def destroy
     @musician = Musician.find(params[:id])
     @musician.destroy
-
-    # no need for app/views/restaurants/destroy.html.erb
     redirect_to musicians_path
   end
+
+
 
   private
 
   def musician_params
     params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :instrument, :style, :zip_code, :user, :photo, :bio)
   end
+
 end

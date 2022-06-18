@@ -1,0 +1,29 @@
+<%= simple_form_for :search, url: musicians_path, method: "GET" do |f| %>
+ <div class="d-flex">
+  <div class="col-3">
+    <%= f.input :level,
+        collection: Musician::LEVEL,
+         #wrapper_html: { class: "user-details" },
+         label: "Level",
+         placeholder: "label"
+        %>
+    <%= f.input :instrument,  collection: Musician::INSTRUMENT %>
+  </div>
+  <div class="col-3 mx-3">
+    <%= f.input :style, collection: Musician::STYLE%>
+    <%= f.input :zip_code %>
+  </div>
+
+  <div class="col-3 mx-3 my-2">
+    <div class="">
+      <%= f.submit %>
+    </div>
+    <%= link_to "Reset", musicians_path  %>
+    <%= link_to "Return to home page", root_path %>
+  </div>
+
+ </div>
+
+
+
+<% end %>

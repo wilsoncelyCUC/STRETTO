@@ -1,31 +1,3 @@
-
-<div class="banner" style="background: linear-gradient(135deg, #030435, white);">
-  <div class="container">
-    <div class="info">
-      <h1>Welcome To STRETTO</h1>
-      <p>Tell us what kind of musicians you are looking for.</p>
-    </div>
-    <div class="row">
-      <div id="searchform">
-        <%= render '/shared/search-form', musicians: @musicians %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <% if params[:search] %>
-        <p>We found <%= @musicians.count %> Musicians out of our <%= Musician.count %> on our website.</p>
-        <% else %>
-          <p> <%= Musician.count %> Musicians ready to rock!.</p>
-        <% end %>
-      </div>
-    </div>
-
-  </div>
-</div>
-
- <div class="container d-flex  margin-top-negative">
-    <div class="row">
       <div class="container d-flex justify-content-start body-page">
           <div class="row">
             <% @musicians.each do |musician| %>
@@ -53,5 +25,3 @@
             <% end %>
           </div>
       </div>
-    </div>
- </div>

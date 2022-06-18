@@ -27,7 +27,7 @@ user_musician = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     birthday: Faker::Date.between(from: '1948-09-23', to: '2000-09-25'),
-    level: [1 ,2, 3, 4, 5].sample,
+    level:  ["Beginner", "Intermediate", "Advanced"].sample,
     instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
     style: ["Classic","Pop","Electronic", "Jazz"].sample,
     photo: "https://picsum.photos/200/300",
@@ -64,7 +64,7 @@ end
     mypost = Post.create!(
       instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
       description: Faker::Lorem.sentence(word_count: 20),
-      level: [1 ,2, 3, 4, 5].sample,
+      level:  ["Beginner", "Intermediate", "Advanced"].sample,
       periodicity: my_orchestra.frequency,
       type_post: "Recurrent",
       style: my_orchestra.style,
