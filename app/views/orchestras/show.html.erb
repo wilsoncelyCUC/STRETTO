@@ -45,14 +45,58 @@
   </div>
 
   <div class="show-container">
-    <div class="post-container">
-      <h1>We're looking for cool people to join us</h1>
-      <p>Post1</p>
-      <p>Post1</p>
-      <p>Post1</p>
-      <p>Post1</p>
-      <p>Post1</p>
-      <p>Post1</p>
+    <h1>We're looking for cool people to join us</h1>
+    <div class="post-display">
+      <div class="recurrent-post">
+        <h3>Recurrent positions</h3>
+        <% @posts.each do |post| %>
+          <%- if post.type_post == 'Recurrent' %>
+            <div class="post-card">
+              <div class="post-card-preview">
+                <h6><%= post.id %></h6>
+              </div>
+              <div class="post-card-info">
+                <div class="post-card-title">
+                  <h4><%= post.instrument %></h4>
+                  <div class='btn-poke3'>
+                    <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke2'%>
+                    <%= image_tag "Group 3294"%>
+                  </div>
+                </div>
+                <p>Periodicity : <%= post.periodicity %></p>
+                <p>Level: <%= post.level %></p>
+                <p>Description: <%= post.description %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="onetime-post">
+        <h3>Periodic positions</h3>
+        <% @posts.each do |post| %>
+          <%- if post.type_post == 'One time' %>
+            <div class="post-card">
+              <div class="post-card-preview">
+                <h6><%= post.id %></h6>
+              </div>
+              <div class="post-card-info">
+                <div class="post-card-title">
+                  <h4><%= post.instrument %></h4>
+                  <div class='btn-poke3'>
+                    <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke2'%>
+                    <%= image_tag "Group 3294"%>
+                  </div>
+                </div>
+                <p>Date: <%= post.date %></p>
+                <p>Level: <%= post.level %></p>
+                <p>Description: <%= post.description %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>

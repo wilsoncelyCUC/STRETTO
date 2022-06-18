@@ -1,16 +1,19 @@
-<div class="banner" style="background: linear-gradient(135deg, #73E0CA, white);">
-  <div class="container">
-    <div class="info">
-      <h1>Welcome To STRETTO</h1>
-      <p>Tell us what kind of collectives you are looking for.</p>
-    </div>
-    <div class="row">
-      <div id="searchform">
-        <%= render '/shared/search-form-o', orchestras: @orchestras %>
+
+<body class="index-body">
+
+  <div class="banner" style="background: linear-gradient(180deg, #73e0ca, black);">
+    <div class="container">
+
+      <div class="info">
+        <h1>Welcome to Stretto</h1>
+        <p>Tell us what kind of collectives you are looking for.</p>
+      </div>
+      <div class="row">
+        <div class='col-12' id="searchform">
+          <%= render '/shared/search-form-o', orchestras: @orchestras %>
+        </div>
 
       </div>
-    </div>
-
 
 
     <div class="row">
@@ -30,24 +33,24 @@
 
 
   </div>
-</div>
 
- <div class="container d-flex margin-top-negative body-page">
-    <div class="row">
-      <% @orchestras.each do |orchestra| %>
-          <div class="card-profile col-4 m-3">
-            <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-              <div class="card-profile-infos">
-                <h1><%= orchestra.name %></h1>
-                <h2><strong>Bio:</strong> <%= orchestra.bio  %></h2>
-                <h2><strong>Size:</strong> <%= orchestra.size %></h2>
-                <%# <h2>Style: Jazz</h2> %>
-                <%# <h2>Frequency: <%= orchestra.frequency %>
-                <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %></h2>
-                <%= link_to "Send an invitation", new_orchestra_invitation_path(orchestra), class:"card-link"%>
-                <%= link_to "More info", orchestra_path(orchestra), class:"card-link"%>
-              </div>
-          </div>
-      <% end %>
-    </div>
- </div>
+  <div class="container d-flex margin-top-negative body-page">
+      <div class="row">
+        <% @orchestras.each do |orchestra| %>
+            <div class="card-profile col-4 m-3">
+              <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                <div class="card-profile-infos">
+                  <h1><%= orchestra.name %></h1>
+                  <h2><strong>Bio:</strong> <%= orchestra.bio  %></h2>
+                  <h2><strong>Size:</strong> <%= orchestra.size %></h2>
+                  <%# <h2>Style: Jazz</h2> %>
+                  <%# <h2>Frequency: <%= orchestra.frequency %>
+                  <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %></h2>
+                  <%= link_to "Send an invitation", new_orchestra_invitation_path(orchestra), class:"card-link"%>
+                  <%= link_to "More info", orchestra_path(orchestra), class:"card-link"%>
+                </div>
+            </div>
+        <% end %>
+      </div>
+  </div>
+</body>

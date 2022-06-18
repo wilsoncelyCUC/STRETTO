@@ -1,15 +1,12 @@
 <%= simple_form_for :search, url: orchestras_path, method: "GET" do |f| %>
- <div class="d-flex">
-  <div class="col-3">
-    <%= f.input :size%>
+  <div class="inline-form">
+    <%= f.input :zip_code, label: "Zip Code", required: false %>
+    <%= f.input :size, label: "Size", required: false%>
     <%= f.input :type_orchestra,
         label: "Type of Orchestra" ,
-        collection: Orchestra::TYPE_ORCHESTRA %>
-  </div>
-  <div class="col-3 mx-3">
-    <%= f.input :style, collection: Orchestra::STYLE%>
-    <%= f.input :zip_code %>
-  </div>
+        collection: Orchestra::TYPE_ORCHESTRA, required: false %>
+    <%= f.input :style, collection: Orchestra::STYLE, required: false%>
+
 
   <div class="col-3 mx-3">
     <%= f.input :match, collection: Orchestra::MATCH, label: "Match My Profile"%>
@@ -19,9 +16,4 @@
     <%= link_to "Reset", orchestras_path  %>
     <%= link_to "Return to home page", root_path %>
   </div>
-
- </div>
-
-
-
 <% end %>
