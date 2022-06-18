@@ -1,41 +1,62 @@
 // Specific CSS for your home-page
-
-.home-cta {
-  display: flex;
-  width: 100%;
-  height: 300px;
+.home-body {
+  background-color: black;
+  font-family: 'Rubik' sans-serif;
+  font-weight: 300;
+  color: white;
 }
 
-.hero-image {
-  width: 396px;
-  height: 168px;
+
+#logo {
+  width: 340px;
+}
+
+#logo-sorti {
+  width: 60px;
 }
 
 .home-hero {
-  position: relative;
+  color: white;
   display: flex;
-  height: 300px;
-  color: #030435;
-  justify-content: center;
-  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 
-.home-infos {
-    display: flex;
-    flex-direction: row;
-    margin: 50px;
-}
-
-.onboarding-cta {
+.hero-left {
   display: flex;
   flex-direction: column;
+  align-content: stretch;
   justify-content: center;
-  align-items: center;
-  padding: 30px;
-  margin: 30px;
-  font-size: larger;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  margin-left: 200px;
+  margin-right: 200px;
 }
+
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hero-left p {
+  font-size: 30px;
+}
+
+.home-carousel {
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-carousel p {
+  padding: 20px;
+  text-align: center;
+}
+
 
 .onboarding-description {
   margin: 40px;
@@ -45,23 +66,33 @@
   padding: 35px;
 }
 
-hr.rounded {
-  border-top: 8px solid #bbb;
-  border-radius: 5px;
-  width: 80%;
-}
 
-.btn-1 {
-  border-radius: 30px;
-  background-color: #73E0CA;
-  font-weight: bold;
-  padding: 20px
-}
-
-.btn-2 {
-  border-radius: 30px;
-  background-color: #030435;
-  color: white;
-  font-weight: bold;
+.btns {
+  border-radius: 50px;
+  font-weight: 500;
   padding: 20px;
+  text-decoration: none;
+}
+#btn-1 {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: #030435;
+}
+
+#btn-2 {
+  background: linear-gradient(135deg, #b3b4d4, #326F9A);
+  color: white;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+.gal-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-end;
+  align-items: center;
 }
