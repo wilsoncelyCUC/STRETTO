@@ -11,7 +11,8 @@
     <%= f.input :zip_code %>
   </div>
 
-  <div class="col-3 mx-3 my-2">
+  <div class="col-3 mx-3">
+    <%= f.input :match, collection: Orchestra::MATCH, label: "Match My Profile"%>
     <div class="">
       <%= f.submit %>
     </div>

@@ -7,6 +7,8 @@ class MusiciansController < ApplicationController
       @filter =  "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}"
       @musicians = Musician.search_with_bar(@filter)
     end
+
+
 #    respond_to do |format|
 #      format.html
 #      format.js
