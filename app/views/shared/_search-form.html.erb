@@ -2,10 +2,8 @@
  <div class="d-flex">
   <div class="col-3">
     <%= f.input :level,
-        collection: Musician::LEVEL,
+        collection: Musician::LEVEL
          #wrapper_html: { class: "user-details" },
-         label: "Level",
-         placeholder: "label"
         %>
     <%= f.input :instrument,  collection: Musician::INSTRUMENT %>
   </div>
