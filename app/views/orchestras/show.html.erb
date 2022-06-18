@@ -45,14 +45,15 @@
   </div>
 
   <div class="show-container">
-    <div class="post-container">
+
       <h1>We're looking for cool people to join us</h1>
-      <p>Post1</p>
-      <p>Post1</p>
-      <p>Post1</p>
-      <p>Post1</p>
-      <p>Post1</p>
-      <p>Post1</p>
+      <% @posts.each do |post| %>
+          <div class="post-container">
+          <h1><i><%= post.id %>:</i></h1>
+          <h2><%= post.instrument %></h2>
+          <h3><%= post.description %></h3>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,3 +1,9 @@
+.index-body {
+  background-color: black;
+  height: 100%;
+  font-family: 'Rubik', sans-serif;
+}
+
 .margin-top-negative {
   margin-top: -75px;
 }
@@ -15,6 +21,7 @@
 
 .block-mc .title-mc::before {
   content: '';
+
   position: absolute;
   left: 0;
   bottom: 0;
@@ -22,3 +29,29 @@
   width: 30px;
   background: linear-gradient(135deg, #73E0CA, white);
 }
+
+
+.inline-form input {
+  border-radius: 50px;
+  width: 200px;
+  margin-right: 15px;
+  padding: 5px;
+}
+
+.inline-form select {
+  border-radius: 50px;
+  width: 200px;
+  padding: 5px;
+}
+
+.inline-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#search_style {
+  margin-left: 15px;
+}
+
+
