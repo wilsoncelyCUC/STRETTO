@@ -2,40 +2,34 @@
 <body class="home-body">
   <div class="home-container">
     <div class="home-hero">
-      <h1>Welcome to</h1>
-      <%= image_tag "LOGO files-03.png", class: "hero-image" %>
-    </div>
-    <div class="home-cta">
-      <div class="onboarding-cta">
-        <div class="onboarding-description">
-          <p>If your a musician, and you'd like to find cool people to play with, create a musician profile now and meet some people.</p>
-        </div>
-        <div class="button-mc">
-          <%= link_to "Create a Musician Profile", new_musician_path, class: "btn-1" %>
+      <div class="hero-left">
+        <%= image_tag "LOGO files-02", :id => 'logo'%>
+
+        <p>If your a musician, and you'd like to find cool people to play with, create a musician profile now and meet some people.</p>
+        <div class="hero-buttons">
+          <%= link_to "Create a Musician Profile", new_musician_path, class: "btns", :id => 'btn-1' %>
+          <%= link_to "Create an Orchestra Profile", new_orchestra_path, class: "btns", :id => 'btn-2' %>
         </div>
       </div>
-      <div class="onboarding-cta">
-        <div class="onboarding-description">
-          <p>If your an orchestra, and you want to find cool people to join you, create an orchestra profile now and meet some people.</p>
-        </div>
-        <div class="button-col">
-          <%= link_to "Create an Orchestra Profile", new_orchestra_path, class: "btn-2" %>
-        </div>
+      <div class="hero-right">
+        <%= image_tag "Rectangle 42" %>
       </div>
     </div>
-    <hr class="rounded">
-    <div class="home-infos">
-      <div class="content" id="a">
-        <h3>Here is some cool content about stretto</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed est lorem. Aliquam ut bibendum sapien. Donec vehicula libero id nisl dictum facilisis. Nunc malesuada mi vel hendrerit porta. Mauris.</p>
+    <div class="home-carousel">
+      <h3>Proudly supported by</h3>
+      <%= image_tag "LogoFixeBW", :id => 'logo-sorti' %>
+      <p>The Sortilège Orchestra puts forward a real policy of transmission and creation. Thus, each year, in addition to broadcasting works sometimes unknown of the symphonic repertoire, the orchestra is committed to inviting a composer for an unpublished piece, specially dedicated to the Sortilège orchestra. In addition, each year, the musicians have the opportunity to meet and play with a talented soloist, who shares their experience throughout the session.</p>
+    </div>
+    <div class="home-gallery">
+      <div class="gal-row">
+        <%= image_tag "Rectangle 28" %>
+        <%= image_tag "Rectangle 28-1" %>
+        <%= image_tag "Rectangle 28-2" %>
       </div>
-      <div class="content" id="b">
-        <h3>Here is some cool content about stretto</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed est lorem. Aliquam ut bibendum sapien. Donec vehicula libero id nisl dictum facilisis. Nunc malesuada mi vel hendrerit porta. Mauris.</p>
-      </div>
-      <div class="content" id="c">
-        <h3>Here is some cool content about stretto</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed est lorem. Aliquam ut bibendum sapien. Donec vehicula libero id nisl dictum facilisis. Nunc malesuada mi vel hendrerit porta. Mauris.</p>
+      <div class="gal-row">
+        <%= image_tag "Rectangle 28-4" %>
+        <%= image_tag "Rectangle 28-5" %>
+        <%= image_tag "Rectangle 28-6" %>
       </div>
     </div>
   </div>
