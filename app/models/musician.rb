@@ -1,5 +1,7 @@
 class Musician < ApplicationRecord
 #  has_many :invitations
+  #add conidition user uniqueness
+
   belongs_to :user
   STYLE = ["Classic", "Pop", "Electronic", "Jazz"]
   LEVEL = ["Beginner", "Intermediate", "Advanced"]

@@ -1,3 +1,4 @@
+
 <body class="index-body">
 
   <div class="banner" style="background: linear-gradient(180deg, #73e0ca, black);">
@@ -11,18 +12,26 @@
         <div class='col-12' id="searchform">
           <%= render '/shared/search-form-o', orchestras: @orchestras %>
         </div>
+
       </div>
 
-      <div class="row">
-        <div class="col">
-          <% if params[:search] %>
-          <p>We found <%= @orchestras.count %> Collectives out of our <%= Orchestra.count %> on our website.</p>
-          <% else %>
-            <p> <%= Orchestra.count %> collectives ready to rock!</p>
-          <% end %>
-        </div>
+
+    <div class="row">
+      <div class="col">
+      <% if params[:search] %>
+          <% message = "#{params[:search][:type_orchestra]} #{params[:search][:style]} #{params[:search][:size]} #{params[:search][:zip_code]}" %>
+          <% if message.blank? %>
+            <p>We found <%= @orchestras.count %> Collectives out of <%= Orchestra.count %> on our website.</p>
+           <% else %>
+            <p>You have looked for: <%= message %>. And we found <%= @orchestras.count %> Collectives out of our <%= Orchestra.count %> on our website.</p>
+            <% end %>
+        <% else %>
+          <p> <%= Orchestra.count %> collectives ready to rock!.</p>
+        <% end %>
       </div>
     </div>
+
+
   </div>
 
   <div class="container d-flex margin-top-negative body-page">

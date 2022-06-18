@@ -13,13 +13,19 @@
 
     <div class="row">
       <div class="col">
-        <% if params[:search] %>
-        <p>We found <%= @musicians.count %> Musicians out of our <%= Musician.count %> on our website.</p>
+      <% if params[:search] %>
+          <% message = "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}" %>
+          <% if message.blank? %>
+        <p>We found <%= @musicians.count %> Musicians out of <%= Musician.count %> on our website.</p>
+           <% else %>
+            <p>You have looked for: <%= message %>. And we found <%= @musicians.count %> Collectives out of <%= Musician.count %> on our website.</p>
+            <% end %>
         <% else %>
           <p> <%= Musician.count %> Musicians ready to rock!.</p>
         <% end %>
       </div>
     </div>
+
 
   </div>
 </div>

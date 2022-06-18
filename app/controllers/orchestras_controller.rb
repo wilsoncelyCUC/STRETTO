@@ -5,9 +5,29 @@ before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
     @orchestras = Orchestra.all
 
     if params[:search]
-      @filter =  "#{params[:search][:type_orchestra]} #{ params[:search][:style]} #{params[:search][:size]} #{params[:search][:zip_code]}"
-      @orchestras = Orchestra.search_with_bar(@filter)
+      @match = params[:search][:match]
+      @filter = "#{params[:search][:type_orchestra]} #{ params[:search][:style]} #{params[:search][:zip_code]} #{params[:search][:size]} "
+
+      if @match == "yes"
+        @musician = Musician.find_by(user: current_user)
+        instrument = @musician.instrument
+        orchestras_base = Orchestra.joins(:posts).where(posts: {instrument: instrument  })
+
+        if @filter.blank?
+        @orchestras = orchestras_base
+        else
+        @orchestras = orchestras_base.search_with_bar(@filter)
+        end
+
+      else
+        if @filter.blank?
+          @orchestras = Orchestra.all
+          else
+          @orchestras = Orchestra.search_with_bar(@filter)
+          end
+      end
     end
+
   end
 
   def show
@@ -55,4 +75,6 @@ before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
   def orchestra_params
     params.require(:orchestra).permit(:style, :type, :size, :zip_code, :frequency, :name, :description, :bio)
   end
+
+
 end

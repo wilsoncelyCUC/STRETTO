@@ -7,9 +7,12 @@
         collection: Orchestra::TYPE_ORCHESTRA, required: false %>
     <%= f.input :style, collection: Orchestra::STYLE, required: false%>
 
-  </div>
-  <div class='CTAs'>
-    <%= f.submit %>
+
+  <div class="col-3 mx-3">
+    <%= f.input :match, collection: Orchestra::MATCH, label: "Match My Profile"%>
+    <div class="">
+      <%= f.submit %>
+    </div>
     <%= link_to "Reset", orchestras_path  %>
     <%= link_to "Return to home page", root_path %>
   </div>
