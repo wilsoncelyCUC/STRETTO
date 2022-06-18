@@ -84,11 +84,8 @@
 
 .btn-musician {
   background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
-
-  font-weight: 500;
   padding: 8px 24px ;
   border-radius: 50px ;
-  font-weight: bold ;
   transition: background 0.3s ease;
   border: none;
   text-decoration: none;
@@ -101,7 +98,6 @@
   font-weight: 500;
   padding: 8px 24px ;
   border-radius: 50px ;
-  font-weight: bold ;
   transition: background 0.3s ease;
   border: none;
 }
@@ -128,4 +124,18 @@
   border: none;
   text-decoration: none;
   color: white;
+}
+
+.no-text-dec {
+  text-decoration: none;
+}
+
+.btn-poke2 {
+  background: linear-gradient(135deg, #E01D60, #FF702F);
+  color: white;
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  transition: background 0.3s ease;
+  border: none;
 }

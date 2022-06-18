@@ -1,41 +1,31 @@
-<H1>Show musician</H1>
-
-
-<body>
-<br>
-  <div class="container">
-    <div class="musician-banner">
-      <div class="row">
-        <div class="col-9">
-          <div class="row">
-            <h1><%= @musician.first_name%> <%= @musician.last_name %></h1>
-            <h3><%= @musician.birthday %></h3>
-            <h2>I play <strong><%= @musician.instrument %></strong></h2>
-            <h2>With a <strong><%= @musician.style %></strong> style</h2>
-            <h2>At a <strong><%= @musician.level %></strong> level</h2>
-          </div>
+<body class="show-body">
+  <div class="show-container">
+    <div class="show-banner row">
+      <div class="show-title col-12">
+        <img class="avatar-large2" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+        <div class="mc-title">
+          <h1 id="name"><%= @musician.first_name%> <%= @musician.last_name %></h1>
         </div>
-        <div class="col-3">
-        <img class="avatar-large ;" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-        <div class="btn-poke-musician">
-          <%= link_to "Poke me", new_musician_invitation_path(@musician)%>
+        <div class="btn-poke2">
+          <%= link_to "Poke me", new_musician_invitation_path(@musician), :id => 'show-poke'%>
+          <%= image_tag "fi-rr-arrow-right"%>
         </div>
+      </div>
+    </div>
+
+    <div class="show-description-mc">
+      <div class="show-infos-mc">
+        <div class="infos-left">
+          <p><span>Instrument</span> : <%= @musician.instrument %></p>
+          <p><span>Level</span> : <%= @musician.level %></p>
+          <p><span>Style</span> : <%= @musician.style %></p>
+          <p><span>Style</span> : <%= @musician.zip_code %></p>
+        </div>
+        <div class="infos-right">
+          <p><span>Birthday</span> : <%= @musician.birthday %></p>
+          <p><span>Bio</span> : <%= @musician.bio %></p>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="container">
-    <div class="musician-info">
-      <div class="row">
-      <h1>Here is my bio folks:</h1>
-      <h2><%= @musician.bio %></h2>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
 </body>
