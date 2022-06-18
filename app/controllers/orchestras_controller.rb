@@ -3,6 +3,11 @@ before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
 
   def index
     @orchestras = Orchestra.all
+
+    if params[:search]
+      @filter =  "#{params[:search][:type_orchestra]} #{ params[:search][:style]} #{params[:search][:size]} #{params[:search][:zip_code]}"
+      @orchestras = Orchestra.search_with_bar(@filter)
+    end
   end
 
   def show

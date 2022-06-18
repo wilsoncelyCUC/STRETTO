@@ -1,0 +1,26 @@
+<%= simple_form_for :search, url: orchestras_path, method: "GET" do |f| %>
+ <div class="d-flex">
+  <div class="col-3">
+    <%= f.input :size%>
+    <%= f.input :type_orchestra,
+        label: "Type of Orchestra" ,
+        collection: Orchestra::TYPE_ORCHESTRA %>
+  </div>
+  <div class="col-3 mx-3">
+    <%= f.input :style, collection: Orchestra::STYLE%>
+    <%= f.input :zip_code %>
+  </div>
+
+  <div class="col-3 mx-3 my-2">
+    <div class="">
+      <%= f.submit %>
+    </div>
+    <%= link_to "Reset", orchestras_path  %>
+    <%= link_to "Return to home page", root_path %>
+  </div>
+
+ </div>
+
+
+
+<% end %>

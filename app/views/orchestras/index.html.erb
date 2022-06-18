@@ -1,70 +1,28 @@
-<h1>. </h1>
-<h1>. . . </h1>
-
-<h1>Welcome To STRETTO</h1>
-<p>Find here the musicians looking for a group</p>
-
-
-<body>
-
-<div class="container">
-  <div class="home-banner">
+<div class="banner" style="background: linear-gradient(135deg, #73E0CA, white);">
+  <div class="container">
+    <div class="info">
+      <h1>Welcome To STRETTO</h1>
+      <p>Tell us what kind of collectives you are looking for.</p>
+    </div>
     <div class="row">
-      <div class="d-flex align-items-end">
-          <div class="col-5 d-flex align-items-end">
-            <div class="home-banner-firstcol">
-              <h1> Instrument
-                  <label class="home-selection">
-                    <label for="instrument-select"></label>
-                    <select name="instrument" id="instrument-select">
-                      <option value="violon">Violon</option>
-                      <option value="guitar">Guitar</option>
-                      <option value="piano">Piano</option>
-                      <option value="flute">Flûte</option>
-                    </select>
-                  </label>
-              </h1>
-            </div>
-          </div>
-
-          <div class="col-4 d-flex align-items-end">
-            <div class="home-banner-secondcol">
-              <h1>Style
-                <label for="style-select"></label>
-                  <select name="style" id="instrument-select">
-                    <option value="rock">Rock</option>
-                    <option value="classic">Classic</option>
-                    <option value="funk">Funk</option>
-                    <option value="opera">Opera</option>
-                  </select>
-              </h1>
-
-              <h1>Size
-                <label for="style-select"></label>
-                  <select name="style" id="instrument-select">
-                    <option value="1">1</option>
-                    <option value="4">4</option>
-                    <option value="10">10</option>
-                    <option value="more than 10">More than 10</option>
-                  </select>
-              </h1>
-
-
-            </div>
-          </div>
-
-          <div class="col-3">
-            <a class="btn btn-home" href="#">Start now</a>
-          </div>
-
-
-
+      <div id="searchform">
+        <%= render '/shared/search-form-o', orchestras: @orchestras %>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col">
+        <% if params[:search] %>
+        <p>We found <%= @orchestras.count %> Collectives out of our <%= Orchestra.count %> on our website.</p>
+        <% else %>
+          <p> <%= Orchestra.count %> collectives ready to rock!.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-
- <div class="container d-flex justify-content-start body-page">
+ <div class="container d-flex margin-top-negative body-page">
     <div class="row">
       <% @orchestras.each do |orchestra| %>
           <div class="card-profile col-4 m-3">
@@ -83,4 +41,3 @@
       <% end %>
     </div>
  </div>
-</body>
