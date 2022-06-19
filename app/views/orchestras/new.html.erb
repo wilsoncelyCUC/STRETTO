@@ -5,8 +5,8 @@
     <div class="user-details-col">
       <div class="left-col">
           <%= f.input :name, label: "Name of Orchestra" %>
-          <%= f.input :type_orchestra, label: "Type of Orchestra", collection: Orchestra::TYPE_ORCHESTRA %>
           <%= f.input :style, label: "What is the style?", collection: Orchestra::STYLE%>
+          <%= f.input :type_orchestra, label: "Type of Orchestra", collection: Orchestra::TYPE_ORCHESTRA %>
       </div>
 
       <div class="right-col">

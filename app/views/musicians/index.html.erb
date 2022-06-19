@@ -52,6 +52,35 @@
   </div>
 
   <div class="container d-flex  margin-top-negative">
+    <div class="row">
+      <div class="container d-flex justify-content-start body-page">
+        <div class="cards-row">
+          <% @musicians.each do |musician| %>
+            <div class="new-cards">
+              <div class="new-cards-banner">
+                <h1><%= musician.first_name%> <%= musician.last_name%></h1>
+                <img class="avatar-large-musician" src="https://i.pravatar.cc/200/300" alt="Card image cap">
+              </div>
+              <div class="new-cards-infos">
+                <p><strong>Level:</strong> <%= musician.level %></p>
+                <p><strong>Instrument:</strong> <%= musician.instrument %></p>
+                <p><strong>Style:</strong> <%= musician.style %></p>
+              </div>
+              <div class="new-cards-cta">
+                <%= link_to "More info", musician_path(musician), class:"new-card-link"%>
+                <%= image_tag "fi-rr-arrow-right"%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="container d-flex  margin-top-negative">
       <div class="row">
         <div class="container d-flex justify-content-start body-page">
             <div class="row">
@@ -64,7 +93,7 @@
                           <h1> <%= musician.last_name%></h1>
                         </div>
                         <div class="col-4">
-                          <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                          <img class="avatar-large-musician" src="https://i.pravatar.cc/200/300" alt="Card image cap">
                         </div>
                       </div>
                     </div>
@@ -74,7 +103,7 @@
                       <h2><strong>Style:</strong> <%= musician.style %></h2>
                       <%# <h2>Frequency: <%= orchestra.frequency %>
                       <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
-                      <%= link_to "More info", new_musician_invitation_path(musician), class:"card-link"%>
+                      <%= link_to "More info", musician_path(musician), class:"card-link"%>
                     </div>
                   </div>
               <% end %>
