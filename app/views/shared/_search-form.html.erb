@@ -1,27 +1,17 @@
 <%= simple_form_for :search, url: musicians_path, method: "GET" do |f| %>
- <div class="d-flex">
-  <div class="col-3">
-    <%= f.input :level,
-        collection: Musician::LEVEL
-         #wrapper_html: { class: "user-details" },
-        %>
-    <%= f.input :instrument,  collection: Musician::INSTRUMENT %>
-  </div>
-  <div class="col-3 mx-3">
-    <%= f.input :style, collection: Musician::STYLE%>
-    <%= f.input :zip_code %>
-  </div>
-
-  <div class="col-3 mx-3 my-2">
-    <div class="">
-      <%= f.submit %>
+  <div class="form-container">
+    <div class="inline-form">
+      <%= f.input :instrument,  collection: Musician::INSTRUMENT, label: "Instrument", required: false %>
+      <%= f.input :level,
+          collection: Musician::LEVEL, label:"Level", required: false
+          #wrapper_html: { class: "user-details" },
+          %>
+      <%= f.input :style, label:'Style', collection: Musician::STYLE, required: false%>
+      <%= f.input :zip_code, label: 'Zip-code', required: false %>
+      <%# Placeholder input match my posts %>
     </div>
-    <%= link_to "Reset", musicians_path  %>
-    <%= link_to "Return to home page", root_path %>
+    <div class="buttons-search-mc">
+      <%= f.submit class:"btn-musician-search", id:'btn-musicians-search'%>
+    </div>
   </div>
-
- </div>
-
-
-
 <% end %>

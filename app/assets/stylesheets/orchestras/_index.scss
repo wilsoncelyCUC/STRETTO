@@ -8,33 +8,15 @@
   margin-top: -75px;
 }
 
-.form-element {
-  border-radius: 10px;
+.inline-form {
+  color: white;
 }
-
-.user-details-mc .input-box .label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 5px;
-  width: 100%;
-}
-
-.block-mc .title-mc::before {
-  content: '';
-
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  background: linear-gradient(135deg, #73E0CA, white);
-}
-
 
 .inline-form input {
   border-radius: 50px;
   width: 200px;
   margin-right: 15px;
+  margin-top: 0;
   padding: 5px;
 }
 
@@ -42,16 +24,94 @@
   border-radius: 50px;
   width: 200px;
   padding: 5px;
+  margin-right: 15px;
 }
 
 .inline-form {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.search-btn {
+  width: 200px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 
-#search_style {
-  margin-left: 15px;
+.btn-search-mc {
+  background: linear-gradient(135deg, #E01D60, #FF702F);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 
+.buttons-search-mc {
+  border-radius: 50px ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: #030435;
+}
+
+#btn-musicians-search {
+  font-size: var(--bs-body-font-size);
+  padding-left: 30px !important;
+}
+
+.btn-musician-search {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: #030435;
+  margin-top: 16px;
+}
+
+
+.filters ul {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+.search-output li {
+  list-style: none;
+  margin-right: 20px;
+  padding: 5px 15px;
+  color: white;
+  border: 0.5px solid grey;
+  background: linear-gradient(135deg, #727272c8, #7272725b);
+  border-radius: 20px;
+}
+
+.search-output {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-output p {
+  margin: 0;
+  font-size: medium;
+}
+
+#reset-btn {
+  background: linear-gradient(135deg, #727272c8, #7272725b);
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: white;
+}

@@ -5,7 +5,7 @@ class Orchestra < ApplicationRecord
   belongs_to :user
   STYLE = ["Classic","Pop","Electronic", "Jazz", ]
   TYPE_ORCHESTRA = ["Open", "Symphonic", "Concerto", "Opera"]
-  MATCH = ["yes", "no"]
+  MATCH = ["Yes", "No"]
 
 
  #PG search

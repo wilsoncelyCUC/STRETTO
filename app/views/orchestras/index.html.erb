@@ -1,56 +1,83 @@
-
 <body class="index-body">
-
-  <div class="banner" style="background: linear-gradient(180deg, #73e0ca, black);">
+  <div class="banner" style="background: linear-gradient(180deg, #73e0ca, black)">
     <div class="container">
-
       <div class="info">
         <h1>Welcome to Stretto</h1>
         <p>Tell us what kind of collectives you are looking for.</p>
       </div>
       <div class="row">
-        <div class='col-12' id="searchform">
+        <div id="searchform">
           <%= render '/shared/search-form-o', orchestras: @orchestras %>
         </div>
-
       </div>
 
-
-    <div class="row">
-      <div class="col">
-      <% if params[:search] %>
-          <% message = "#{params[:search][:type_orchestra]} #{params[:search][:style]} #{params[:search][:size]} #{params[:search][:zip_code]}" %>
-          <% if message.blank? %>
-            <p>We found <%= @orchestras.count %> Collectives out of <%= Orchestra.count %> on our website.</p>
-           <% else %>
-            <p>You have looked for: <%= message %>. And we found <%= @orchestras.count %> Collectives out of our <%= Orchestra.count %> on our website.</p>
-            <% end %>
-        <% else %>
-          <p> <%= Orchestra.count %> collectives ready to rock!.</p>
-        <% end %>
+      <div class="row">
+        <div class="col">
+        <% if params[:search] %>
+            <% type = "#{params[:search][:type_orchestra]}" %>
+            <% size = "#{params[:search][:size]}" %>
+            <% style = "#{params[:search][:style]}" %>
+            <% zip = "#{params[:search][:zip_code]}" %>
+            <% message = "#{params[:search][:type_orchestra]} #{params[:search][:style]} #{params[:search][:size]} #{params[:search][:zip_code]}" %>
+            <% if message.blank? %>
+              <p>We found <%= @orchestras.count %> Collectives out of <%= Orchestra.count %> on our website.</p>
+            <% else %>
+              <div class="search-output">
+                <div class="filters">
+                  <ul>
+                    <% if !type.blank? %>
+                      <li>Type: <%= type %></li>
+                    <% end %>
+                    <% if !size.blank? %>
+                      <li>Size: <%= size %></li>
+                    <% end %>
+                    <% if !zip.blank? %>
+                      <li>Zip: <%= zip %></li>
+                    <% end %>
+                    <% if !style.blank? %>
+                      <li>Style: <%= style %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <p><%= @orchestras.count %> relevant collectives have been found on our website, out of <%= Orchestra.count %>.</p>
+                <%= link_to "Reset search", orchestras_path, :id => 'reset-btn'  %>
+              </div>
+              <% end %>
+          <% else %>
+            <p><%= Orchestra.count %> collectives ready to rock!</p>
+          <% end %>
+        </div>
       </div>
     </div>
-
-
   </div>
 
-  <div class="container d-flex margin-top-negative body-page">
-      <div class="row">
-        <% @orchestras.each do |orchestra| %>
+  <div class="container d-flex margin-top-negative">
+    <div class="row">
+      <div class="container d-flex justify-content-start body-page">
+        <div class="row">
+          <% @orchestras.each do |orchestra| %>
             <div class="card-profile col-4 m-3">
-              <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-                <div class="card-profile-infos">
-                  <h1><%= orchestra.name %></h1>
-                  <h2><strong>Bio:</strong> <%= orchestra.bio  %></h2>
-                  <h2><strong>Size:</strong> <%= orchestra.size %></h2>
-                  <%# <h2>Style: Jazz</h2> %>
-                  <%# <h2>Frequency: <%= orchestra.frequency %>
-                  <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %></h2>
-                  <%= link_to "Send an invitation", new_orchestra_invitation_path(orchestra), class:"card-link"%>
-                  <%= link_to "More info", orchestra_path(orchestra), class:"card-link"%>
+              <div class="musician-card-top-banner">
+                <div class="row">
+                  <div class="musician-name col-8">
+                    <h1><%= orchestra.name %></h1>
+                  </div>
+                  <div class="col-4">
+                    <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                  </div>
                 </div>
+              </div>
+              <div class="musician-infos">
+                <h2><strong>Size:</strong> <%= orchestra.size %></h2>
+                <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %></h2>
+                <h2><strong>Bio:</strong> <%= orchestra.bio  %></h2>
+                <%= link_to "Send an invitation", new_orchestra_invitation_path(orchestra), class:"card-link"%>
+                <%= link_to "More info", orchestra_path(orchestra), class:"card-link"%>
+              </div>
             </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
+    </div>
   </div>
 </body>

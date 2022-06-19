@@ -1,19 +1,16 @@
 <%= simple_form_for :search, url: orchestras_path, method: "GET" do |f| %>
-  <div class="inline-form">
-    <%= f.input :zip_code, label: "Zip Code", required: false %>
-    <%= f.input :size, label: "Size", required: false%>
-    <%= f.input :type_orchestra,
-        label: "Type of Orchestra" ,
-        collection: Orchestra::TYPE_ORCHESTRA, required: false %>
-    <%= f.input :style, collection: Orchestra::STYLE, required: false%>
-
-
-  <div class="col-3 mx-3">
-    <%= f.input :match, collection: Orchestra::MATCH, label: "Match My Profile"%>
-    <div class="">
-      <%= f.submit %>
+  <div class="form-container">
+    <div class="inline-form">
+      <%= f.input :zip_code, label: "Zip Code", required: false %>
+      <%= f.input :size, label: "Size", required: false%>
+      <%= f.input :type_orchestra,
+          label: "Type of Orchestra" ,
+          collection: Orchestra::TYPE_ORCHESTRA, required: false %>
+      <%= f.input :style, collection: Orchestra::STYLE, required: false%>
+      <%= f.input :match, collection: Orchestra::MATCH, label: "Match My Profile", required: false%>
     </div>
-    <%= link_to "Reset", orchestras_path  %>
-    <%= link_to "Return to home page", root_path %>
+    <div class="buttons-search-mc">
+      <%= f.submit class:"btn-musician-search", id:'btn-musicians-search'%>
+    </div>
   </div>
 <% end %>

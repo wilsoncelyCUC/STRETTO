@@ -29,8 +29,8 @@ user_musician = User.create!(
     birthday: Faker::Date.between(from: '1948-09-23', to: '2000-09-25'),
     level: ["Beginner", "Intermediate", "Advanced"].sample,
     instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
-    style: ["Classic","Pop","Electronic", "Jazz"].sample,
-    photo: "https://picsum.photos/200/300",
+    style: ["Classic", "Pop", "Electronic", "Jazz"].sample,
+    photo: "https://i.pravatar.cc/200/300",
     bio: Faker::Lorem.sentence(word_count: 6),
     zip_code: [75000, 75001, 75002, 75003, 75004, 75005, 75006, 75007, 75008, 75009, 75010, 75011, 75012, 75013, 75014, 75015, 75016, 75017, 75018, 75019, 75020].sample,
     user_id: user_musician.id
@@ -41,7 +41,7 @@ end
 
 
 #Creation of 30 Orchestras
-20.times do
+30.times do
   user_orchestra = User.create!(
     email: Faker::Internet.email ,
     password: 'password'
@@ -49,7 +49,7 @@ end
   my_orchestra = Orchestra.create!(
     style: ["Classic","Pop","Electronic", "Jazz"].sample,
     type_orchestra: ["Open", "Symphonic", "Concerto", "Opera"].sample,
-    size: [5, 15,10, 4 , 20].sample,
+    size: [5, 15, 10, 4, 20].sample,
     zip_code: [75000, 75001, 75002, 75003, 75004, 75005, 75006, 75007, 75008, 75009, 75010, 75011, 75012, 75013, 75014, 75015, 75016, 75017, 75018, 75019, 75020].sample,
     frequency: "Rehearsals every #{['Monday', "Tuesday", "Wednesday", "Thursday", "Sunday"].sample} at 7 PM",
     description: Faker::Lorem.sentence(word_count: 30),
@@ -62,7 +62,7 @@ end
   #Creation of 5 Post Recurrent
   5.times do
     mypost = Post.create!(
-      instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
+      instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone", "Oboe"].sample,
       description: Faker::Lorem.sentence(word_count: 20),
       level: ["Beginner", "Intermediate", "Advanced"].sample,
       periodicity: my_orchestra.frequency,
@@ -74,7 +74,7 @@ end
   #Creation of 5 Post one-shot
   5.times do
   mypost = Post.create!(
-    instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
+    instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone", "Oboe"].sample,
     description: Faker::Lorem.sentence(word_count: 15),
     level: ["Beginner", "Intermediate", "Advanced"].sample,
     date: Faker::Date.forward(days: 23),
