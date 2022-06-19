@@ -2,7 +2,7 @@
   <div class="banner" style="background: linear-gradient(180deg, #030435, black);">
     <div class="container">
       <div class="info">
-        <h1>Welcome To STRETTO</h1>
+        <h1>Welcome to Stretto</h1>
         <p>Tell us what kind of musicians you are looking for.</p>
       </div>
       <div class="row">
@@ -14,14 +14,37 @@
       <div class="row">
         <div class="col">
         <% if params[:search] %>
+            <% instrument = "#{params[:search][:instrument]}" %>
+            <% level = "#{params[:search][:level]}" %>
+            <% style = "#{params[:search][:style]}" %>
+            <% zip = "#{params[:search][:zip_code]}" %>
             <% message = "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}" %>
             <% if message.blank? %>
               <p>We found <%= @musicians.count %> Musicians out of <%= Musician.count %> on our website.</p>
             <% else %>
-              <p>You have looked for: <%= message %>. And we found <%= @musicians.count %> Collectives out of <%= Musician.count %> on our website.</p>
+              <div class="search-output">
+                <div class="filters">
+                  <ul>
+                    <% if !instrument.blank? %>
+                      <li>Instrument: <%= instrument %></li>
+                    <% end %>
+                    <% if !level.blank? %>
+                      <li>Level: <%= level %></li>
+                    <% end %>
+                    <% if !style.blank? %>
+                      <li>Style: <%= style %></li>
+                    <% end %>
+                    <% if !zip.blank? %>
+                      <li>Zip: <%= zip %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <p><%= @musicians.count %> relevant musicians have been found on our website, out of <%= Musician.count %>.</p>
+                <%= link_to "Reset search", musicians_path, :id => 'reset-btn'  %>
+              </div>
               <% end %>
           <% else %>
-            <p> <%= Musician.count %> Musicians ready to rock!.</p>
+            <p> <%= Musician.count %> musicians ready to rock!</p>
           <% end %>
         </div>
       </div>
