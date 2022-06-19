@@ -7,8 +7,14 @@
 
         <p>If your a musician, and you'd like to find cool people to play with, create a musician profile now and meet some people.</p>
         <div class="hero-buttons">
+          <% if @musician %>
+          <%= link_to "Find an orchestra", orchestras_path, class: "btns", :id => 'btn-1' %>
+          <% elsif  @orchestra %>
+          <%= link_to "Find an musician", musicians_path, class: "btns", :id => 'btn-1' %>
+          <% else %>
           <%= link_to "Create a Musician Profile", new_musician_path, class: "btns", :id => 'btn-1' %>
           <%= link_to "Create an Orchestra Profile", new_orchestra_path, class: "btns", :id => 'btn-2' %>
+          <% end %>
         </div>
       </div>
       <div class="hero-right">
