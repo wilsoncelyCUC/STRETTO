@@ -1,52 +1,50 @@
+<body class='index-body'>
+  <div class="banner" style="background: linear-gradient(180deg, #030435, black);">
+    <div class="container">
+      <div class="info">
+        <h1>Welcome To STRETTO</h1>
+        <p>Tell us what kind of musicians you are looking for.</p>
+      </div>
+      <div class="row">
+        <div id="searchform">
+          <%= render '/shared/search-form', musicians: @musicians %>
+        </div>
+      </div>
 
-<div class="banner" style="background: linear-gradient(135deg, #030435, white);">
-  <div class="container">
-    <div class="info">
-      <h1>Welcome To STRETTO</h1>
-      <p>Tell us what kind of musicians you are looking for.</p>
-    </div>
-    <div class="row">
-      <div id="searchform">
-        <%= render '/shared/search-form', musicians: @musicians %>
+      <div class="row">
+        <div class="col">
+        <% if params[:search] %>
+            <% message = "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}" %>
+            <% if message.blank? %>
+              <p>We found <%= @musicians.count %> Musicians out of <%= Musician.count %> on our website.</p>
+            <% else %>
+              <p>You have looked for: <%= message %>. And we found <%= @musicians.count %> Collectives out of <%= Musician.count %> on our website.</p>
+              <% end %>
+          <% else %>
+            <p> <%= Musician.count %> Musicians ready to rock!.</p>
+          <% end %>
+        </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col">
-      <% if params[:search] %>
-          <% message = "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}" %>
-          <% if message.blank? %>
-        <p>We found <%= @musicians.count %> Musicians out of <%= Musician.count %> on our website.</p>
-           <% else %>
-            <p>You have looked for: <%= message %>. And we found <%= @musicians.count %> Collectives out of <%= Musician.count %> on our website.</p>
-            <% end %>
-        <% else %>
-          <p> <%= Musician.count %> Musicians ready to rock!.</p>
-        <% end %>
-      </div>
-    </div>
-
-
   </div>
-</div>
 
- <div class="container d-flex  margin-top-negative">
-    <div class="row">
-      <div class="container d-flex justify-content-start body-page">
-          <div class="row">
-            <% @musicians.each do |musician| %>
-                <div class="card-profile col-4 m-3">
-                  <div class="musician-card-top-banner">
-                    <div class="row">
-                      <div class="musician-name col-8">
-                        <h1><%= musician.first_name%></h1>
-                        <h1> <%= musician.last_name%></h1>
-                      </div>
-                      <div class="col-4">
-                        <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+  <div class="container d-flex  margin-top-negative">
+      <div class="row">
+        <div class="container d-flex justify-content-start body-page">
+            <div class="row">
+              <% @musicians.each do |musician| %>
+                  <div class="card-profile col-4 m-3">
+                    <div class="musician-card-top-banner">
+                      <div class="row">
+                        <div class="musician-name col-8">
+                          <h1><%= musician.first_name%></h1>
+                          <h1> <%= musician.last_name%></h1>
+                        </div>
+                        <div class="col-4">
+                          <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                        </div>
                       </div>
                     </div>
-                  </div>
                     <div class="musician-infos">
                       <h1><strong>Level:</strong> <%= musician.level %></h1>
                       <h2><strong>Instrument:</strong> <%= musician.instrument %></h2>
@@ -55,9 +53,10 @@
                       <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
                       <%= link_to "More info", new_musician_invitation_path(musician), class:"card-link"%>
                     </div>
-                </div>
-            <% end %>
-          </div>
+                  </div>
+              <% end %>
+            </div>
+        </div>
       </div>
-    </div>
- </div>
+  </div>
+</body>
