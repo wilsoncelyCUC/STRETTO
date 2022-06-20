@@ -12,10 +12,16 @@
           <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke'%>
           <%= image_tag "fi-rr-arrow-right"%>
         </div>
+        <div class="">
+          <% if @orchestra ==  Orchestra.find_by(user_id: current_user.id)  %>
+            <%= link_to "edit profile", edit_orchestra_path(@orchestra), :id => 'show-poke'%>
+            <%= image_tag "fi-rr-arrow-right"%>
+          <% end%>
+        </div>
       </div>
       <div class="show-image col-6">
         <div class="image">
-          <%= image_tag "crowd", :id => 'orchestra-banner'%>
+          <%= cl_image_tag @orchestra.photo.key, height: 300, width: 400, crop: :fill,  :id => 'orchestra-banner'%>
         </div>
       </div>
 

@@ -36,8 +36,11 @@ class MusiciansController < ApplicationController
   end
 
   def update
-    @musician.update(musicians_params)
-    redirect_to musician_path(@musician)
+    if @musician.update(musician_params)
+      redirect_to musician_path(@musician)
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -54,7 +57,7 @@ class MusiciansController < ApplicationController
   end
 
   def musician_params
-    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :instrument, :style, :zip_code, :user, :photo, :bio)
+    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :url_photo, :instrument, :style, :zip_code, :user, :photo, :bio)
   end
 
   def find_musician_nav

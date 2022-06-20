@@ -1,17 +1,30 @@
 <%= simple_form_for(@orchestra) do |f| %>
-  <%= f.input :name, label: "Name of Orchestra" %>1
-  <%= f.input :type_orchestra, label: "Type of Orchestra", collection: Orchestra::TYPE_ORCHESTRA %>2
-  <%= f.input :style, label: "What is the style?", collection: Orchestra::STYLE%>3
-  <%= f.input :zip_code, label: "Zipcode" %>6
-  <%= f.input :frequency , label: "how often do you play"%>5
-  <%= f.input :description, label: "Tell us more about the Orchestra" %>
-  <%= f.input :bio, label: "Describe the Orchestra in one line" %>
-  <%= f.input :size, label: "How many people play with you?" %>4
-  <div class="buttons">
-    <%= f.submit class:" " %>
-    <button class= " " href="#">
-      <%= link_to "Return to home page", root_path %>
-    </button>
-  </div>
+<div class="body-col">
+  <div class="block-col">
+    <div class="title-col">Create your Orchestra Profile</div>
+    <div class="user-details-col">
+      <div class="left-col">
+          <%= f.input :name, label: "Name of Orchestra" %>
+          <%= f.input :type_orchestra, label: "Type of Orchestra", collection: Orchestra::TYPE_ORCHESTRA %>
+          <%= f.input :style, label: "What is the style?", collection: Orchestra::STYLE%>
+      </div>
 
+      <div class="right-col">
+          <%= f.input :size, label: "How many people play with you?" %>
+          <%= f.input :frequency , label: "How often do you play"%>
+          <%= f.input :zip_code, label: "Zipcode"%>
+      </div>
+    </div>
+    <div class="center-col">
+          <%= f.input :bio, label: "Describe the Orchestra in one line", :placeholder => "What your orchestra is about ?" %>
+          <%= f.input :description, label: "Tell us more about the Orchestra" %>
+          <%= f.input :photo, as: :file %>
+          <%= f.hint "What's your story ? How the founders met ? What is bringing you all together?" %>
+    </div>
+    <div class="buttons-col">
+            <%= f.submit class:"btn-orchestras", :id => 'btn-orchestras-submit'%>
+        <%= link_to "Back", root_path, :class => "nav-button-col"%>
+    </div>
+  </div>
+</div>
 <% end %>

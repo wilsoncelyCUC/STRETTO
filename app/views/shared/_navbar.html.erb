@@ -22,10 +22,13 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <% if current_user %>
                 <% if @musician_nav = Musician.find_by(user_id: current_user.id)%>
-                  <%= link_to "Profile", musician_path(@musician_nav), class: "dropdown-item" %>
-                  <% elsif Orchestra.find_by(user_id: current_user.id)%>
-                    <%= link_to "Profile", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
-                  <% else %>
+                  <%= link_to "Profile Musician", musician_path(@musician_nav), class: "dropdown-item" %>
+                  <% if Orchestra.find_by(user_id: current_user.id)%>
+                      <%= link_to "Profile Orchestra", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
+                  <% end %>
+                <% elsif Orchestra.find_by(user_id: current_user.id)%>
+                    <%= link_to "Profile Orchestra", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
+                <% else %>
                     <%= link_to "Profile", '#', class: "d-none" %>
                 <% end %>
 

@@ -2,13 +2,24 @@
   <div class="show-container">
     <div class="show-banner row">
       <div class="show-title col-12">
-       <img class="avatar-large2" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+        <!-- <img class="avatar-large2" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /> -->
+        <% if @musician.url_photo %>
+            <%= image_tag  @musician.url_photo, class: "avatar-large2" %>
+         <% else %>
+            <%= cl_image_tag @musician.photo.key , crop: :thumb, gravity: :face, class: "avatar-large2" %>
+        <%  end %>
         <div class="mc-title">
           <h1 id="name"><%= @musician.first_name%> <%= @musician.last_name %></h1>
         </div>
         <div class="btn-poke2">
           <%= link_to "Poke me", new_musician_invitation_path(@musician), :id => 'show-poke'%>
           <%= image_tag "fi-rr-arrow-right"%>
+        </div>
+        <div class="">
+          <% if @musician ==  Musician.find_by(user_id: current_user.id)  %>
+            <%= link_to "edit profile", edit_musician_path(@musician), :id => 'show-poke'%>
+            <%= image_tag "fi-rr-arrow-right"%>
+          <% end%>
         </div>
       </div>
     </div>

@@ -6,27 +6,28 @@ before_action :find_musician_nav
   def index
     @orchestras = Orchestra.all
 
+    #search bar
     if params[:search]
       @match = params[:search][:match]
       @filter = "#{params[:search][:type_orchestra]} #{ params[:search][:style]} #{params[:search][:zip_code]} #{params[:search][:size]} "
-
+      # Feature match-my-need
       if @match == "yes"
         @musician = Musician.find_by(user: current_user)
         instrument = @musician.instrument
         orchestras_base = Orchestra.joins(:posts).where(posts: {instrument: instrument  })
 
         if @filter.blank?
-        @orchestras = orchestras_base
+          @orchestras = orchestras_base
         else
-        @orchestras = orchestras_base.search_with_bar(@filter)
+          @orchestras = orchestras_base.search_with_bar(@filter)
         end
 
       else
         if @filter.blank?
           @orchestras = Orchestra.all
-          else
+        else
           @orchestras = Orchestra.search_with_bar(@filter)
-          end
+        end
       end
     end
 
@@ -75,7 +76,7 @@ before_action :find_musician_nav
   end
 
   def orchestra_params
-    params.require(:orchestra).permit(:style, :type, :size, :zip_code, :frequency, :name, :description, :bio)
+    params.require(:orchestra).permit(:style, :type, :size, :zip_code, :photo, :frequency, :name, :description, :bio)
   end
 
   def find_orchestra_nav
