@@ -49,11 +49,12 @@
     <div class="post-display">
       <div class="recurrent-post">
         <h3>Recurrent positions</h3>
+        <% counter_post_periodic = 0 %>
         <% @posts.each do |post| %>
           <%- if post.type_post == 'Recurrent' %>
             <div class="post-card">
               <div class="post-card-preview">
-                <h6><%= post.id %></h6>
+                <h6><%= counter_post_periodic += 1 %></h6>
               </div>
               <div class="post-card-info">
                 <div class="post-card-title">
@@ -74,11 +75,12 @@
 
       <div class="onetime-post">
         <h3>Periodic positions</h3>
+        <% counter = 0 %>
         <% @posts.each do |post| %>
           <%- if post.type_post == 'One time' %>
             <div class="post-card">
               <div class="post-card-preview">
-                <h6><%= post.id %></h6>
+                <h6><%= counter += 1%></h6>
               </div>
               <div class="post-card-info">
                 <div class="post-card-title">
