@@ -74,7 +74,8 @@
                       <h2><strong>Style:</strong> <%= musician.style %></h2>
                       <%# <h2>Frequency: <%= orchestra.frequency %>
                       <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
-                      <%= link_to "More info", new_musician_invitation_path(musician), class:"card-link"%>
+                      <%= link_to "Poke", new_musician_invitation_path(musician), class:"card-link"%>
+                      <%= link_to "More info", musician_path(musician), class:"card-link"%>
                     </div>
                   </div>
               <% end %>
