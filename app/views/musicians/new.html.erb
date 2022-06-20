@@ -10,7 +10,7 @@
           <%= f.input :birthday, :as => :date, :start_year => Date.today.year - 80,
                                 :end_year => Date.today.year - 12,
                                 :order => [:day, :month, :year], label: "Birthday" %>
-          <%= f.input :photo, label: "Photo", :placeholder => "Copy-paste your picture's URL" %>
+          <%= f.input :photo, label: "Photo", as: :file %>
 
       </div>
 

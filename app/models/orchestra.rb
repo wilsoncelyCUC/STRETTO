@@ -20,6 +20,7 @@ class Orchestra < ApplicationRecord
       tsearch: { prefix: true } # <-- search bar!
     }
 
-
+  # Cloudinary
+  has_one_attached :photo
 
 end

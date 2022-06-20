@@ -1,5 +1,7 @@
 class OrchestrasController < ApplicationController
-before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
+before_action :find_orchestra, only: [:show,  :edit, :update, :destroy]
+before_action :find_orchestra_nav
+before_action :find_musician_nav
 
   def index
     @orchestras = Orchestra.all
@@ -76,5 +78,12 @@ before_action :find_orchestra, only: [:show, :edit, :update, :destroy]
     params.require(:orchestra).permit(:style, :type, :size, :zip_code, :frequency, :name, :description, :bio)
   end
 
+  def find_orchestra_nav
+    @orchestra_nav = Orchestra.find_by(user_id: current_user.id)
+  end
+
+  def find_musician_nav
+    @musician_nav = Musician.find_by(user_id: current_user.id)
+  end
 
 end

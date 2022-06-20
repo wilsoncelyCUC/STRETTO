@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
+  before_action :find_musician_nav
+  before_action :find_orchestra_nav
 
   def home
     if current_user
@@ -8,4 +10,15 @@ class PagesController < ApplicationController
     else
     end
   end
+
+  #nav bar
+  def find_musician_nav
+    @musician_nav = Musician.find_by(user_id: current_user.id)
+  end
+
+  def find_orchestra_nav
+    @orchestra_nav = Orchestra.find_by(user_id: current_user.id)
+  end
+
+
 end
