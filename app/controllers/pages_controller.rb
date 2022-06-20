@@ -13,11 +13,15 @@ class PagesController < ApplicationController
 
   #nav bar
   def find_musician_nav
-    @musician_nav = Musician.find_by(user_id: current_user.id)
+    if current_user
+      @musician_nav = Musician.find_by(user_id: current_user.id)
+    end
   end
 
   def find_orchestra_nav
+    if current_user
     @orchestra_nav = Orchestra.find_by(user_id: current_user.id)
+    end
   end
 
 
