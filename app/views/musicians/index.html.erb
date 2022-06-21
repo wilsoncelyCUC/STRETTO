@@ -65,11 +65,7 @@
                         </div>
                         <div class="col-4">
                           <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
-                          <% if musician.url_photo %>
-                             <%= image_tag  musician.url_photo, class: "avatar-large-musician" %>
-                          <% else %>
-                              <%= cl_image_tag musician.photo.key%>
-                          <%  end %>
+
                         </div>
                       </div>
                     </div>

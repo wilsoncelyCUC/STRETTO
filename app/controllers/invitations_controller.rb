@@ -1,6 +1,10 @@
 class InvitationsController < ApplicationController
   def index
-    @invitations = Invitation.all
+    if @musician = Musician.find_by(user_id: current_user.id)
+      @invitations = Invitation.where(musician_id: params[:orchestra_id])
+    else
+      @invitations = Invitation.where(orchestra_id: params[:orchestra_id])
+    end
   end
 
   def show
@@ -21,13 +25,13 @@ class InvitationsController < ApplicationController
     if params[:musician_id]
       musician = Musician.find(params[:musician_id])
       @invitation.musician = musician
-      orchestra = Orchestra.find(current_user.id)
+      orchestra = Orchestra.find_by(user_id: current_user.id)
       @invitation.orchestra = orchestra
     # Will raise ActiveModel::ForbiddenAttributesError
     else
       orchestra = Orchestra.find(params[:orchestra_id])
       @invitation.orchestra = orchestra
-      musician = Musician.find(current_user.id)
+      musician = Musician.find_by(user_id: current_user.id)
       @invitation.musician = musician
       # Will raise ActiveModel::ForbiddenAttributesError
     end

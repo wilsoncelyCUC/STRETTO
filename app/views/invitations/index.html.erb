@@ -1,0 +1,48 @@
+<%  if @musician = Musician.find_by(user_id: current_user.id) %>
+<h1>Pokes received from Orchestras</h1>
+<%  @invitations.each do |element| %>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+    <h5 class="card-title">Name</h5>
+    <p class="card-text"><%=  Orchestra.find(element.orchestra_id).name %></p>
+      <h5 class="card-title">Style</h5>
+    <p class="card-text"><%=  Orchestra.find(element.orchestra_id).style %></p>
+      <h5 class="card-title">size</h5>
+    <p class="card-text"><%=  Orchestra.find(element.orchestra_id).size %></p>
+      <h5 class="card-title">zip_code</h5>
+    <p class="card-text"><%=  Orchestra.find(element.orchestra_id).zip_code %></p>
+      <h5 class="card-title">frequency</h5>
+    <p class="card-text"><%=  Orchestra.find(element.orchestra_id).frequency %></p>
+      </div>
+    </div>
+  </div>
+
+<%  end %>
+
+<%  else %>
+
+<h1>Pokes received from Musicians</h1>
+
+<%  @invitations.each do |element| %>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+
+    <h5 class="card-title">First name</h5>
+    <p class="card-text"><%=  Musician.find(element.musician_id).first_name %></p>
+      <h5 class="card-title">Last name</h5>
+    <p class="card-text"><%=  Musician.find(element.musician_id).last_name %></p>
+      <h5 class="card-title">level</h5>
+    <p class="card-text"><%=  Musician.find(element.musician_id).level %></p>
+      <h5 class="card-title">instrument</h5>
+    <p class="card-text"><%=  Musician.find(element.musician_id).instrument %></p>
+      <h5 class="card-title">style</h5>
+    <p class="card-text"><%=  Musician.find(element.musician_id).style %></p>
+      </div>
+    </div>
+  </div>
+<%  end %>
+<%  end %>
