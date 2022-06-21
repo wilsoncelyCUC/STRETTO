@@ -1,7 +1,9 @@
 <%= simple_form_for(@orchestra) do |f| %>
 <div class="body-col">
   <div class="block-col">
-    <div class="title-col">Create your Orchestra Profile</div>
+    <div class="title-col">
+      <h3 id='edit-title-col'>Edit your Orchestra Profile</h3>
+    </div>
     <div class="user-details-col">
       <div class="left-col">
           <%= f.input :name, label: "Name of Orchestra" %>
