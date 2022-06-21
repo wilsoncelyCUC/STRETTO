@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :find_musician_nav
+  before_action :find_orchestra_nav
 
   def new
     find_orchestra
@@ -43,5 +45,15 @@ class PostsController < ApplicationController
   def find_orchestra
     @orchestra = Orchestra.find(params[:orchestra_id])
   end
+
+    #nav bar
+    def find_musician_nav
+      @musician_nav = Musician.find_by(user_id: current_user.id)
+    end
+
+    def find_orchestra_nav
+      @orchestra_nav = Orchestra.find_by(user_id: current_user.id)
+    end
+
 
 end

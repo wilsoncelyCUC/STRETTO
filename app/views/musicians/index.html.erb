@@ -93,7 +93,13 @@
                           <h1> <%= musician.last_name%></h1>
                         </div>
                         <div class="col-4">
-                          <img class="avatar-large-musician" src="https://i.pravatar.cc/200/300" alt="Card image cap">
+
+                          <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
+                          <% if musician.url_photo %>
+                             <%= image_tag  musician.url_photo, class: "avatar-large-musician" %>
+                          <% else %>
+                              <%= cl_image_tag musician.photo.key%>
+                          <%  end %>
                         </div>
                       </div>
                     </div>
@@ -103,6 +109,8 @@
                       <h2><strong>Style:</strong> <%= musician.style %></h2>
                       <%# <h2>Frequency: <%= orchestra.frequency %>
                       <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
+
+                      <%= link_to "Poke", new_musician_invitation_path(musician), class:"card-link"%>
                       <%= link_to "More info", musician_path(musician), class:"card-link"%>
                     </div>
                   </div>
