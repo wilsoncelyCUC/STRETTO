@@ -24,7 +24,7 @@
   margin-bottom: 20px;
 }
 
-#edit-title {
+#edit-title-mc {
   background-image: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
   background-size: 47.5% 4px;
   background-repeat: no-repeat;
@@ -35,7 +35,7 @@
   padding-bottom: 5px;
 }
 
-#create-title {
+#create-title-mc {
   background-image: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
   background-size: 55% 4px;
   background-repeat: no-repeat;
@@ -90,8 +90,22 @@
   padding-left: 15px;
 }
 
+.form-control {
+  margin: 0;
+  outline: none;
+  border-radius: 50px;
+  padding-left: 15px;
+}
+
 .form-text {
   color: #c8c8c8;
+}
+
+.form-select {
+  margin: 0;
+  outline: none;
+  border-radius: 50px;
+  padding-left: 15px;
 }
 
 #musician_bio {
