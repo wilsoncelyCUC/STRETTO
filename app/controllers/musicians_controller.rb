@@ -1,25 +1,21 @@
 class MusiciansController < ApplicationController
+  before_action :find_musician, only: [:show,  :edit, :update, :destroy]
+  before_action :find_musician_nav
+  before_action :find_orchestra_nav
+
   def index
     @musicians = Musician.all
-    @orchestra = Orchestra.find_by(user: current_user)
-
+    # search bar
     if params[:search]
       @filter =  "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}"
       @musicians = Musician.search_with_bar(@filter)
     end
-
-
-#    respond_to do |format|
-#      format.html
-#      format.js
-#    end
   end
 
 
 
   def show
     @musician = Musician.find(params[:id])
-
 
   end
 
@@ -43,16 +39,17 @@ class MusiciansController < ApplicationController
   end
 
   def edit
-    @musician = Musician.find(params[:id])
   end
 
   def update
-    @musician.update(musicians_params)
-    redirect_to musician_path(@musician)
+    if @musician.update(musician_params)
+      redirect_to musician_path(@musician)
+    else
+      render :new
+    end
   end
 
   def destroy
-    @musician = Musician.find(params[:id])
     @musician.destroy
     redirect_to musicians_path
   end
@@ -61,8 +58,20 @@ class MusiciansController < ApplicationController
 
   private
 
+  def find_musician
+    @musician = Musician.find(params[:id])
+  end
+
   def musician_params
-    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :instrument, :style, :zip_code, :user, :photo, :bio)
+    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :url_photo, :instrument, :style, :zip_code, :user, :photo, :bio)
+  end
+
+  def find_musician_nav
+    @musician_nav = Musician.find_by(user_id: current_user.id)
+  end
+
+  def find_orchestra_nav
+    @orchestra_nav = Orchestra.find_by(user_id: current_user.id)
   end
 
 end

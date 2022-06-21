@@ -12,10 +12,16 @@
           <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke'%>
           <%= image_tag "fi-rr-arrow-right"%>
         </div>
+        <div class="">
+          <% if @orchestra ==  Orchestra.find_by(user_id: current_user.id)  %>
+            <%= link_to "edit profile", edit_orchestra_path(@orchestra), :id => 'show-poke'%>
+            <%= image_tag "fi-rr-arrow-right"%>
+          <% end%>
+        </div>
       </div>
       <div class="show-image col-6">
         <div class="image">
-          <%= image_tag "crowd", :id => 'orchestra-banner'%>
+          <%= cl_image_tag @orchestra.photo.key, height: 300, width: 400, crop: :fill,  :id => 'orchestra-banner'%>
         </div>
       </div>
 
@@ -49,11 +55,12 @@
     <div class="post-display">
       <div class="recurrent-post">
         <h3>Recurrent positions</h3>
+        <% counter_post_periodic = 0 %>
         <% @posts.each do |post| %>
           <%- if post.type_post == 'Recurrent' %>
             <div class="post-card">
               <div class="post-card-preview">
-                <h6><%= post.id %></h6>
+                <h6><%= counter_post_periodic += 1 %></h6>
               </div>
               <div class="post-card-info">
                 <div class="post-card-title">
@@ -74,11 +81,12 @@
 
       <div class="onetime-post">
         <h3>Periodic positions</h3>
+        <% counter = 0 %>
         <% @posts.each do |post| %>
           <%- if post.type_post == 'One time' %>
             <div class="post-card">
               <div class="post-card-preview">
-                <h6><%= post.id %></h6>
+                <h6><%= counter += 1%></h6>
               </div>
               <div class="post-card-info">
                 <div class="post-card-title">

@@ -30,7 +30,7 @@ user_musician = User.create!(
     level: ["Beginner", "Intermediate", "Advanced"].sample,
     instrument: ["Violin", "Viola", "Cello", "Double Bass", "Harp", "Flute", "Piccolo", "English Horn", "Clarinet", "Saxophone", "Trumpet", "Trombone"].sample,
     style: ["Classic", "Pop", "Electronic", "Jazz"].sample,
-    photo: "https://i.pravatar.cc/200/300",
+    url_photo: "https://www.thispersondoesnotexist.com/image",
     bio: Faker::Lorem.sentence(word_count: 6),
     zip_code: [75000, 75001, 75002, 75003, 75004, 75005, 75006, 75007, 75008, 75009, 75010, 75011, 75012, 75013, 75014, 75015, 75016, 75017, 75018, 75019, 75020].sample,
     user_id: user_musician.id

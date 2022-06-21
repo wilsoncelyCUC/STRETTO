@@ -13,13 +13,11 @@ class Orchestra < ApplicationRecord
  include PgSearch::Model
   pg_search_scope :search_with_bar,
     against: [ :type_orchestra, :size, :style, :zip_code],
-#    associated_against: {
-#      post: [ :instrument ]
-#    },
     using: {
       tsearch: { prefix: true } # <-- search bar!
     }
 
-
+  # Cloudinary
+  has_one_attached :photo
 
 end

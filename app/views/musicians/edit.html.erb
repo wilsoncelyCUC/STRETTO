@@ -1,21 +1,42 @@
-<%= simple_form_for(@musician) do |f| %>
+        <%= simple_form_for(@musician) do |f| %>
+<div class="body-mc">
+  <div class="block-mc">
+    <div class="title-mc">Create your Musician Profile</div>
+    <div class="user-details-mc">
 
-  <%= f.input :first_name %>
+      <div class="left-mc">
+          <%= f.input :first_name, label: "First name", :placeholder => 'Enter your first name' %>
+          <%= f.input :last_name, label: "Last name", :placeholder => 'Enter your last name' %>
+          <%= f.input :birthday, :as => :date, :start_year => Date.today.year - 80,
+                                :end_year => Date.today.year - 12,
+                                :order => [:day, :month, :year], label: "Birthday" %>
+          <%= f.input :photo, label: "Photo", as: :file %>
 
-  <%= f.input :last_name %>
+      </div>
 
-  <%= f.input :birthday %>
-
-  <%= f.input :level %>
-
-  <%= f.input :instrument %>
-
-  <%= f.input :style %>
-
-  <%= f.input :photo %>
-
-  <%= f.input :bio %>
-
-  <%= f.input :zip_code %>
-  <%= f.submit %>
+      <div class="right-mc">
+          <div class="input-box">
+            <%= f.input :instrument, label: "Instrument", collection: Musician::INSTRUMENT%>
+          </div>
+          <div class="input-box">
+            <%= f.input :level, label: "Level", collection: Musician::LEVEL %>
+          </div>
+          <div class="input-box">
+            <%= f.input :style, label: "Style", collection: Musician::STYLE %>
+          </div>
+          <%= f.input :zip_code, label: "Zip-code", :placeholder => "Enter your Zipcode" %>
+      </div>
+    </div>
+    <div class="center-mc">
+          <div class="input-box" id="bio">
+            <%= f.input :bio, :as => :text %>
+            <%= f.hint "Please describe you and what you're looking for in a collective music practice !" %>
+          </div>
+    </div>
+    <div class="buttons-mc">
+        <%= f.submit class:"btn-musician", :id => 'btn-musicians-submit'%>
+      <%= link_to "Back", root_path, :class => "nav-button-mc"%>
+    </div>
+  </div>
+</div>
 <% end %>
