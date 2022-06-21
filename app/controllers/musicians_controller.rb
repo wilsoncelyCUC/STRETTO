@@ -15,10 +15,16 @@ class MusiciansController < ApplicationController
 
 
   def show
+    @musician = Musician.find(params[:id])
+
   end
 
   def new
-    @musician = Musician.new
+    if @musician = Musician.find_by(user_id: current_user.id)
+      redirect_to orchestras_path
+    else
+      @musician = Musician.new
+    end
   end
 
   def create

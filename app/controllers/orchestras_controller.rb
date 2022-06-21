@@ -30,7 +30,6 @@ before_action :find_musician_nav
         end
       end
     end
-
   end
 
   def show
@@ -39,7 +38,11 @@ before_action :find_musician_nav
   end
 
   def new
-    @orchestra = Orchestra.new
+    if @orchestra = Orchestra.find_by(user_id: current_user.id)
+      redirect_to musicians_path
+    else
+      @orchestra = Orchestra.new
+    end
   end
 
   def create
@@ -50,7 +53,6 @@ before_action :find_musician_nav
     else
       render :new
     end
-
   end
 
   def edit
