@@ -35,6 +35,7 @@ before_action :find_musician_nav
   def show
     @posts = @orchestra.posts
     @post = Post.new
+    @invitation = Invitation.new
   end
 
   def new

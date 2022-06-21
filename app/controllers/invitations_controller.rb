@@ -17,18 +17,20 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitation = Invitation.new(invitation_params)
+    @invitation = Invitation.new
     if params[:musician_id]
       musician = Musician.find(params[:musician_id])
       @invitation.musician = musician
-      orchestra = Orchestra.find(current_user.id)
+      orchestra = Orchestra.find_by(user_id: current_user.id)
       @invitation.orchestra = orchestra
+      @invitation.pending!
     # Will raise ActiveModel::ForbiddenAttributesError
     else
       orchestra = Orchestra.find(params[:orchestra_id])
       @invitation.orchestra = orchestra
-      musician = Musician.find(current_user.id)
+      musician = Musician.find_by(user_id: current_user.id)
       @invitation.musician = musician
+      @invitation.pending!
       # Will raise ActiveModel::ForbiddenAttributesError
     end
     @invitation.save
@@ -38,6 +40,6 @@ class InvitationsController < ApplicationController
   private
 
   def invitation_params
-    params.require(:invitation).permit(:status)
+    params.require(:invitation)
   end
 end

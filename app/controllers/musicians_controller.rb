@@ -16,6 +16,7 @@ class MusiciansController < ApplicationController
 
   def show
     @musician = Musician.find(params[:id])
+    @invitation = Invitation.new
 
   end
 

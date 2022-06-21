@@ -15,17 +15,26 @@
               <%= image_tag "edit white2", :id => 'edit-icon'%>
             </div>
           <% else %>
-            <div class='btn-poke-an-orchestra'>
-              <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke-black'%>
-              <%= image_tag "Group 3294", :id => 'right-arrow-black-big'%>
+            <div class=''>
+              <%#= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke-black'%>
+              <%= simple_form_for [@orchestra, @invitation] do |f| %>
+                <%= f.submit 'Poke us', :id => 'show-poke-black'%>
+                <%= image_tag "Group 3294", :id => 'right-arrow-black-big'%>
+              <% end %>
             </div>
           <% end %>
         </div>
       </div>
       <div class="show-image col-6">
+        <% if @orchestra.photo.key.nil? %>
         <div class="image">
-          <%= cl_image_tag @orchestra.photo.key, height: 300, width: 400, crop: :fill,  :id => 'orchestra-banner'%>
+          <%=  image_tag 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', height: 300, width: 400, crop: :fill, :id => 'orchestra-banner' %>
         </div>
+        <% else %>
+        <div class="image">
+            <%= cl_image_tag @orchestra.photo.key, height: 300, width: 400, crop: :fill,  :id => 'orchestra-banner'%>
+        </div>
+        <% end %>
       </div>
 
 
@@ -87,6 +96,9 @@
                     <% else %>
                       <div class='btn-poke-orchestra-post'>
                         <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke-black'%>
+                         <%#= simple_form_for [@orchestra, @invitation] do |f| %>
+                           <%#= f.submit 'Poke us', class: 'btn-poke-orchestra-post', :id => 'show-poke-black'%>
+                        <%# end %>
                         <%= image_tag "Group 3294", :id => 'right-arrow-black'%>
                       </div>
                     <% end %>
