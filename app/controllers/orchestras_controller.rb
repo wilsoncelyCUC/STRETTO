@@ -36,6 +36,7 @@ before_action :find_musician_nav
     @posts = @orchestra.posts
     @post = Post.new
     @invitation = Invitation.new
+    @musician = Musician.find_by(user_id: current_user.id)
   end
 
   def new

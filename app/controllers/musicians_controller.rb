@@ -12,12 +12,10 @@ class MusiciansController < ApplicationController
     end
   end
 
-
-
   def show
     @musician = Musician.find(params[:id])
     @invitation = Invitation.new
-
+    @orchestra = Orchestra.find_by(user_id: current_user.id)
   end
 
   def new
