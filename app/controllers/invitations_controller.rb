@@ -1,6 +1,10 @@
 class InvitationsController < ApplicationController
   def index
-    @invitations = Invitation.all
+    if @musician = Musician.find_by(user_id: current_user.id)
+      @invitations = Invitation.where(musician_id: params[:orchestra_id])
+    else
+      @invitations = Invitation.where(orchestra_id: params[:orchestra_id])
+    end
   end
 
   def show

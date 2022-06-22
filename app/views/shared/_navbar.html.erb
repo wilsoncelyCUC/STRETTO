@@ -15,7 +15,13 @@
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Dashboard", "#", class: "nav-link" %>
+          <% if @musician = Musician.find_by(user_id: current_user.id) %>
+              <%= link_to "Dashboard", musician_invitations_path(@musician), class: "nav-link" %>
+          <% elsif @orchestra = Orchestra.find_by(user_id: current_user.id)%>
+            <%= link_to "Dashboard", orchestra_invitations_path(@orchestra), class: "nav-link" %>
+          <% else %>
+          <%= link_to "Dashboard","#", class: "nav-link" %>
+          <% end%>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -23,10 +29,10 @@
               <% if current_user %>
                 <% if @musician_nav = Musician.find_by(user_id: current_user.id)%>
                   <%= link_to "Profile Musician", musician_path(@musician_nav), class: "dropdown-item" %>
-                  <% if Orchestra.find_by(user_id: current_user.id)%>
+                  <% if @orchestra_nav = Orchestra.find_by(user_id: current_user.id)%>
                       <%= link_to "Profile Orchestra", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
                   <% end %>
-                <% elsif Orchestra.find_by(user_id: current_user.id)%>
+                <% elsif @orchestra_nav =Orchestra.find_by(user_id: current_user.id)%>
                     <%= link_to "Profile Orchestra", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
                 <% else %>
                     <%= link_to "Profile", '#', class: "d-none" %>
@@ -37,6 +43,7 @@
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
+
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
