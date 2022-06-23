@@ -6,8 +6,10 @@
         <!-- <img class="avatar-large2" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /> -->
         <% if @musician.url_photo %>
             <%= image_tag  @musician.url_photo, class: "avatar-large2" %>
-         <% else %>
+         <% elsif @musician.photo.key%>
             <%= cl_image_tag @musician.photo.key , crop: :thumb, gravity: :face, class: "avatar-large2" %>
+         <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large-musician" %>
         <%  end %>
         <div class="mc-title">
           <h1 id="name"><%= @musician.first_name%> <%= @musician.last_name %></h1>
