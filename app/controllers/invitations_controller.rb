@@ -12,6 +12,8 @@ class InvitationsController < ApplicationController
       @invitations = Invitation.where(orchestra: @orchestra)
       @invitations_sent = @invitations.where(status: 1)
       @invitations_received = @invitations.where(status: 0)
+      #comment
+
     end
   end
 
