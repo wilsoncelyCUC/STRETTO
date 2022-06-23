@@ -67,7 +67,7 @@ class MusiciansController < ApplicationController
   end
 
   def musician_params
-    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :url_photo, :instrument, :style, :zip_code, :user, :photo, :bio)
+    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :url_photo, :instrument, :phone_number ,:style, :zip_code, :user, :photo, :bio)
   end
 
   def find_musician_nav
