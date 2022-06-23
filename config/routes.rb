@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  resources :invitations, only: [:update, :destroy]
+
+
   resources :musicians do
     resources :invitations, only: [:new, :create, :index]
   end
+    resources :reservations, only: [:update, :destroy]
+
 
   resources :posts, only: [:update, :destroy]
 

@@ -14,21 +14,31 @@
 
 <%  if @musician = Musician.find_by(user_id: current_user.id) %>
   <h1>Pokes received from Orchestras</h1>
-  <%  @invitations_received.each do |element| %>
+  <%  @invitations_received.each do |invitation| %>
     <div class="row">
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Name</h5>
-            <p class="card-text"><%=  Orchestra.find(element.orchestra_id).name %></p>
+            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).name %></p>
               <h5 class="card-title">Style</h5>
-            <p class="card-text"><%=  Orchestra.find(element.orchestra_id).style %></p>
+            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).style %></p>
               <h5 class="card-title">size</h5>
-            <p class="card-text"><%=  Orchestra.find(element.orchestra_id).size %></p>
+            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).size %></p>
               <h5 class="card-title">zip_code</h5>
-            <p class="card-text"><%=  Orchestra.find(element.orchestra_id).zip_code %></p>
+            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).zip_code %></p>
               <h5 class="card-title">frequency</h5>
-            <p class="card-text"><%=  Orchestra.find(element.orchestra_id).frequency %></p>
+            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).frequency %></p>
+            <div class="card-nav">
+              <% if invitation.accepted? %>
+                <h2>invitation accepted 👍</h2>
+              <% elsif invitation.rejected? %>
+                <p><strong>Keep trying! 👎</strong></p>
+              <% else %>
+                <%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -57,6 +67,30 @@
         </div>
       </div>
     <%  end %>
+
+  <h1>Pokes Accepted for the following Orchestras</h1>
+  <%# byebug %>
+    <%  @invitations_accepted.each do |invitation| %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Name</h5>
+              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).name %></p>
+                <h5 class="card-title">Style</h5>
+              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).style %></p>
+                <h5 class="card-title">size</h5>
+              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).size %></p>
+                <h5 class="card-title">zip_code</h5>
+              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).zip_code %></p>
+                <h5 class="card-title">frequency</h5>
+              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).frequency %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%  end %>
+
 <% else %>
   <h1>Pokes received from Musicians</h1>
   <%  @invitations_received.each do |invitation| %>
@@ -74,6 +108,15 @@
           <p class="card-text"><%=  Musician.find(invitation.musician_id).zip_code %></p>
             <h5 class="card-title">frequency</h5>
           <p class="card-text"><%=  Musician.find(invitation.musician_id).level %></p>
+          <div class="card-nav">
+              <% if invitation.accepted? %>
+                <h2>invitation accepted 👍</h2>
+              <% elsif invitation.rejected? %>
+                <p><strong>Keep trying! 👎</strong></p>
+              <% else %>
+                <%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+              <% end %>
         </div>
       </div>
     </div>
@@ -83,6 +126,29 @@
   <h1>Pokes sent to Musician</h1>
   <%# byebug %>
     <%  @invitations_sent.each do |invitation| %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Name</h5>
+              <p class="card-text"><%=  Musician.find(invitation.musician_id).first_name %> <%=  Musician.find(invitation.musician_id).last_name %></p>
+                <h5 class="card-title">Style</h5>
+              <p class="card-text"><%=  Musician.find(invitation.musician_id).style %></p>
+                <h5 class="card-title">size</h5>
+              <p class="card-text"><%=  Musician.find(invitation.musician_id).instrument %></p>
+                <h5 class="card-title">zip_code</h5>
+              <p class="card-text"><%=  Musician.find(invitation.musician_id).zip_code %></p>
+                <h5 class="card-title">frequency</h5>
+              <p class="card-text"><%=  Musician.find(invitation.musician_id).level %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%  end %>
+
+      <h1>Pokes accepted for the following Musicians</h1>
+  <%# byebug %>
+    <%  @invitations_accepted.each do |invitation| %>
       <div class="row">
         <div class="col-sm-6">
           <div class="card">
