@@ -7,6 +7,7 @@
   width: 18rem;
   // margin: 50px;
   grid-template-columns: auto auto auto auto;
+  border-radius: 3%;
 
 }
 
@@ -21,7 +22,7 @@
   font-weight: bold;
   margin-top: 10px;
   color: black;
-  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .avatar-large-musician {
@@ -40,19 +41,43 @@
 }
 
 .musician-infos {
-  color: black;
+  color: white;
 }
 
 .musician-infos h1 {
   margin-top: 20px;
   font-size: 16px;
+  margin-left: 5px;
+}
+
+.musician-infos h3 {
+  margin-top: 40px;
+  font-size: 16px;
+  text-align: center;
 }
 
 .musician-infos h2 {
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 16px;
+  margin-left: 5px;
+}
+
+.musician-infos a {
+  text-decoration: none;
+  color: white;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 20px;
+
 }
 
 .musician-name {
   color: black;
+}
+
+
+.musician-background {
+  background-color: #030435;
+  height: 280px;
+  margin-bottom: 15px;
 }
