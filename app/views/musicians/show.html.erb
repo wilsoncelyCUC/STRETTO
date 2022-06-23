@@ -2,6 +2,7 @@
   <div class="show-container">
     <div class="show-banner row">
       <div class="show-title col-12">
+
         <!-- <img class="avatar-large2" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /> -->
         <% if @musician.url_photo %>
             <%= image_tag  @musician.url_photo, class: "avatar-large2" %>
@@ -11,15 +12,26 @@
         <div class="mc-title">
           <h1 id="name"><%= @musician.first_name%> <%= @musician.last_name %></h1>
         </div>
-        <div class="btn-poke2">
-          <%= link_to "Poke me", new_musician_invitation_path(@musician), :id => 'show-poke'%>
-          <%= image_tag "fi-rr-arrow-right"%>
-        </div>
-        <div class="">
-          <% if @musician ==  Musician.find_by(user_id: current_user.id)  %>
-            <%= link_to "edit profile", edit_musician_path(@musician), :id => 'show-poke'%>
-            <%= image_tag "fi-rr-arrow-right"%>
-          <% end%>
+        <div class="show-cta">
+        <%# byebug %>
+          <% if @musician ==  Musician.find_by(user_id: current_user.id) %>
+            <div class="">
+              <%= link_to "edit profile", edit_musician_path(@musician), :id => 'show-poke'%>
+              <%= image_tag "fi-rr-arrow-right"%>
+            </div>
+          <% elsif @musician.invitations.where(orchestra: @orchestra).empty? %>
+            <div class="empty" data-controller="poke-sent" >
+              <%= simple_form_for [@musician, @invitation] do |f| %>
+                <%= f.submit 'Poke us',
+                              class: "btn-poke2",
+                              :id => 'show-poke'
+                %>
+              <%= image_tag "fi-rr-arrow-right"%>
+              <% end %>
+            </div>
+          <% else %>
+              <%= link_to "Poke sent/received", musician_invitations_path(@musician), :id => 'show-poke'%>
+          <% end %>
         </div>
       </div>
     </div>

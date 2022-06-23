@@ -139,3 +139,95 @@
   transition: all 0.2s ease;
   border: none;
 }
+
+
+// show main button
+.btn-poke-an-orchestra {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  color: white;
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+#show-poke-black {
+  text-decoration: none;
+  padding: 8px 24px;
+  color: black;
+  border-radius: 50px;
+}
+
+//edit button
+.edit-btn {
+  background-color: white;
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 50px ;
+}
+
+#edit-btn-text {
+  text-decoration: none;
+  color: black;
+}
+#edit-icon {
+  width: 20px;
+  height: auto;
+  margin-left: 5px;
+}
+
+//show right arrow
+#right-arrow-black {
+  width: 19px;
+  height: auto;
+  margin-left: -19px;
+  margin-right: 10px;
+}
+
+#right-arrow-black-big {
+  width: 30px;
+  height: auto;
+}
+
+.btn-poke-orchestra-post {
+  background-color: white;
+  background-image: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  background-size: 0%;
+  background-repeat: no-repeat;
+  font-weight: 500;
+  padding: 8px 3px ;
+  border-radius: 50px ;
+  transition: background-size 0.5s ease;
+  border: none;
+}
+
+.btn-poke-orchestra-post:hover {
+  background-size: 100%;
+}
+
+
+//new post
+.btn-new-post {
+  background-color: white;
+  background-image: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  background-size: 0%;
+  background-repeat: no-repeat;
+  font-weight: 500;
+  padding: 8px 3px ;
+  border-radius: 50px ;
+  transition: background-size 0.5s ease;
+  border: none;
+  margin-left: 20px;
+}
+
+.btn-new-post:hover {
+  background-size: 100%;
+}
+
+#add-icon {
+  width: 31px;
+  height: auto;
+  margin-left: -14px;
+  margin-right: 17px;
+}

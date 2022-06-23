@@ -1,6 +1,5 @@
 class Musician < ApplicationRecord
-#  has_many :invitations
-  #add conidition user uniqueness
+  has_many :invitations, dependent: :destroy
 
   belongs_to :user
   STYLE = ["Classic", "Pop", "Electronic", "Jazz"]

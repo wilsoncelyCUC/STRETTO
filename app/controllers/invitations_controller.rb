@@ -1,6 +1,20 @@
 class InvitationsController < ApplicationController
   def index
-    @invitations = Invitation.all
+    #route musician to invitations
+    if Musician.find_by(user_id: current_user.id)
+      @musician = Musician.find_by(user_id: current_user.id)
+      @invitations = Invitation.where(musician: @musician)
+      @invitations_sent = @invitations.where(status: 0)
+      @invitations_received = @invitations.where(status: 1)
+    #route other than musician to invitations (orchestra)
+    else
+      @orchestra =  Orchestra.find_by(user_id: current_user.id)
+      @invitations = Invitation.where(orchestra: @orchestra)
+      @invitations_sent = @invitations.where(status: 1)
+      @invitations_received = @invitations.where(status: 0)
+      #comment
+
+    end
   end
 
   def show
@@ -17,18 +31,20 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitation = Invitation.new(invitation_params)
-    if params[:musician_id]
+    @invitation = Invitation.new
+    if Orchestra.find_by(user_id: current_user.id)
       musician = Musician.find(params[:musician_id])
       @invitation.musician = musician
-      orchestra = Orchestra.find(current_user.id)
+      orchestra = Orchestra.find_by(user_id: current_user.id)
       @invitation.orchestra = orchestra
+      @invitation.pending_om!
     # Will raise ActiveModel::ForbiddenAttributesError
     else
       orchestra = Orchestra.find(params[:orchestra_id])
       @invitation.orchestra = orchestra
-      musician = Musician.find(current_user.id)
+      musician = Musician.find_by(user_id: current_user.id)
       @invitation.musician = musician
+      @invitation.pending_mo!
       # Will raise ActiveModel::ForbiddenAttributesError
     end
     @invitation.save
@@ -38,6 +54,6 @@ class InvitationsController < ApplicationController
   private
 
   def invitation_params
-    params.require(:invitation).permit(:status)
+    params.require(:invitation)
   end
 end

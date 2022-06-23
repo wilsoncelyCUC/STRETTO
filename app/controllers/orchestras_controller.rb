@@ -11,7 +11,7 @@ before_action :find_musician_nav
       @match = params[:search][:match]
       @filter = "#{params[:search][:type_orchestra]} #{ params[:search][:style]} #{params[:search][:zip_code]} #{params[:search][:size]} "
       # Feature match-my-need
-      if @match == "yes"
+      if @match == "Yes"
         @musician = Musician.find_by(user: current_user)
         instrument = @musician.instrument
         orchestras_base = Orchestra.joins(:posts).where(posts: {instrument: instrument  })
@@ -35,6 +35,8 @@ before_action :find_musician_nav
   def show
     @posts = @orchestra.posts
     @post = Post.new
+    @invitation = Invitation.new
+    @musician = Musician.find_by(user_id: current_user.id)
   end
 
   def new

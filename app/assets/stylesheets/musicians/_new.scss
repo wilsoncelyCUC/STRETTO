@@ -4,15 +4,17 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #73E0CA, white);
+  background: linear-gradient(120deg, #191919, #1e1e1e);
 }
 
 .block-mc {
   max-width: 700px;
   width: 100%;
-  background-color: #fff;
+  background: linear-gradient(120deg, #74747469, #434343c2);
   padding: 25px 30px;
   border-radius: 30px;
+  color: white;
+  font-family: 'Rubik', sans-serif;
 }
 
 .block-mc .title-mc {
@@ -22,14 +24,26 @@
   margin-bottom: 20px;
 }
 
-.block-mc .title-mc::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  background: linear-gradient(135deg, #73E0CA, white);
+#edit-title-mc {
+  background-image: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  background-size: 47.5% 4px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 300ms ease;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+#create-title-mc {
+  background-image: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  background-size: 55% 4px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 300ms ease;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 5px;
 }
 
 .block-mc .user-details-mc {
@@ -44,7 +58,7 @@
   margin-bottom: 5px;
 }
 
-
+// new
 #new_musician input {
   margin: 0;
   outline: none;
@@ -55,6 +69,40 @@
 #new_musician select {
   margin: 0;
   width: 100%;
+  outline: none;
+  border-radius: 50px;
+  padding-left: 15px;
+}
+
+// edit
+.form-select.is-valid {
+  margin: 0;
+  width: 100%;
+  outline: none;
+  border-radius: 50px;
+  padding-left: 15px;
+}
+
+.form-control.is-valid {
+  margin: 0;
+  outline: none;
+  border-radius: 50px;
+  padding-left: 15px;
+}
+
+.form-control {
+  margin: 0;
+  outline: none;
+  border-radius: 50px;
+  padding-left: 15px;
+}
+
+.form-text {
+  color: #c8c8c8;
+}
+
+.form-select {
+  margin: 0;
   outline: none;
   border-radius: 50px;
   padding-left: 15px;

@@ -8,31 +8,41 @@
           <h1 id='name'><%= @orchestra.name%></h1>
           <h6><%= @orchestra.bio%></h6>
         </div>
-        <div class='btn-poke2'>
-          <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke'%>
-          <%= image_tag "fi-rr-arrow-right"%>
-        </div>
-        <div class="">
+        <div class="show-cta">
           <% if @orchestra ==  Orchestra.find_by(user_id: current_user.id)  %>
-            <%= link_to "edit profile", edit_orchestra_path(@orchestra), :id => 'show-poke'%>
-            <%= image_tag "fi-rr-arrow-right"%>
-          <% end%>
+            <div class="edit-btn">
+              <%= link_to "edit profile", edit_orchestra_path(@orchestra), :id => 'edit-btn-text'%>
+              <%= image_tag "edit white2", :id => 'edit-icon'%>
+            </div>
+           <% elsif @orchestra.invitations.where(musician: @musician).empty? %>
+            <div class=''>
+              <%= simple_form_for [@orchestra, @invitation] do |f| %>
+                <%= f.submit 'Poke us', :id => 'show-poke-black'%>
+                <%= image_tag "Group 3294", :id => 'right-arrow-black-big'%>
+              <% end %>
+            </div>
+          <% else %>
+              <%= link_to "Poke sent/received", orchestra_invitations_path(@orchestra), :id => 'show-poke'%>
+          <% end %>
         </div>
       </div>
       <div class="show-image col-6">
+        <% if @orchestra.photo.key.nil? %>
         <div class="image">
-          <%= cl_image_tag @orchestra.photo.key, height: 300, width: 400, crop: :fill,  :id => 'orchestra-banner'%>
+          <%=  image_tag 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', height: 300, width: 400, crop: :fill, :id => 'orchestra-banner' %>
         </div>
+        <% else %>
+        <div class="image">
+            <%= cl_image_tag @orchestra.photo.key, height: 300, width: 400, crop: :fill,  :id => 'orchestra-banner'%>
+        </div>
+        <% end %>
       </div>
 
 
     </div>
 
     <div class="show-description">
-
-
         <div class="show-infos">
-
           <p><span>Type</span> : <%= @orchestra.type_orchestra %></p>
           <p><span>Style</span> : <%= @orchestra.style %></p>
           <p><span>Size</span> : <%= @orchestra.size %></p>
@@ -51,7 +61,17 @@
   </div>
 
   <div class="show-container">
-    <h1>We're looking for cool people to join us</h1>
+    <% if @orchestra ==  Orchestra.find_by(user_id: current_user.id)  %>
+      <div class="user-post-cta">
+        <h1>Add your open positions : </h1>
+        <div class='btn-new-post'>
+          <%= link_to "Create Post", new_orchestra_post_path(@orchestra), :id => 'show-poke-black'%>
+          <%= image_tag "add-icon", :id => 'add-icon'%>
+        </div>
+      </div>
+    <% else %>
+      <h1>We're looking for cool people to join us</h1>
+    <% end %>
     <div class="post-display">
       <div class="recurrent-post">
         <h3>Recurrent positions</h3>
@@ -65,9 +85,21 @@
               <div class="post-card-info">
                 <div class="post-card-title">
                   <h4><%= post.instrument %></h4>
-                  <div class='btn-poke3'>
-                    <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke2'%>
-                    <%= image_tag "Group 3294"%>
+                  <div class="cta">
+                    <% if @orchestra ==  Orchestra.find_by(user_id: current_user.id)  %>
+                      <div class="edit-btn">
+                        <%= link_to "edit post", '#', :id => 'edit-btn-text'%>
+                        <%= image_tag "edit white2", :id => 'edit-icon'%>
+                      </div>
+                    <% else %>
+                      <div class='btn-poke-orchestra-post'>
+                        <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke-black'%>
+                         <%#= simple_form_for [@orchestra, @invitation] do |f| %>
+                           <%#= f.submit 'Poke us', class: 'btn-poke-orchestra-post', :id => 'show-poke-black'%>
+                        <%# end %>
+                        <%= image_tag "Group 3294", :id => 'right-arrow-black'%>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
                 <p>Periodicity : <%= post.periodicity %></p>
@@ -91,9 +123,18 @@
               <div class="post-card-info">
                 <div class="post-card-title">
                   <h4><%= post.instrument %></h4>
-                  <div class='btn-poke3'>
-                    <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke2'%>
-                    <%= image_tag "Group 3294"%>
+                  <div class="cta">
+                    <% if @orchestra ==  Orchestra.find_by(user_id: current_user.id)  %>
+                      <div class="edit-btn">
+                        <%= link_to "edit post", '#', :id => 'edit-btn-text'%>
+                        <%= image_tag "edit white2", :id => 'edit-icon'%>
+                      </div>
+                    <% else %>
+                      <div class='btn-poke-orchestra-post'>
+                        <%= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke-black'%>
+                        <%= image_tag "Group 3294", :id => 'right-arrow-black'%>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
                 <p>Date: <%= post.date %></p>

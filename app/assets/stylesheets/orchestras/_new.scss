@@ -4,14 +4,16 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #326F9A, white);
+  background: linear-gradient(120deg, #191919, #1e1e1e);
 }
 
 .block-col {
   max-width: 700px;
   width: 100%;
-  background-color: #fff;
+  background: linear-gradient(120deg, #74747469, #434343c2);
   padding: 25px 30px;
+  color: white;
+  font-family: 'Rubik', sans-serif;
   border-radius: 30px;
 }
 
@@ -22,14 +24,26 @@
   margin-bottom: 20px;
 }
 
-.block-col .title-col::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  background: linear-gradient(135deg, #326F9A, white);
+#edit-title-col {
+  background-image: linear-gradient(135deg, #48b2fd, rgb(157, 237, 253));
+  background-size: 47.5% 4px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 300ms ease;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+#create-title-col {
+  background-image: linear-gradient(135deg, #48b2fd, rgb(157, 237, 253));
+  background-size: 55% 4px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 300ms ease;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 5px;
 }
 
 .block-col .user-details-col {
