@@ -102,6 +102,11 @@
   border: none;
 }
 
+#btn-orchestras-submit {
+  font-size: var(--bs-body-font-size);
+  padding-left: 30px !important;
+}
+
 .nav-button-mc {
   background: linear-gradient(135deg, #b1f5e7, rgb(209, 255, 216));
   font-weight: 500;
@@ -152,11 +157,44 @@
   border: none;
 }
 
+
+
 #show-poke-black {
   text-decoration: none;
   padding: 8px 24px;
   color: black;
   border-radius: 50px;
+  background-color: transparent;
+}
+
+#show-poke-black-big {
+  text-decoration: none;
+  color: black;
+  border-radius: 50px;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  padding: 1px 20px;
+}
+
+#new_invitation {
+  font-size: medium;
+}
+
+.btn-poke-a-musician {
+  background: linear-gradient(135deg, #326F9A, #5a829f);
+  color: white;
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+#btn-orchestras-submit {
+  font-size: var(--bs-body-font-size);
+  padding-left: 30px !important;
 }
 
 //edit button
