@@ -14,14 +14,15 @@
               <%= link_to "edit profile", edit_orchestra_path(@orchestra), :id => 'edit-btn-text'%>
               <%= image_tag "edit white2", :id => 'edit-icon'%>
             </div>
-          <% else %>
+           <% elsif @orchestra.invitations.where(musician: @musician).empty? %>
             <div class=''>
-              <%#= link_to "Poke us", new_orchestra_invitation_path(@orchestra), :id => 'show-poke-black'%>
               <%= simple_form_for [@orchestra, @invitation] do |f| %>
                 <%= f.submit 'Poke us', :id => 'show-poke-black'%>
                 <%= image_tag "Group 3294", :id => 'right-arrow-black-big'%>
               <% end %>
             </div>
+          <% else %>
+              <%= link_to "Poke sent", orchestra_invitations_path(@orchestra), :id => 'show-poke'%>
           <% end %>
         </div>
       </div>

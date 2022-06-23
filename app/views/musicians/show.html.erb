@@ -13,19 +13,24 @@
           <h1 id="name"><%= @musician.first_name%> <%= @musician.last_name %></h1>
         </div>
         <div class="show-cta">
+        <%# byebug %>
           <% if @musician ==  Musician.find_by(user_id: current_user.id) %>
             <div class="">
               <%= link_to "edit profile", edit_musician_path(@musician), :id => 'show-poke'%>
               <%= image_tag "fi-rr-arrow-right"%>
             </div>
-          <% else %>
-            <div class="">
-              <%#= link_to "Poke me", new_musician_invitation_path(@musician), :id => 'show-poke'%>
+          <% elsif @musician.invitations.where(orchestra: @orchestra).empty? %>
+            <div class="empty" data-controller="poke-sent" >
               <%= simple_form_for [@musician, @invitation] do |f| %>
-                <%= f.submit 'Poke us', class: "btn-poke2", :id => 'show-poke'%>
-              <% end %>
+                <%= f.submit 'Poke us',
+                              class: "btn-poke2",
+                              :id => 'show-poke'
+                %>
               <%= image_tag "fi-rr-arrow-right"%>
+              <% end %>
             </div>
+          <% else %>
+              <%= link_to "Poke sent", musician_invitations_path(@musician), :id => 'show-poke'%>
           <% end %>
         </div>
       </div>
