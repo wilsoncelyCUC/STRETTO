@@ -1,3 +1,17 @@
+<h1>My pokes</h1>
+
+<ul class="list-inline tabs-underlined">
+  <li>
+    <a href="#" class="tab-underlined active">Sent</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">Received</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">Accepted</a>
+  </li>
+</ul>
+
 <%  if @musician = Musician.find_by(user_id: current_user.id) %>
   <h1>Pokes received from Orchestras</h1>
   <%  @invitations_received.each do |element| %>

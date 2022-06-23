@@ -22,7 +22,7 @@
               <% end %>
             </div>
           <% else %>
-              <%= link_to "Poke sent", orchestra_invitations_path(@orchestra), :id => 'show-poke'%>
+              <%= link_to "Poke sent/received", orchestra_invitations_path(@orchestra), :id => 'show-poke'%>
           <% end %>
         </div>
       </div>
@@ -42,10 +42,7 @@
     </div>
 
     <div class="show-description">
-
-
         <div class="show-infos">
-
           <p><span>Type</span> : <%= @orchestra.type_orchestra %></p>
           <p><span>Style</span> : <%= @orchestra.style %></p>
           <p><span>Size</span> : <%= @orchestra.size %></p>
