@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: black;
+  background: transparent;
   opacity: 0.8;
   position: static;
   width: 100%;
@@ -19,4 +19,8 @@
 .nav-link {
   color: white !important;
   text-decoration: none;
+}
+
+.container-fluid {
+  background: transparent;
 }

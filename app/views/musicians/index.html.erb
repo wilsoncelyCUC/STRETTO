@@ -1,5 +1,5 @@
 <body class='index-body'>
-  <div class="banner" style="background: linear-gradient(180deg, #030435, black);">
+  <div class="banner" style="background-image: linear-gradient(to bottom, #48b2fd, #3c8ed6, #306baf, #224b88, #132d63, #1c1f4d, #1b1237, #180024, #1a001a, #170010, #0f0006, #000000);;">
     <div class="container">
       <div class="info">
         <h1>Welcome to Stretto</h1>
@@ -56,27 +56,39 @@
         <div class="container d-flex justify-content-start body-page">
             <div class="row">
               <% @musicians.each do |musician| %>
+
                   <div class="card-profile col-4 m-3">
-                    <div class="musician-card-top-banner">
-                      <div class="row">
-                        <div class="musician-name col-8">
-                          <h1><%= musician.first_name%></h1>
-                          <h1> <%= musician.last_name%></h1>
-                        </div>
-                        <div class="col-4">
-                          <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
+
+                    <div class="musician-background">
+
+                      <div class="musician-card-top-banner">
+                        <div class="row">
+                          <div class="musician-name col-8">
+                            <h1><%= musician.first_name%></h1>
+                            <h1> <%= musician.last_name%></h1>
+                          </div>
+                          <div class="col-4">
+                            <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
+                            <% if musician.url_photo %>
+                              <%= image_tag  musician.url_photo, class: "avatar-large-musician" %>
+                            <% else %>
+                                <%= cl_image_tag musician.photo.key%>
+                            <%  end %>
+                          </div>
 
                         </div>
                       </div>
-                    </div>
-                    <div class="musician-infos">
-                      <h1><strong>Level:</strong> <%= musician.level %></h1>
-                      <h2><strong>Instrument:</strong> <%= musician.instrument %></h2>
-                      <h2><strong>Style:</strong> <%= musician.style %></h2>
-                      <%# <h2>Frequency: <%= orchestra.frequency %>
-                      <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
-                      <%= link_to "Poke", new_musician_invitation_path(musician), class:"card-link"%>
-                      <%= link_to "More info", musician_path(musician), class:"card-link"%>
+                        <div class="musician-infos">
+                          <h1><strong>Level:</strong> <%= musician.level %></h1>
+                          <h2><strong>Instrument:</strong> <%= musician.instrument %></h2>
+                          <h2><strong>Style:</strong> <%= musician.style %></h2>
+                          <%# <h2>Frequency: <%= orchestra.frequency %>
+                          <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
+                          <h3>
+                            <%= link_to "Poke", new_musician_invitation_path(musician), class:"card-link"%>
+                            <%= link_to "More info", musician_path(musician), class:"card-link"%>
+                          </h3>
+                        </div>
                     </div>
                   </div>
               <% end %>
