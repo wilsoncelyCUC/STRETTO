@@ -51,33 +51,55 @@
     </div>
   </div>
 
-  <div class="container d-flex margin-top-negative">
-    <div class="row">
-      <div class="container d-flex justify-content-start body-page">
-        <div class="row">
-          <% @orchestras.each do |orchestra| %>
-            <div class="card-profile col-4 m-3">
-              <div class="musician-card-top-banner">
-                <div class="row">
-                  <div class="musician-name col-8">
-                    <h1><%= orchestra.name %></h1>
+
+
+<div class="container d-flex  margin-top-negative">
+      <div class="row">
+        <div class="container d-flex justify-content-start body-page">
+            <div class="row">
+              <% @orchestras.each do |orchestra| %>
+
+                  <div class="card-profile col-4 m-3">
+
+                    <div class="orchestra-background">
+
+                      <div class="orchestra-card-top-banner">
+                        <div class="row">
+                          <div class="musician-name col-6">
+                            <h1><%= orchestra.name%></h1>
+                          </div>
+                          <div class="col-6">
+                            <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                          </div>
+
+                        </div>
+                      </div>
+                        <div class="musician-infos">
+                          <h1><strong>Size:</strong> <%= orchestra.size %></h1>
+                          <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %></h2>
+                          <h2><strong>Style:</strong> <%= orchestra.style %></h2>
+                          <%# <h2>Frequency: <%= orchestra.frequency %>
+                          <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
+                          <h3>
+                            <%= link_to "Poke", new_orchestra_invitation_path(orchestra), class:"card-link"%>
+                            <%= link_to "More info", orchestra_path(orchestra), class:"card-link"%>
+                          </h3>
+                        </div>
+                    </div>
                   </div>
-                  <div class="col-4">
-                    <img class="card-img-top height:100px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-                  </div>
-                </div>
-              </div>
-              <div class="musician-infos">
-                <h2><strong>Size:</strong> <%= orchestra.size %></h2>
-                <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %></h2>
-                <h2><strong>Bio:</strong> <%= orchestra.bio  %></h2>
-                <%= link_to "Send an invitation", new_orchestra_invitation_path(orchestra), class:"card-link"%>
-                <%= link_to "More info", orchestra_path(orchestra), class:"card-link"%>
-              </div>
+              <% end %>
             </div>
-          <% end %>
         </div>
       </div>
-    </div>
   </div>
+</body>
+
+
+
+
+
+
+
+
+
 </body>
