@@ -14,13 +14,17 @@
               <%= link_to "edit profile", edit_orchestra_path(@orchestra), :id => 'edit-btn-text'%>
               <%= image_tag "edit white2", :id => 'edit-icon'%>
             </div>
-           <% elsif @orchestra.invitations.where(musician: @musician).empty? %>
+           <% elsif @orchestra.invitations.where(musician: @musician).empty? ||  (@orchestra.invitations.where(musician: @musician)).find_by(status: "rejected") %>
             <div class=''>
               <%= simple_form_for [@orchestra, @invitation] do |f| %>
                 <%= f.submit 'Poke us', :id => 'show-poke-black'%>
                 <%= image_tag "Group 3294", :id => 'right-arrow-black-big'%>
               <% end %>
             </div>
+          <% elsif (@orchestra.invitations.where(musician: @musician)).find_by(status: "accepted")%>
+              <div class="btn-friends">
+                <%= link_to "We are Friends", orchestra_invitations_path(@orchestra)%>
+              </div>
           <% else %>
               <%= link_to "Poke sent/received", orchestra_invitations_path(@orchestra), :id => 'show-poke'%>
           <% end %>
@@ -54,7 +58,11 @@
           <%= @orchestra.description %>
         </div>
 
-
+      <% if @invitation_check %>
+        <div class="space-friends">
+          <p><span>E-Mail</span> : <%= @email_orchestra %></p>
+          <p><span>Mobile</span> : +33 6 33 26 49 03</p>
+       <% end %>
 
     </div>
 

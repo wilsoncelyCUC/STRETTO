@@ -1,3 +1,5 @@
+
+
 .btn-home {
   color: #4A4A4A;
   border: 1px solid #4A4A4A;
@@ -206,6 +208,45 @@
   background-size: 100%;
 }
 
+// show friends
+
+.btn-friends {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: #030435;
+}
+
+.btn-friends:hover {
+  background: #030435;
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  border: none;
+  text-decoration: none;
+  color: white;
+}
+.btn-friends a {
+  text-decoration: none;
+  color: black;
+}
+
+.btn-friends a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.space-friends {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  padding: 8px 24px ;
+  border-radius: 10px ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: #030435;
+}
 
 //new post
 .btn-new-post {

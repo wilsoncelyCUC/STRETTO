@@ -72,7 +72,7 @@
                             <% if musician.url_photo %>
                               <%= image_tag  musician.url_photo, class: "avatar-large-musician" %>
                             <% else %>
-                                <%= cl_image_tag musician.photo.key%>
+                              <%= cl_image_tag musician.photo.key, class: "avatar-large-musician" %>
                             <%  end %>
                           </div>
 

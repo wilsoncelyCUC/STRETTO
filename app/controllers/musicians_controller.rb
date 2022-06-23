@@ -16,6 +16,11 @@ class MusiciansController < ApplicationController
     @musician = Musician.find(params[:id])
     @invitation = Invitation.new
     @orchestra = Orchestra.find_by(user_id: current_user.id)
+    if @musician && @orchestra
+      @invitation_check = Invitation.find_by(orchestra_id: @orchestra.id , musician_id: @musician.id, status: 2)
+      @email_musician = User.find(@musician.user_id).email
+    end
+
   end
 
   def new

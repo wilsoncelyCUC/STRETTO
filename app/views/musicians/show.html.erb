@@ -19,7 +19,7 @@
               <%= link_to "edit profile", edit_musician_path(@musician), :id => 'show-poke'%>
               <%= image_tag "fi-rr-arrow-right"%>
             </div>
-          <% elsif @musician.invitations.where(orchestra: @orchestra).empty? %>
+          <% elsif (@musician.invitations.where(orchestra: @orchestra)).empty? ||  (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "rejected") %>
             <div class="empty" data-controller="poke-sent" >
               <%= simple_form_for [@musician, @invitation] do |f| %>
                 <%= f.submit 'Poke us',
@@ -29,6 +29,10 @@
               <%= image_tag "fi-rr-arrow-right"%>
               <% end %>
             </div>
+          <% elsif (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "accepted")%>
+              <div class="btn-friends">
+                <%= link_to "We are Friends", musician_invitations_path(@musician)%>
+              </div>
           <% else %>
               <%= link_to "Poke sent/received", musician_invitations_path(@musician), :id => 'show-poke'%>
           <% end %>
@@ -47,6 +51,13 @@
         <div class="infos-right">
           <p><span>Birthday</span> : <%= @musician.birthday %></p>
           <p><span>Bio</span> : <%= @musician.bio %></p>
+        </div>
+
+       <% if @invitation_check %>
+        <div class="space-friends">
+          <p><span>E-Mail</span> : <%= @email_musician %></p>
+          <p><span>Mobile</span> : +33 6 33 26 49 03</p>
+       <% end %>
         </div>
       </div>
     </div>
