@@ -1,9 +1,9 @@
 class Musician < ApplicationRecord
   has_many :invitations, dependent: :destroy
-  validates :first_name, length: { maximum: 8,
-    too_long: "%{count} characters is the maximum allowed" }
-  validates :last_name, length: { maximum: 8,
-    too_long: "%{count} characters is the maximum allowed" }
+  #validates :first_name, length: { maximum: 8,
+   # too_long: "%{count} characters is the maximum allowed" }
+  #validates :last_name, length: { maximum: 8,
+   # too_long: "%{count} characters is the maximum allowed" }
   belongs_to :user
 
   STYLE = ["Classic", "Pop", "Electronic", "Jazz"]

@@ -18,7 +18,9 @@
             <% level = "#{params[:search][:level]}" %>
             <% style = "#{params[:search][:style]}" %>
             <% zip = "#{params[:search][:zip_code]}" %>
-            <% message = "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}" %>
+            <% post = "#{params[:search][:post]}"%>
+            <%# byebug %>
+            <% message = "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}#{params[:search][:post]} " %>
             <% if message.blank? %>
               <p>We found <%= @musicians.count %> Musicians out of <%= Musician.count %> on our website.</p>
             <% else %>
@@ -36,6 +38,9 @@
                     <% end %>
                     <% if !zip.blank? %>
                       <li>Zip: <%= zip %></li>
+                    <% end %>
+                    <% if !post.blank? %>
+                      <li>Post created: <%= Post.find(params[:search][:post]).tag_post %></li>
                     <% end %>
                   </ul>
                 </div>
@@ -64,8 +69,13 @@
                       <div class="musician-card-top-banner">
                         <div class="row">
                           <div class="musician-name col-8">
+                          <%# byebug %>
+                            <% if (musician.first_name + musician.last_name).length < 18 %>
                             <h4><%= musician.first_name%></h4>
                             <h1> <%= musician.last_name%></h1>
+                            <% else %>
+                             <h4><%= musician.first_name%></h4>
+                            <% end %>
                           </div>
                           <div class="col-4">
                             <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->

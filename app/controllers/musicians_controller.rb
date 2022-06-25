@@ -6,9 +6,16 @@ class MusiciansController < ApplicationController
   def index
     @musicians = Musician.all
     # search bar
+    #byebug
     if params[:search]
-      @filter =  "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}"
-      @musicians = Musician.search_with_bar(@filter)
+      if !params[:search][:post].empty?
+        post = Post.find(params[:search][:post])
+        @filter =  "#{post.instrument} #{ post.style} #{post.level}"
+        @musicians = Musician.search_with_bar(@filter)
+      else
+        @filter =  "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}"
+        @musicians = Musician.search_with_bar(@filter)
+      end
     end
   end
 
