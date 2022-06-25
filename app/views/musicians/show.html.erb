@@ -6,8 +6,10 @@
         <!-- <img class="avatar-large2" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /> -->
         <% if @musician.url_photo %>
             <%= image_tag  @musician.url_photo, class: "avatar-large2" %>
-         <% else %>
+         <% elsif @musician.photo.key%>
             <%= cl_image_tag @musician.photo.key , crop: :thumb, gravity: :face, class: "avatar-large2" %>
+         <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large-musician" %>
         <%  end %>
         <div class="mc-title">
           <h1 id="name"><%= @musician.first_name%> <%= @musician.last_name %></h1>
@@ -19,7 +21,7 @@
               <%= link_to "edit profile", edit_musician_path(@musician), :id => 'show-poke'%>
               <%= image_tag "fi-rr-arrow-right"%>
             </div>
-          <% elsif @musician.invitations.where(orchestra: @orchestra).empty? %>
+          <% elsif (@musician.invitations.where(orchestra: @orchestra)).empty? ||  (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "rejected") %>
             <div class="empty" data-controller="poke-sent" >
               <%= simple_form_for [@musician, @invitation] do |f| %>
                 <%= f.submit 'Poke us',
@@ -29,6 +31,10 @@
               <%= image_tag "fi-rr-arrow-right"%>
               <% end %>
             </div>
+          <% elsif (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "accepted")%>
+              <div class="btn-friends">
+                <%= link_to "We are Friends", musician_invitations_path(@musician)%>
+              </div>
           <% else %>
               <%= link_to "Poke sent/received", musician_invitations_path(@musician), :id => 'show-poke'%>
           <% end %>
@@ -47,6 +53,13 @@
         <div class="infos-right">
           <p><span>Birthday</span> : <%= @musician.birthday %></p>
           <p><span>Bio</span> : <%= @musician.bio %></p>
+        </div>
+
+       <% if @invitation_check %>
+        <div class="space-friends">
+          <p><span>E-Mail</span> : <%= @email_musician %></p>
+          <p><span>Mobile</span> : <%= @musician.phone_number %></pre></p>
+       <% end %>
         </div>
       </div>
     </div>

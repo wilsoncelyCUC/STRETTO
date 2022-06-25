@@ -35,8 +35,8 @@
               <% elsif invitation.rejected? %>
                 <p><strong>Keep trying! 👎</strong></p>
               <% else %>
-                <%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
-                <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                <%=link_to 'Accept', invitation_path(invitation, status: :accepted, orchestraparams: Orchestra.find(invitation.orchestra_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, orchestraparams: Orchestra.find(invitation.orchestra_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
               <% end %>
             </div>
           </div>
@@ -114,8 +114,8 @@
               <% elsif invitation.rejected? %>
                 <p><strong>Keep trying! 👎</strong></p>
               <% else %>
-                <%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
-                <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                <%=link_to 'Accept', invitation_path(invitation, status: :accepted, musicianparams: Musician.find(invitation.musician_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, musicianparams: Musician.find(invitation.musician_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
               <% end %>
         </div>
       </div>
