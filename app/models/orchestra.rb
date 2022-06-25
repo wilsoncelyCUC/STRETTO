@@ -1,6 +1,6 @@
 class Orchestra < ApplicationRecord
-  validates :name, length: { maximum: 16,
-    too_long: "%{count} characters is the maximum allowed" }
+  #validates :name, length: { maximum: 16,
+  #  too_long: "%{count} characters is the maximum allowed" }
 
   has_many :posts
   has_many :invitations, dependent: :destroy
@@ -23,5 +23,8 @@ class Orchestra < ApplicationRecord
 
   # Cloudinary
   has_one_attached :photo
+
+
+
 
 end

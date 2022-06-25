@@ -12,6 +12,12 @@ class PostsController < ApplicationController
     find_orchestra
     @post = Post.new(post_params)
     @post.orchestra = @orchestra
+    if @post.type_post == "Recurrent"
+      @post.tag_post = "Recurrent #{@post.instrument}-#{@post.level}"
+    else
+      @post.tag_post = "OneShot #{@post.instrument}-#{@post.level} for #{@post.date}"
+    end
+
     if @post.save
       redirect_to orchestra_path(@orchestra)
     else
