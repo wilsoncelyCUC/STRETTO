@@ -55,7 +55,6 @@ class InvitationsController < ApplicationController
 
 
   def update
-    byebug
     @status = params[:status]
 
     if Musician.find_by(user_id: current_user.id)

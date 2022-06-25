@@ -19,7 +19,7 @@
           <% if @musician ==  Musician.find_by(user_id: current_user.id) %>
             <div class="edit-btn">
               <%= link_to "edit profile", edit_musician_path(@musician), :id => 'edit-btn-text'%>
-              <%= image_tag "edit white2", :id => 'edit-icon'%>
+              <%= image_tag "edit white2.png", :id => 'edit-icon'%>
             </div>
           <% elsif (@musician.invitations.where(orchestra: @orchestra)).empty? ||  (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "rejected") %>
             <div class="btn-poke-a-musician" data-controller="poke-sent" >
@@ -28,7 +28,9 @@
                               :id => 'show-poke-black-big'
                 %>
               <% end %>
-              <%= image_tag "Group 3294", :id => 'right-arrow-black-big'%>
+
+              <%= image_tag "Group 3294.png", :id => 'right-arrow-black-big'%>
+
             </div>
           <% elsif (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "accepted")%>
               <div class="btn-friends">

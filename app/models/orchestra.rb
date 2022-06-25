@@ -1,7 +1,10 @@
 class Orchestra < ApplicationRecord
-   has_many :posts
+  validates :name, length: { maximum: 16,
+    too_long: "%{count} characters is the maximum allowed" }
+
+  has_many :posts
   has_many :invitations, dependent: :destroy
-#  has_many Musicians through invitation
+
 
   belongs_to :user
   STYLE = ["Classic","Pop","Electronic", "Jazz", ]
