@@ -24,13 +24,13 @@
           <% end%>
           </li>
           <li class="nav-item dropdown">
-          <% if @musician = Musician.find_by(user_id: current_user.id) %>
+          <% if @musician = Musician.find_by(user_id: current_user.id) && @musician.photo.key %>
             <%= cl_image_tag @musician.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% elsif @orchestra = Orchestra.find_by(user_id: current_user.id)%>
+            <% elsif @orchestra = Orchestra.find_by(user_id: current_user.id) && @orchestra.photo.key %>
             <%= cl_image_tag @orchestra.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
             <%= image_tag "https://i1.wp.com/suiteplugins.com/wp-content/uploads/2019/10/blank-avatar.jpg?ssl=1", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end%>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <% if current_user %>
                 <% if @musician_nav = Musician.find_by(user_id: current_user.id)%>
