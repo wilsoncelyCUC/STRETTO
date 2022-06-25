@@ -1,5 +1,5 @@
 <body class="show-body">
-  <div class="show-container">
+  <div class="show-container-mc">
     <div class="show-banner row">
       <div class="show-title col-12">
 
@@ -23,13 +23,14 @@
             </div>
           <% elsif (@musician.invitations.where(orchestra: @orchestra)).empty? ||  (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "rejected") %>
             <div class="btn-poke-a-musician" data-controller="poke-sent" >
-
               <%= simple_form_for [@musician, @invitation] do |f| %>
                 <%= f.submit 'Poke us',
-                              :id => 'show-poke-white'
+                              :id => 'show-poke-black-big'
                 %>
               <% end %>
-              <%= image_tag "fi-rr-arrow-right.png", :id => 'show-btn-icon'%>
+
+              <%= image_tag "Group 3294.png", :id => 'right-arrow-black-big'%>
+
             </div>
           <% elsif (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "accepted")%>
               <div class="btn-friends">

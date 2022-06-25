@@ -192,12 +192,15 @@
   border-radius: 50px ;
   transition: all 0.2s ease;
   border: none;
+  display: flex;
+  align-items: center;
 }
 
 #btn-orchestras-submit {
   font-size: var(--bs-body-font-size);
   padding-left: 30px !important;
 }
+
 
 //edit button
 .edit-btn {
