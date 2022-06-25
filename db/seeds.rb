@@ -63,6 +63,8 @@ end
     phone_number: Faker::PhoneNumber.phone_number_with_country_code
 
   )
+    file = URI.open('https://www.thispersondoesnotexist.com/image')
+    my_orchestra.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   puts "the orchestra #{my_orchestra.name} with #{my_orchestra.style} style; was created"
 
   #Creation of 5 Post Recurrent
