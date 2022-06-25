@@ -16,7 +16,6 @@ class InvitationsController < ApplicationController
       @invitations_received = @invitations.where(status: 0)
       @invitations_accepted = @invitations.where(status: 2)
       #comment
-
     end
   end
 
@@ -57,25 +56,30 @@ class InvitationsController < ApplicationController
 
   def update
     @status = params[:status]
+
     if Musician.find_by(user_id: current_user.id)
+      orchestra =  params[:orchestraparams]
+      @orchestra = Orchestra.find(orchestra)
       @musician = Musician.find_by(user_id: current_user.id)
-      @invitation = Invitation.find_by(musician: @musician)
+      @invitation = Invitation.where(musician_id: @musician.id, orchestra_id: @orchestra.id)
       if @status == 'accepted'
-        @invitation.accepted!
+        @invitation.first.accepted!
         redirect_to musician_invitations_path(@musician)
       else @status == 'rejected'
-        @invitation.rejected!
+        @invitation.first.rejected!
         redirect_to musician_invitations_path(@musician)
       end
     #route other than musician to invitations (orchestra)
     else
+      musician =  params[:musicianparams]
+      @musician = Musician.find(musician)
       @orchestra =  Orchestra.find_by(user_id: current_user.id)
-      @invitation = Invitation.find_by(orchestra: @orchestra)
+      @invitation = Invitation.where(musician_id: @musician.id, orchestra_id: @orchestra.id)
       if @status == 'accepted'
-        @invitation.accepted!
+        @invitation.first.accepted!
         redirect_to orchestra_invitations_path(@orchestra)
       else @status == 'rejected'
-        @invitation.rejected!
+        @invitation.first.rejected!
         redirect_to orchestra_invitations_path(@orchestra)
       end
     end

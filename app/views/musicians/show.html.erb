@@ -1,13 +1,15 @@
 <body class="show-body">
-  <div class="show-container">
+  <div class="show-container-mc">
     <div class="show-banner row">
       <div class="show-title col-12">
 
         <!-- <img class="avatar-large2" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /> -->
         <% if @musician.url_photo %>
             <%= image_tag  @musician.url_photo, class: "avatar-large2" %>
-         <% else %>
+         <% elsif @musician.photo.key%>
             <%= cl_image_tag @musician.photo.key , crop: :thumb, gravity: :face, class: "avatar-large2" %>
+         <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large-musician" %>
         <%  end %>
         <div class="mc-title">
           <h1 id="name"><%= @musician.first_name%> <%= @musician.last_name %></h1>
@@ -15,20 +17,25 @@
         <div class="show-cta">
         <%# byebug %>
           <% if @musician ==  Musician.find_by(user_id: current_user.id) %>
-            <div class="">
-              <%= link_to "edit profile", edit_musician_path(@musician), :id => 'show-poke'%>
-              <%= image_tag "fi-rr-arrow-right"%>
+            <div class="edit-btn">
+              <%= link_to "edit profile", edit_musician_path(@musician), :id => 'edit-btn-text'%>
+              <%= image_tag "edit white2.png", :id => 'edit-icon'%>
             </div>
-          <% elsif @musician.invitations.where(orchestra: @orchestra).empty? %>
-            <div class="empty" data-controller="poke-sent" >
+          <% elsif (@musician.invitations.where(orchestra: @orchestra)).empty? ||  (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "rejected") %>
+            <div class="btn-poke-a-musician" data-controller="poke-sent" >
               <%= simple_form_for [@musician, @invitation] do |f| %>
                 <%= f.submit 'Poke us',
-                              class: "btn-poke2",
-                              :id => 'show-poke'
+                              :id => 'show-poke-black-big'
                 %>
-              <%= image_tag "fi-rr-arrow-right"%>
               <% end %>
+
+              <%= image_tag "Group 3294.png", :id => 'right-arrow-black-big'%>
+
             </div>
+          <% elsif (@musician.invitations.where(orchestra: @orchestra)).find_by(status: "accepted")%>
+              <div class="btn-friends">
+                <%= link_to "We are Friends", musician_invitations_path(@musician)%>
+              </div>
           <% else %>
               <%= link_to "Poke sent/received", musician_invitations_path(@musician), :id => 'show-poke'%>
           <% end %>
@@ -47,6 +54,13 @@
         <div class="infos-right">
           <p><span>Birthday</span> : <%= @musician.birthday %></p>
           <p><span>Bio</span> : <%= @musician.bio %></p>
+        </div>
+
+       <% if @invitation_check %>
+        <div class="space-friends">
+          <p><span>E-Mail</span> : <%= @email_musician %></p>
+          <p><span>Mobile</span> : <%= @musician.phone_number %></pre></p>
+       <% end %>
         </div>
       </div>
     </div>

@@ -37,6 +37,11 @@ before_action :find_musician_nav
     @post = Post.new
     @invitation = Invitation.new
     @musician = Musician.find_by(user_id: current_user.id)
+
+    if  @musician && @orchestra
+      @invitation_check = Invitation.find_by(musician_id: @musician.id , orchestra_id: @orchestra.id, status: 2)
+      @email_orchestra = User.find(@orchestra.user_id).email
+    end
   end
 
   def new
@@ -80,7 +85,7 @@ before_action :find_musician_nav
   end
 
   def orchestra_params
-    params.require(:orchestra).permit(:style, :type, :size, :zip_code, :photo, :frequency, :name, :description, :bio)
+    params.require(:orchestra).permit(:style, :type, :size, :zip_code, :photo, :frequency, :type_orchestra, :phone_number, :name, :description, :bio)
   end
 
   def find_orchestra_nav

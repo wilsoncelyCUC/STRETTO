@@ -6,9 +6,16 @@ class MusiciansController < ApplicationController
   def index
     @musicians = Musician.all
     # search bar
+    #byebug
     if params[:search]
-      @filter =  "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}"
-      @musicians = Musician.search_with_bar(@filter)
+      if !params[:search][:post].empty?
+        post = Post.find(params[:search][:post])
+        @filter =  "#{post.instrument} #{ post.style} #{post.level}"
+        @musicians = Musician.search_with_bar(@filter)
+      else
+        @filter =  "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}"
+        @musicians = Musician.search_with_bar(@filter)
+      end
     end
   end
 
@@ -16,6 +23,11 @@ class MusiciansController < ApplicationController
     @musician = Musician.find(params[:id])
     @invitation = Invitation.new
     @orchestra = Orchestra.find_by(user_id: current_user.id)
+    if @musician && @orchestra
+      @invitation_check = Invitation.find_by(orchestra_id: @orchestra.id , musician_id: @musician.id, status: 2)
+      @email_musician = User.find(@musician.user_id).email
+    end
+
   end
 
   def new
@@ -62,7 +74,7 @@ class MusiciansController < ApplicationController
   end
 
   def musician_params
-    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :url_photo, :instrument, :style, :zip_code, :user, :photo, :bio)
+    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :url_photo, :instrument, :phone_number ,:style, :zip_code, :user, :photo, :bio)
   end
 
   def find_musician_nav

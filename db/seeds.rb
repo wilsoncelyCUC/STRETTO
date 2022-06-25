@@ -30,18 +30,22 @@ user_musician = User.create!(
     level: ["Beginner", "Intermediate", "Advanced"].sample,
     instrument: ["Accordion", "Bagpipe", "Banjo", "Bass drum", "Bass guitar", "Bell", "Bongo drum", "Bugle", "Castanets", "Cello", "Clarinet", "Concertina", "Conga", "Cornet", "Cymbal", "Double bass", "Drums", "Electric guitar", "Flute", "French horn", "Glockenspiel", "Gong", "Grand piano", "Guitar", "Harmonica", "Harp", "Keyboard", "Mandolin", "Maracas", "Marimba", "Microphone", "Oboe", "Organ", "Pan flute", "Piano", "Recorder", "Saxophone", "Sitar", "Snare drum", "Tambourine", "Timpani", "Triangle", "Trombone", "Trumpet", "Tuba", "Ukulele", "Vibraphone", "Violin", "Xylophone", "Zither"].sample,
     style: ["Classic", "Pop", "Electronic", "Jazz"].sample,
-    url_photo: "https://www.thispersondoesnotexist.com/image",
     bio: Faker::Lorem.sentence(word_count: 6),
     zip_code: [75000, 75001, 75002, 75003, 75004, 75005, 75006, 75007, 75008, 75009, 75010, 75011, 75012, 75013, 75014, 75015, 75016, 75017, 75018, 75019, 75020].sample,
-    user_id: user_musician.id
+    user_id: user_musician.id,
+    phone_number: Faker::PhoneNumber.phone_number_with_country_code
   )
-puts "the musician #{mymusician.first_name} #{mymusician.last_name} was created"
+  file = URI.open('https://www.thispersondoesnotexist.com/image')
+  mymusician.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  puts "the musician #{mymusician.first_name} #{mymusician.last_name} was created"
 end
+
 #=============================
 
 
 #Creation of 30 Orchestras
 30.times do
+
   user_orchestra = User.create!(
     email: Faker::Internet.email ,
     password: 'password'
@@ -55,7 +59,9 @@ end
     description: Faker::Lorem.sentence(word_count: 30),
     name: Faker::Music.band,
     bio: Faker::Lorem.sentence(word_count: 6),
-    user_id: user_orchestra.id
+    user_id: user_orchestra.id,
+    phone_number: Faker::PhoneNumber.phone_number_with_country_code
+
   )
   puts "the orchestra #{my_orchestra.name} with #{my_orchestra.style} style; was created"
 

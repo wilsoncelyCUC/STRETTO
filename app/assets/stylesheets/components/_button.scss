@@ -1,3 +1,5 @@
+
+
 .btn-home {
   color: #4A4A4A;
   border: 1px solid #4A4A4A;
@@ -102,6 +104,11 @@
   border: none;
 }
 
+#btn-orchestras-submit {
+  font-size: var(--bs-body-font-size);
+  padding-left: 30px !important;
+}
+
 .nav-button-mc {
   background: linear-gradient(135deg, #b1f5e7, rgb(209, 255, 216));
   font-weight: 500;
@@ -152,12 +159,48 @@
   border: none;
 }
 
+
+
 #show-poke-black {
   text-decoration: none;
   padding: 8px 24px;
   color: black;
   border-radius: 50px;
+  background-color: transparent;
 }
+
+#show-poke-black-big {
+  text-decoration: none;
+  color: black;
+  border-radius: 50px;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  padding: 1px 20px;
+}
+
+#new_invitation {
+  font-size: medium;
+}
+
+.btn-poke-a-musician {
+  background: linear-gradient(135deg, #326F9A, #5a829f);
+  color: white;
+  font-weight: 500;
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  transition: all 0.2s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+#btn-orchestras-submit {
+  font-size: var(--bs-body-font-size);
+  padding-left: 30px !important;
+}
+
 
 //edit button
 .edit-btn {
@@ -205,6 +248,37 @@
 .btn-poke-orchestra-post:hover {
   background-size: 100%;
 }
+
+// show friends
+
+.btn-friends {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: #030435;
+}
+
+.btn-friends:hover {
+  background: #030435;
+  padding: 8px 24px ;
+  border-radius: 50px ;
+  border: none;
+  text-decoration: none;
+  color: white;
+}
+.btn-friends a {
+  text-decoration: none;
+  color: black;
+}
+
+.btn-friends a:hover {
+  text-decoration: none;
+  color: white;
+}
+
 
 
 //new post

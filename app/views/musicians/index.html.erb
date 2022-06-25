@@ -18,7 +18,9 @@
             <% level = "#{params[:search][:level]}" %>
             <% style = "#{params[:search][:style]}" %>
             <% zip = "#{params[:search][:zip_code]}" %>
-            <% message = "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}" %>
+            <% post = "#{params[:search][:post]}"%>
+            <%# byebug %>
+            <% message = "#{params[:search][:instrument]} #{ params[:search][:style]} #{params[:search][:level]} #{params[:search][:zip_code]}#{params[:search][:post]} " %>
             <% if message.blank? %>
               <p>We found <%= @musicians.count %> Musicians out of <%= Musician.count %> on our website.</p>
             <% else %>
@@ -36,6 +38,9 @@
                     <% end %>
                     <% if !zip.blank? %>
                       <li>Zip: <%= zip %></li>
+                    <% end %>
+                    <% if !post.blank? %>
+                      <li>Post created: <%= Post.find(params[:search][:post]).tag_post %></li>
                     <% end %>
                   </ul>
                 </div>
@@ -61,15 +66,23 @@
                       <div class="musician-card-top-banner">
                         <div class="row">
                           <div class="musician-name col-8">
+                          <%# byebug %>
+                            <% if (musician.first_name + musician.last_name).length < 18 %>
                             <h4><%= musician.first_name%></h4>
                             <h1> <%= musician.last_name%></h1>
+                            <% else %>
+                             <h4><%= musician.first_name%></h4>
+                            <% end %>
                           </div>
                           <div class="col-4">
                             <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
-                            <% if musician.url_photo %>
+
+                            <% if musician.photo.key %>
+                              <%= cl_image_tag musician.photo.key, class: "avatar-large-musician" %>
+                            <% elsif musician.url_photo%>
                               <%= image_tag  musician.url_photo, class: "avatar-large-musician" %>
                             <% else %>
-                                <%= cl_image_tag musician.photo.key%>
+                              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large-musician" %>
                             <%  end %>
                           </div>
                         </div>
@@ -81,7 +94,6 @@
                           <%# <h2>Frequency: <%= orchestra.frequency %>
                           <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
                           <h3>
-                            <%= link_to "Poke", new_musician_invitation_path(musician), class:"card-link"%>
                             <%= link_to "More info", musician_path(musician), class:"card-link"%>
                           </h3>
                         </div>

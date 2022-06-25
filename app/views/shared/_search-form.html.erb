@@ -9,6 +9,8 @@
       <%= f.input :style, label:'Style', collection: Musician::STYLE, required: false%>
       <%= f.input :zip_code, label: 'Zip-code', required: false %>
       <%# Placeholder input match my posts %>
+      <%= f.input :post, label: 'post', collection: Post.where(orchestra_id: @orchestra_nav), label_method: lambda { |post| post.tag_post } %>
+
     </div>
     <div class="buttons-search-mc">
       <%= f.submit class:"btn-musician-search", id:'btn-musicians-search'%>
