@@ -15,3 +15,26 @@
 .show-description-mc {
   margin-top: 50px;
 }
+
+.infos-left{
+  margin-left: 50px;
+  padding: 0px 30px;
+  font-size: larger;
+}
+
+.infos-right{
+  margin: 0px 106px;
+  padding: 0px 30px;
+  font-size: larger;
+}
+
+.space-friends {
+  background: linear-gradient(135deg, #45ffda, rgb(107, 245, 128));
+  padding: 8px 24px ;
+  border-radius: 10px ;
+  transition: background 0.3s ease;
+  border: none;
+  text-decoration: none;
+  color: #030435;
+  margin-right: 50px;
+}
