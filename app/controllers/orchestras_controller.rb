@@ -84,7 +84,7 @@ before_action :find_musician_nav
   end
 
   def orchestra_params
-    params.require(:orchestra).permit(:style, :type, :size, :zip_code, :photo, :frequency, :phone_number, :name, :description, :bio)
+    params.require(:orchestra).permit(:style, :type, :size, :zip_code, :photo, :frequency, :type_orchestra, :phone_number, :name, :description, :bio)
   end
 
   def find_orchestra_nav
