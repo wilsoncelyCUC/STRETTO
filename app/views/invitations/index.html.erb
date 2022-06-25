@@ -1,171 +1,312 @@
-<h1>My pokes</h1>
 
-<ul class="list-inline tabs-underlined">
-  <li>
-    <a href="#" class="tab-underlined active">Sent</a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined">Received</a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined">Accepted</a>
-  </li>
-</ul>
-
-<%  if @musician = Musician.find_by(user_id: current_user.id) %>
-  <h1>Pokes received from Orchestras</h1>
-  <%  @invitations_received.each do |invitation| %>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).name %></p>
-              <h5 class="card-title">Style</h5>
-            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).style %></p>
-              <h5 class="card-title">size</h5>
-            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).size %></p>
-              <h5 class="card-title">zip_code</h5>
-            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).zip_code %></p>
-              <h5 class="card-title">frequency</h5>
-            <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).frequency %></p>
-            <div class="card-nav">
-              <% if invitation.accepted? %>
-                <h2>invitation accepted 👍</h2>
-              <% elsif invitation.rejected? %>
-                <p><strong>Keep trying! 👎</strong></p>
-              <% else %>
-                <%=link_to 'Accept', invitation_path(invitation, status: :accepted, orchestraparams: Orchestra.find(invitation.orchestra_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
-                <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, orchestraparams: Orchestra.find(invitation.orchestra_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
-              <% end %>
-            </div>
-          </div>
+<body class='index-body'>
+  <div class="banner" style="background: linear-gradient(180deg, #D7D7DF, black)">
+    <div class="dashboard-ban">
+      <div class="container">
+        <div class="dashboard-head">
+            <h1>My Dashboard</h1>
         </div>
       </div>
-    </div>
-   <%  end %>
-
-  <h1>Pokes sent to Orchestras</h1>
-  <%# byebug %>
-    <%  @invitations_sent.each do |invitation| %>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Name</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).name %></p>
-                <h5 class="card-title">Style</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).style %></p>
-                <h5 class="card-title">size</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).size %></p>
-                <h5 class="card-title">zip_code</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).zip_code %></p>
-                <h5 class="card-title">frequency</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).frequency %></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    <%  end %>
-
-  <h1>Pokes Accepted for the following Orchestras</h1>
-  <%# byebug %>
-    <%  @invitations_accepted.each do |invitation| %>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Name</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).name %></p>
-                <h5 class="card-title">Style</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).style %></p>
-                <h5 class="card-title">size</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).size %></p>
-                <h5 class="card-title">zip_code</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).zip_code %></p>
-                <h5 class="card-title">frequency</h5>
-              <p class="card-text"><%=  Orchestra.find(invitation.orchestra_id).frequency %></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    <%  end %>
-
-<% else %>
-  <h1>Pokes received from Musicians</h1>
-  <%  @invitations_received.each do |invitation| %>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Name</h5>
-          <p class="card-text"><%=  Musician.find(invitation.musician_id).first_name %><%=  Musician.find(invitation.musician_id).last_name %></p>
-            <h5 class="card-title">Style</h5>
-          <p class="card-text"><%=  Musician.find(invitation.musician_id).style %></p>
-            <h5 class="card-title">size</h5>
-          <p class="card-text"><%=  Musician.find(invitation.musician_id).instrument %></p>
-            <h5 class="card-title">zip_code</h5>
-          <p class="card-text"><%=  Musician.find(invitation.musician_id).zip_code %></p>
-            <h5 class="card-title">frequency</h5>
-          <p class="card-text"><%=  Musician.find(invitation.musician_id).level %></p>
-          <div class="card-nav">
-              <% if invitation.accepted? %>
-                <h2>invitation accepted 👍</h2>
-              <% elsif invitation.rejected? %>
-                <p><strong>Keep trying! 👎</strong></p>
-              <% else %>
-                <%=link_to 'Accept', invitation_path(invitation, status: :accepted, musicianparams: Musician.find(invitation.musician_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
-                <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, musicianparams: Musician.find(invitation.musician_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
-              <% end %>
-        </div>
-      </div>
-    </div>
-    <%  end %>
   </div>
 
-  <h1>Pokes sent to Musician</h1>
-  <%# byebug %>
-    <%  @invitations_sent.each do |invitation| %>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Name</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).first_name %> <%=  Musician.find(invitation.musician_id).last_name %></p>
-                <h5 class="card-title">Style</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).style %></p>
-                <h5 class="card-title">size</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).instrument %></p>
-                <h5 class="card-title">zip_code</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).zip_code %></p>
-                <h5 class="card-title">frequency</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).level %></p>
-            </div>
-          </div>
+    <div class="dashboard-menu">
+      <div class="container">
+        <div class="row">
+          <ul class="nav nav-tabs nav-fill nav-test" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="received-tab" data-bs-toggle="tab" data-bs-target="#received" type="button" role="tab" aria-controls="received" aria-selected="true">Received</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link text-dark" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button" role="tab" aria-controls="sent" aria-selected="false">Sent</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="accepted-tab" data-bs-toggle="tab" data-bs-target="#accepted" type="button" role="tab" aria-controls="accepted" aria-selected="false">Accepted</button>
+            </li>
+          </ul>
         </div>
       </div>
-    <%  end %>
+    </div>
 
-      <h1>Pokes accepted for the following Musicians</h1>
-  <%# byebug %>
-    <%  @invitations_accepted.each do |invitation| %>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Name</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).first_name %> <%=  Musician.find(invitation.musician_id).last_name %></p>
-                <h5 class="card-title">Style</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).style %></p>
-                <h5 class="card-title">size</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).instrument %></p>
-                <h5 class="card-title">zip_code</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).zip_code %></p>
-                <h5 class="card-title">frequency</h5>
-              <p class="card-text"><%=  Musician.find(invitation.musician_id).level %></p>
+  </div>
+
+
+        <div class="tab-content" id="myTabContent">
+          <%  if @musician = Musician.find_by(user_id: current_user.id) %>
+            <div class="tab-pane fade show active" id="received" role="tabpanel" aria-labelledby="received-tab">²
+                <%# byebug %>
+                    <div class="container d-flex  margin-left-negative">
+                        <div class="row">
+                          <div class="container d-flex justify-content-start body-page">
+                              <div class="row">
+                                <%  @invitations_received.each do |invitation| %>
+                                    <div class="card-profile col-8 m-3">
+                                      <div class="dashboard-background">
+                                        <div class="orchestra-card-top-banner">
+                                          <div class="row">
+                                            <div class="musician-name col-6">
+                                              <h1><%= Orchestra.find(invitation.orchestra_id).name %></h1>
+                                            </div>
+                                            <div class="col-6">
+                                              <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                            </div>
+                                          </div>
+                                        </div>
+                                          <div class="musician-infos">
+                                            <h1><strong>Size:</strong> <%= Orchestra.find(invitation.orchestra_id).size %></h1>
+                                            <h2><strong>Zip Code:</strong> <%= Orchestra.find(invitation.orchestra_id).zip_code %></h2>
+                                            <h2><strong>Style:</strong> <%= Orchestra.find(invitation.orchestra_id).style %></h2>
+                                            <h2><strong>Frequency:</strong> <%= Orchestra.find(invitation.orchestra_id).frequency %></h2>
+                                            <%# <h2>Frequency: <%= orchestra.frequency %>
+                                            <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
+                                            <h3>
+                                            <% if invitation.accepted? %>
+                                              <h2>invitation accepted 👍</h2>
+                                            <% elsif invitation.rejected? %>
+                                              <p><strong>Keep trying! 👎</strong></p>
+                                            <% else %>
+                                              <h5><%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %></h5>
+                                              <h6><%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %></h6>
+                                            <% end %>
+                                            </h3>
+                                          </div>
+                                      </div>
+                                    </div>
+                                <% end %>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
             </div>
-          </div>
+
+
+
+
+
+            <%# byebug %>
+            <div class="tab-pane fade" id="sent" role="tabpanel" aria-labelledby="sent-tab">
+                <div class="container d-flex  margin-left-negative">
+                    <div class="row">
+                      <div class="container d-flex justify-content-start body-page">
+                          <div class="row">
+                            <%  @invitations_sent.each do |invitation| %>
+                                <div class="card-profile col-8 m-3">
+                                  <div class="dashboard-background">
+                                    <div class="orchestra-card-top-banner">
+                                      <div class="row">
+                                        <div class="musician-name col-6">
+                                          <h1><%= Orchestra.find(invitation.orchestra_id).name%></h1>
+                                        </div>
+                                        <div class="col-6">
+                                          <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                        </div>
+                                      </div>
+                                    </div>
+                                      <div class="musician-infos">
+                                        <h1><strong>Size:</strong> <%= Orchestra.find(invitation.orchestra_id).size %></h1>
+                                        <h2><strong>Zip Code:</strong> <%= Orchestra.find(invitation.orchestra_id).zip_code %></h2>
+                                        <h2><strong>Style:</strong> <%= Orchestra.find(invitation.orchestra_id).style %></h2>
+                                        <h2><strong>Frequency:</strong> <%= Orchestra.find(invitation.orchestra_id).frequency %></h2>
+                                        <%# <h2>Frequency: <%= orchestra.frequency %>
+                                        <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
+                                        <h5>
+                                        </h5>
+                                      </div>
+                                  </div>
+                                </div>
+                            <% end %>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <%# byebug %>
+            <div class="tab-pane fade" id="accepted" role="tabpanel" aria-labelledby="accepted-tab">
+                  <div class="container d-flex  margin-left-negative">
+                      <div class="row">
+                        <div class="container d-flex justify-content-start body-page">
+                            <div class="row">
+                              <%  @invitations_accepted.each do |invitation| %>
+                                  <div class="card-profile col-8 m-3">
+                                    <div class="dashboard-background">
+                                      <div class="orchestra-card-top-banner">
+                                        <div class="row">
+                                          <div class="musician-name col-6">
+                                            <h1><%= Orchestra.find(invitation.orchestra_id).name %></h1>
+                                          </div>
+                                          <div class="col-6">
+                                            <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                          </div>
+                                        </div>
+                                      </div>
+                                        <div class="musician-infos">
+                                          <h1><strong>Size:</strong> <%= Orchestra.find(invitation.orchestra_id).size %></h1>
+                                          <h2><strong>Zip Code:</strong> <%= Orchestra.find(invitation.orchestra_id).zip_code %></h2>
+                                          <h2><strong>Style:</strong> <%= Orchestra.find(invitation.orchestra_id).style %></h2>
+                                          <h2><strong>Frequency:</strong> <%= Orchestra.find(invitation.orchestra_id).frequency %></h2>
+                                          <%# <h2>Frequency: <%= orchestra.frequency %>
+                                          <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
+                                          <h5>
+                                          </h5>
+                                        </div>
+                                    </div>
+                                  </div>
+                              <% end %>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+          <% else %>
+            <div class="tab-pane fade show active" id="received" role="tabpanel" aria-labelledby="received-tab">
+                <div class="container d-flex  margin-left-negative">
+                  <div class="row">
+                    <div class="container d-flex justify-content-start body-page">
+                        <div class="row">
+                          <% @invitations_received.each do |invitation| %>
+                              <div class="card-profile col-4 m-3">
+                                <div class="dashboard-background">
+                                  <div class="musician-card-top-banner">
+                                    <div class="row">
+                                      <div class="musician-name col-8">
+                                        <h4><%= Musician.find(invitation.musician_id).first_name %></h4>
+                                        <h1> <%= Musician.find(invitation.musician_id).last_name %></h1>
+                                      </div>
+                                      <div class="col-4">
+                                        <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                        <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
+                                        <%# <% if musician.url_photo %>
+                                          <%# <%= image_tag  orchestra.url_photo, class: "avatar-large-musician" %>
+                                        <%# <% else %>
+                                            <%# <%= cl_image_tag orchestra.photo.key%>
+                                        <%# <%  end %>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    <div class="musician-infos">
+                                      <h1><strong>Level:</strong> <%= Musician.find(invitation.musician_id).level %></h1>
+                                      <h2><strong>Instrument:</strong> <%= Musician.find(invitation.musician_id).instrument %></h2>
+                                      <h2><strong>Style:</strong> <%= Musician.find(invitation.musician_id).style %></h2>
+                                      <h3>
+                                        <% if invitation.accepted? %>
+                                          <h2>invitation accepted 👍</h2>
+                                        <% elsif invitation.rejected? %>
+                                          <p><strong>Keep trying! 👎</strong></p>
+                                        <% else %>
+                                          <%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                                          <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                                        <% end %>
+                                      </h3>
+                                    </div>
+                                </div>
+                              </div>
+                          <% end %>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="tab-pane fade" id="sent" role="tabpanel" aria-labelledby="sent-tab">
+                <div class="container d-flex  margin-left-negative">
+                  <div class="row">
+                    <div class="container d-flex justify-content-start body-page">
+                        <div class="row">
+                          <% @invitations_sent.each do |invitation| %>
+                              <div class="card-profile col-4 m-3">
+                                <div class="dashboard-background">
+                                  <div class="musician-card-top-banner">
+                                    <div class="row">
+                                      <div class="musician-name col-8">
+                                        <h4><%= Musician.find(invitation.musician_id).first_name %></h4>
+                                        <h1> <%= Musician.find(invitation.musician_id).last_name %></h1>
+                                      </div>
+                                      <div class="col-4">
+                                        <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                        <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
+                                        <%# <% if musician.url_photo %>
+                                          <%# <%= image_tag  orchestra.url_photo, class: "avatar-large-musician" %>
+                                        <%# <% else %>
+                                            <%# <%= cl_image_tag orchestra.photo.key%>
+                                        <%# <%  end %>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    <div class="musician-infos">
+                                      <h1><strong>Level:</strong> <%= Musician.find(invitation.musician_id).level %></h1>
+                                      <h2><strong>Instrument:</strong> <%= Musician.find(invitation.musician_id).instrument %></h2>
+                                      <h2><strong>Style:</strong> <%= Musician.find(invitation.musician_id).style %></h2>
+                                      <h3>
+                                        <% if invitation.accepted? %>
+                                          <h2>invitation accepted 👍</h2>
+                                        <% elsif invitation.rejected? %>
+                                          <p><strong>Keep trying! 👎</strong></p>
+                                        <% else %>
+                                          <%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                                          <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                                        <% end %>
+                                      </h3>
+                                    </div>
+                                </div>
+                              </div>
+                          <% end %>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+
+              <div class="tab-pane fade" id="accepted" role="tabpanel" aria-labelledby="accepted-tab">
+                <div class="container d-flex  margin-left-negative">
+                  <div class="row">
+                    <div class="container d-flex justify-content-start body-page">
+                        <div class="row">
+                          <% @invitations_accepted.each do |invitation| %>
+                              <div class="card-profile col-4 m-3">
+                                <div class="dashboard-background">
+                                  <div class="musician-card-top-banner">
+                                    <div class="row">
+                                      <div class="musician-name col-8">
+                                        <h4><%= Musician.find(invitation.musician_id).first_name %></h4>
+                                        <h1> <%= Musician.find(invitation.musician_id).last_name %></h1>
+                                      </div>
+                                      <div class="col-4">
+                                        <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                        <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
+                                        <%# <% if musician.url_photo %>
+                                          <%# <%= image_tag  orchestra.url_photo, class: "avatar-large-musician" %>
+                                        <%# <% else %>
+                                            <%# <%= cl_image_tag orchestra.photo.key%>
+                                        <%# <%  end %>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    <div class="musician-infos">
+                                      <h1><strong>Level:</strong> <%= Musician.find(invitation.musician_id).level %></h1>
+                                      <h2><strong>Instrument:</strong> <%= Musician.find(invitation.musician_id).instrument %></h2>
+                                      <h2><strong>Style:</strong> <%= Musician.find(invitation.musician_id).style %></h2>
+                                    </div>
+                                </div>
+                              </div>
+                          <% end %>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          <%  end %>
         </div>
-      </div>
-    <%  end %>
-<%  end %>
+
+
+
+</body>
