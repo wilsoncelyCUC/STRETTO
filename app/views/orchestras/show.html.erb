@@ -15,9 +15,10 @@
               <%= image_tag "edit white2", :id => 'edit-icon'%>
             </div>
            <% elsif @orchestra.invitations.where(musician: @musician).empty? ||  (@orchestra.invitations.where(musician: @musician)).find_by(status: "rejected") %>
-            <div class=''>
+            <div class='btn-poke-an-orchestra'>
+
               <%= simple_form_for [@orchestra, @invitation] do |f| %>
-                <%= f.submit 'Poke us', :id => 'show-poke-black'%>
+                <%= f.submit 'Poke us', :id => 'show-poke-black-big'%>
                 <%= image_tag "Group 3294", :id => 'right-arrow-black-big'%>
               <% end %>
             </div>
