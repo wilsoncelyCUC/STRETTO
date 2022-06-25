@@ -3,7 +3,7 @@
   height: 100%;
 }
 
-.show-container {
+.show-container-col {
   color: white;
   font-family: 'Rubik', sans-serif ;
   margin: 30px;
@@ -167,12 +167,12 @@ span {
 
 
 
-.show-container h3 {
+.show-container-col h3 {
   text-align: center;
   margin: 20px;
 }
 
-.show-container h1 {
+.show-container-col h1 {
   text-align: center;
   background-image: linear-gradient(90deg, #E01D60, #FF702F);
   background-size: 0% 3px;
@@ -184,7 +184,7 @@ span {
   padding-bottom: 15px;
 }
 
-.show-container h1:hover {
+.show-container-col h1:hover {
   background-size: 50% 3px;
 }
 

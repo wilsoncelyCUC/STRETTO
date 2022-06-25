@@ -4,6 +4,34 @@
   align-items: flex-start;
 }
 
+.show-container-mc {
+  color: white;
+  font-family: 'Rubik', sans-serif ;
+  margin: 30px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #132e40de, #343434c2);
+}
+
+.show-container-mc h3 {
+  text-align: center;
+  margin: 20px;
+}
+
+.show-container-mc h1 {
+  text-align: center;
+  background-image: linear-gradient(90deg, #E01D60, #FF702F);
+  background-size: 0% 3px;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  transition: background-size 300ms ease;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+
+.show-container-mc h1:hover {
+  background-size: 50% 3px;
+}
 
 .avatar-large2 {
   width: 200px;
