@@ -1,0 +1,43 @@
+.main-dashboard {
+  width: 50%;
+  box-align: center;
+}
+
+.dashboard-background {
+  background-color: black;
+  height: 280px;
+  margin-bottom: 15px;
+}
+
+.musician-infos:hover h5 {
+  margin-top: 40px;
+  font-size: 16px;
+  text-align: center;
+  color: green;
+}
+
+.musician-infos:hover h5 {
+  margin-top: 40px;
+  font-size: 16px;
+  text-align: center;
+  color: red;
+}
+
+
+.dashboard-head h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+
+.dashboard-menu {
+  font-size: 28px !important;
+}
+
+.active {
+  color: black !important;
+}
+
+.dashboard-ban {
+  height: 80px;
+}
