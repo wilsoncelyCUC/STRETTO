@@ -16,6 +16,11 @@ class MusiciansController < ApplicationController
     @musician = Musician.find(params[:id])
     @invitation = Invitation.new
     @orchestra = Orchestra.find_by(user_id: current_user.id)
+    if @musician && @orchestra
+      @invitation_check = Invitation.find_by(orchestra_id: @orchestra.id , musician_id: @musician.id, status: 2)
+      @email_musician = User.find(@musician.user_id).email
+    end
+
   end
 
   def new
@@ -62,7 +67,7 @@ class MusiciansController < ApplicationController
   end
 
   def musician_params
-    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :url_photo, :instrument, :style, :zip_code, :user, :photo, :bio)
+    params.require(:musician).permit(:first_name, :last_name, :birthday, :level, :photo, :url_photo, :instrument, :phone_number ,:style, :zip_code, :user, :photo, :bio)
   end
 
   def find_musician_nav

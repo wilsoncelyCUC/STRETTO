@@ -33,7 +33,8 @@ user_musician = User.create!(
     url_photo: "https://www.thispersondoesnotexist.com/image",
     bio: Faker::Lorem.sentence(word_count: 6),
     zip_code: [75000, 75001, 75002, 75003, 75004, 75005, 75006, 75007, 75008, 75009, 75010, 75011, 75012, 75013, 75014, 75015, 75016, 75017, 75018, 75019, 75020].sample,
-    user_id: user_musician.id
+    user_id: user_musician.id,
+    phone_number: Faker::PhoneNumber.phone_number_with_country_code
   )
 puts "the musician #{mymusician.first_name} #{mymusician.last_name} was created"
 end
@@ -55,7 +56,9 @@ end
     description: Faker::Lorem.sentence(word_count: 30),
     name: Faker::Music.band,
     bio: Faker::Lorem.sentence(word_count: 6),
-    user_id: user_orchestra.id
+    user_id: user_orchestra.id,
+    phone_number: Faker::PhoneNumber.phone_number_with_country_code
+
   )
   puts "the orchestra #{my_orchestra.name} with #{my_orchestra.style} style; was created"
 
