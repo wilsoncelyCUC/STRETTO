@@ -11,9 +11,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
+          <%# <li class="nav-item">
             <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
+          <%# </li> %>
           <li class="nav-item">
           <% if @musician = Musician.find_by(user_id: current_user.id) %>
               <%= link_to "Dashboard", musician_invitations_path(@musician), class: "nav-link" %>
