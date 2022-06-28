@@ -1,18 +1,18 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-  <% if @musician = Musician.find_by(user_id: current_user.id) %>
-    <%= link_to musicians_path, class: "navbar-brand" do %>
+  <% if !Musician.find_by(user: current_user).nil? %>
+    <%= link_to orchestras_path, class: "navbar-brand" do %>
       <%= image_tag("LOGO files-05.png") %>
-       <% end %>
-      <% elsif @orchestra = Orchestra.find_by(user_id: current_user.id)%>
-      <%= link_to orchestras_path, class: "navbar-brand" do %>
-      <%= image_tag("LOGO files-05.png") %>
-       <% end %>
-         <% else %>
-          <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag("LOGO files-05.png") %>
-       <% end %>
     <% end %>
+  <% elsif !Orchestra.find_by(user: current_user).nil?%>
+    <%= link_to musicians_path, class: "navbar-brand" do %>
+    <%= image_tag("LOGO files-05.png") %>
+    <% end %>
+  <% else %>
+    <%= link_to "/", class: "navbar-brand" do %>
+    <%= image_tag("LOGO files-05.png") %>
+    <% end %>
+  <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -66,3 +66,5 @@
     </div>
   </div>
 </div>
+
+<!-- test -->
