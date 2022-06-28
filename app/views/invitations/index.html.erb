@@ -31,7 +31,7 @@
 
 
         <div class="tab-content" id="myTabContent">
-          <%  if @musician = Musician.find_by(user_id: current_user.id) %>
+          <%  if Musician.find_by(user_id: current_user.id) %>
             <div class="tab-pane fade show active" id="received" role="tabpanel" aria-labelledby="received-tab">²
                 <%# byebug %>
                     <div class="container d-flex  margin-left-negative">
@@ -203,8 +203,8 @@
                                         <% elsif invitation.rejected? %>
                                           <p><strong>Keep trying! 👎</strong></p>
                                         <% else %>
-                                          <%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
-                                          <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                                          <%=link_to 'Accept', invitation_path(invitation, status: :accepted, musicianparams: Musician.find(invitation.musician_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                                          <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, musicianparams: Musician.find(invitation.musician_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
                                         <% end %>
                                       </h3>
                                       <h6> More info
@@ -259,8 +259,8 @@
                                         <% elsif invitation.rejected? %>
                                           <p><strong>Keep trying! 👎</strong></p>
                                         <% else %>
-                                          <%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
-                                          <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                                          <%=link_to 'Accept', invitation_path(invitation, status: :accepted, musicianparams: Musician.find(invitation.musician_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                                          <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, musicianparams: Musician.find(invitation.musician_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
                                         <% end %>
                                       </h3>
                                       <h6> More info
