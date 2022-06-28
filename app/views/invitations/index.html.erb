@@ -51,27 +51,31 @@
                                             </div>
                                           </div>
                                         </div>
-                                          <div class="musician-infos">
+                                          <div class="dashboard-bottom-infos">
                                             <h1><strong>Size:</strong> <%= Orchestra.find(invitation.orchestra_id).size %></h1>
                                             <h2><strong>Zip Code:</strong> <%= Orchestra.find(invitation.orchestra_id).zip_code %></h2>
                                             <h2><strong>Style:</strong> <%= Orchestra.find(invitation.orchestra_id).style %></h2>
                                             <h2><strong>Frequency:</strong> <%= Orchestra.find(invitation.orchestra_id).frequency %></h2>
+                                            <%# <h6>
+                                              <% orchestra_link = Orchestra.find(invitation.orchestra_id)  %>
+                                              <%# <%= link_to "More info", orchestra_path(orchestra_link), class:"card-link"%>
+                                            <%# </h6> %>
                                             <%# <h2>Frequency: <%= orchestra.frequency %>
                                             <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
-                                            <h3>
-                                            <% if invitation.accepted? %>
-                                              <h2>invitation accepted 👍</h2>
-                                            <% elsif invitation.rejected? %>
-                                              <p><strong>Keep trying! 👎</strong></p>
-                                            <% else %>
-                                              <h5><%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %></h5>
-                                              <h5><%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %></h5>
-                                              <h6> More info
-                                                <% orchestra_link = Orchestra.find(invitation.orchestra_id)  %>
-                                                  <%= link_to "More info", orchestra_path(orchestra_link), class:"card-link"%>
-                                              </h6>
-                                            <% end %>
-                                            </h3>
+                                            <div class="accepted-rejected">
+                                                <% if invitation.accepted? %>
+                                                  <h2>Invitation accepted 👍</h2>
+                                                <% elsif invitation.rejected? %>
+                                                  <p><strong>Keep trying! 👎</strong></p>
+                                                <% else %>
+                                                    <%=link_to 'Accept', invitation_path(invitation, status: :accepted, orchestraparams: Orchestra.find(invitation.orchestra_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
+                                                    <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, orchestraparams: Orchestra.find(invitation.orchestra_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                                                <% end %>
+                                                <h6>
+                                                  <% orchestra_link = Orchestra.find(invitation.orchestra_id)  %>
+                                                  <%= link_to " ", orchestra_path(orchestra_link), class:"card-link-link"%>
+                                                </h6>
+                                            </div>
                                           </div>
                                       </div>
                                     </div>
