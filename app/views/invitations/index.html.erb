@@ -48,6 +48,16 @@
                                             </div>
                                             <div class="col-6">
                                               <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                              <% orchestra_photo = Orchestra.find(invitation.orchestra_id) %>
+                                              <% if orchestra_photo.photo.key.nil? %>
+                                              <div class="large-orchestra">
+                                                <%=  image_tag 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', height: 300, width: 400, crop: :fill, class: "large-orchestra" %>
+                                              </div>
+                                              <% else %>
+                                              <div class="large-orchestra">
+                                                <%= cl_image_tag orchestra_photo.photo.key, height: 300, width: 400, crop: :fill, class: "large-orchestra"%>
+                                              </div>
+                                              <% end %>
                                             </div>
                                           </div>
                                         </div>
@@ -101,7 +111,16 @@
                                           <h1><%= Orchestra.find(invitation.orchestra_id).name%></h1>
                                         </div>
                                         <div class="col-6">
-                                          <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                              <% orchestra_photo = Orchestra.find(invitation.orchestra_id) %>
+                                              <% if orchestra_photo.photo.key.nil? %>
+                                              <div class="large-orchestra">
+                                                <%=  image_tag 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', height: 300, width: 400, crop: :fill, class: "large-orchestra" %>
+                                              </div>
+                                              <% else %>
+                                              <div class="large-orchestra">
+                                                <%= cl_image_tag orchestra_photo.photo.key, height: 300, width: 400, crop: :fill, class: "large-orchestra"%>
+                                              </div>
+                                              <% end %>
                                         </div>
                                       </div>
                                     </div>
@@ -142,7 +161,16 @@
                                             <h1><%= Orchestra.find(invitation.orchestra_id).name %></h1>
                                           </div>
                                           <div class="col-6">
-                                            <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                              <% orchestra_photo = Orchestra.find(invitation.orchestra_id) %>
+                                              <% if orchestra_photo.photo.key.nil? %>
+                                              <div class="large-orchestra">
+                                                <%=  image_tag 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', height: 300, width: 400, crop: :fill, class: "large-orchestra" %>
+                                              </div>
+                                              <% else %>
+                                              <div class="large-orchestra">
+                                                <%= cl_image_tag orchestra_photo.photo.key, height: 300, width: 400, crop: :fill, class: "large-orchestra"%>
+                                              </div>
+                                              <% end %>
                                           </div>
                                         </div>
                                       </div>
@@ -183,13 +211,14 @@
                                         <h1> <%= Musician.find(invitation.musician_id).last_name %></h1>
                                       </div>
                                       <div class="col-4">
-                                        <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-                                        <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
-                                        <%# <% if musician.url_photo %>
-                                          <%# <%= image_tag  orchestra.url_photo, class: "avatar-large-musician" %>
-                                        <%# <% else %>
-                                            <%# <%= cl_image_tag orchestra.photo.key%>
-                                        <%# <%  end %>
+                                        <% musician_photo = Musician.find(invitation.musician_id) %>
+                                         <% if musician_photo.url_photo %>
+                                            <%= image_tag  musician_photo.url_photo, class: "avatar-large-musician" %>
+                                          <% elsif musician_photo.photo.key%>
+                                            <%= cl_image_tag musician_photo.photo.key , crop: :thumb, gravity: :face, class: "avatar-large-musician" %>
+                                          <% else %>
+                                            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large-musician" %>
+                                          <%  end %>
                                       </div>
                                     </div>
                                   </div>
@@ -239,13 +268,14 @@
                                         <h1> <%= Musician.find(invitation.musician_id).last_name %></h1>
                                       </div>
                                       <div class="col-4">
-                                        <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-                                        <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
-                                        <%# <% if musician.url_photo %>
-                                          <%# <%= image_tag  orchestra.url_photo, class: "avatar-large-musician" %>
-                                        <%# <% else %>
-                                            <%# <%= cl_image_tag orchestra.photo.key%>
-                                        <%# <%  end %>
+                                          <% musician_photo = Musician.find(invitation.musician_id) %>
+                                          <% if musician_photo.url_photo %>
+                                            <%= image_tag  musician_photo.url_photo, class: "avatar-large-musician" %>
+                                          <% elsif musician_photo.photo.key%>
+                                            <%= cl_image_tag musician_photo.photo.key , crop: :thumb, gravity: :face, class: "avatar-large-musician" %>
+                                          <% else %>
+                                            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large-musician" %>
+                                          <%  end %>
                                       </div>
                                     </div>
                                   </div>
@@ -296,12 +326,14 @@
                                       </div>
                                       <div class="col-4">
                                         <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
-                                        <!--<img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> -->
-                                        <%# <% if musician.url_photo %>
-                                          <%# <%= image_tag  orchestra.url_photo, class: "avatar-large-musician" %>
-                                        <%# <% else %>
-                                            <%# <%= cl_image_tag orchestra.photo.key%>
-                                        <%# <%  end %>
+                                          <% musician_photo = Musician.find(invitation.musician_id) %>
+                                          <% if musician_photo.url_photo %>
+                                            <%= image_tag  musician_photo.url_photo, class: "avatar-large-musician" %>
+                                          <% elsif musician_photo.photo.key%>
+                                            <%= cl_image_tag musician_photo.photo.key , crop: :thumb, gravity: :face, class: "avatar-large-musician" %>
+                                          <% else %>
+                                            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large-musician" %>
+                                          <%  end %>
                                       </div>
                                     </div>
                                   </div>
