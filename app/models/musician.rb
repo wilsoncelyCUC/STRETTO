@@ -1,9 +1,5 @@
 class Musician < ApplicationRecord
   has_many :invitations, dependent: :destroy
-  #validates :first_name, length: { maximum: 8,
-   # too_long: "%{count} characters is the maximum allowed" }
-  #validates :last_name, length: { maximum: 8,
-   # too_long: "%{count} characters is the maximum allowed" }
   belongs_to :user
 
   STYLE = ["Classic", "Pop", "Electronic", "Jazz"]
@@ -23,4 +19,8 @@ class Musician < ApplicationRecord
   # Cloudinary
   has_one_attached :photo
 
+
+  def full_name
+    name = first_name.capitalize + " " + last_name.capitalize
+  end
 end

@@ -21,46 +21,42 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <%# <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          <%# </li> %>
-          <li class="nav-item">
-          <% if @musician = Musician.find_by(user_id: current_user.id) %>
-              <%= link_to "Dashboard", musician_invitations_path(@musician), class: "nav-link" %>
-          <% elsif @orchestra = Orchestra.find_by(user_id: current_user.id)%>
-            <%= link_to "Dashboard", orchestra_invitations_path(@orchestra), class: "nav-link" %>
-          <% else %>
-          <%= link_to "Dashboard","#", class: "nav-link" %>
-          <% end%>
-          </li>
-          <li class="nav-item dropdown">
-          <%# byebug %>
-          <% if Musician.find_by(user_id: current_user.id) && @musician.photo.key %>
-            <%= cl_image_tag @musician.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% elsif Orchestra.find_by(user_id: current_user.id) && @orchestra.photo.key %>
-            <%= cl_image_tag @orchestra.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-            <%= image_tag "https://i1.wp.com/suiteplugins.com/wp-content/uploads/2019/10/blank-avatar.jpg?ssl=1", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <% if current_user %>
-                <% if @musician_nav = Musician.find_by(user_id: current_user.id)%>
-                  <%= link_to "Profile Musician", musician_path(@musician_nav), class: "dropdown-item" %>
-                  <% if @orchestra_nav = Orchestra.find_by(user_id: current_user.id)%>
-                      <%= link_to "Profile Orchestra", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
-                  <% end %>
-                <% elsif @orchestra_nav =Orchestra.find_by(user_id: current_user.id)%>
-                    <%= link_to "Profile Orchestra", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
-                <% else %>
-                    <%= link_to "Profile", '#', class: "d-none" %>
-                <% end %>
+            <li class="nav-item"><%= link_to "Messages", "#", class: "nav-link" %></li>
+            <li class="nav-item">
+              <% if @musician = Musician.find_by(user_id: current_user.id) %>
+                  <%= link_to "Dashboard", musician_invitations_path(@musician), class: "nav-link" %>
+              <% elsif @orchestra = Orchestra.find_by(user_id: current_user.id)%>
+                <%= link_to "Dashboard", orchestra_invitations_path(@orchestra), class: "nav-link" %>
+              <% else %>
+                <%= link_to "Dashboard","#", class: "nav-link" %>
+              <% end%>
+            </li>
 
+            <li class="nav-item dropdown">
+              <%# byebug %>
+              <% if Musician.find_by(user_id: current_user.id) && @musician.photo.key %>
+                <%= cl_image_tag @musician.photo.key, class: "avatar dropdown-toggle", alt: 'Profile Picture', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% elsif Orchestra.find_by(user_id: current_user.id) && @orchestra.photo.key %>
+                <%= cl_image_tag @orchestra.photo.key, class: "avatar dropdown-toggle", alt: 'Profile Picture',  id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% else %>
+                <%= image_tag "https://i1.wp.com/suiteplugins.com/wp-content/uploads/2019/10/blank-avatar.jpg?ssl=1", alt: 'Profile Picture', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
-
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
-
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <% if current_user %>
+                  <% if @musician_nav = Musician.find_by(user_id: current_user.id)%>
+                    <%= link_to "Profile Musician", musician_path(@musician_nav), class: "dropdown-item" %>
+                    <% if @orchestra_nav = Orchestra.find_by(user_id: current_user.id)%>
+                        <%= link_to "Profile Orchestra", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
+                    <% end %>
+                  <% elsif @orchestra_nav =Orchestra.find_by(user_id: current_user.id)%>
+                      <%= link_to "Profile Orchestra", orchestra_path(@orchestra_nav), class: "dropdown-item" %>
+                  <% else %>
+                      <%= link_to "Profile", '#', class: "d-none" %>
+                  <% end %>
+                <% end %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

@@ -1,0 +1,14 @@
+# Creation of user
+user_musician_robot:
+  email: 'test_musician_robot@stretto.com'
+#  password: 'password'
+
+# Creation of user
+user_orchestra_robot:
+  email: 'test_orchestra_robot@stretto.com'
+#  password: 'password'
+
+# Creation of user
+user_orchestra_robot2:
+  email: 'test_orchestra_robot2@stretto.com'
+#  password: 'password'

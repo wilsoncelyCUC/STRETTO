@@ -1,0 +1,12 @@
+# Creation of user
+musician_robot:
+  first_name: "Stretto T."
+  last_name: "Musician"
+  birthday: '2010-09-25'
+  level: "Beginner"
+  instrument: "Accordion"
+  style: "Classic"
+  bio: "I am an automatic test and this user is fake"
+  zip_code: 75014
+  user_id: 1
+  phone_number: "+33633264905"

@@ -1,0 +1,22 @@
+orchestra_robot:
+  style: "Classic"
+  type_orchestra: "Open"
+  size: 20
+  zip_code: 75014
+  frequency: "Rehearsals every Wednesday at 7 PM"
+  description: "This a description"
+  name: "Stretto Robot Band"
+  user_id: 2
+  phone_number: "+33633264049"
+
+
+orchestra_robot2:
+  style: "Electronic"
+  type_orchestra: "Concerto"
+  size: 5
+  zip_code: 75014
+  frequency: "Rehearsals every thursday at 7 PM"
+  description: "This a description"
+  name: "Stretto Robot Band 2"
+  user_id: 3
+  phone_number: "+33633264049"
