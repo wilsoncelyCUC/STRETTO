@@ -18,7 +18,7 @@ puts "TEST USER #{usertest.email} created (LOGIN with this one)"
 #===================
 
 #Creation of 50 Musicians
-50.times do
+100.times do
 user_musician = User.create!(
   email: Faker::Internet.email ,
   password: 'password'
@@ -44,7 +44,7 @@ end
 
 
 #Creation of 30 Orchestras
-30.times do
+80.times do
 
   user_orchestra = User.create!(
     email: Faker::Internet.email ,

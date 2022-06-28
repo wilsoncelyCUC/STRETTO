@@ -65,7 +65,11 @@
                                               <p><strong>Keep trying! 👎</strong></p>
                                             <% else %>
                                               <h5><%=link_to 'Accept', invitation_path(invitation, status: :accepted), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %></h5>
-                                              <h6><%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %></h6>
+                                              <h5><%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %></h5>
+                                              <h6> More info
+                                                <% orchestra_link = Orchestra.find(invitation.orchestra_id)  %>
+                                                  <%= link_to "More info", orchestra_path(orchestra_link), class:"card-link"%>
+                                              </h6>
                                             <% end %>
                                             </h3>
                                           </div>
@@ -106,10 +110,10 @@
                                         <h2><strong>Zip Code:</strong> <%= Orchestra.find(invitation.orchestra_id).zip_code %></h2>
                                         <h2><strong>Style:</strong> <%= Orchestra.find(invitation.orchestra_id).style %></h2>
                                         <h2><strong>Frequency:</strong> <%= Orchestra.find(invitation.orchestra_id).frequency %></h2>
-                                        <%# <h2>Frequency: <%= orchestra.frequency %>
-                                        <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
-                                        <h5>
-                                        </h5>
+                                        <h6> More info
+                                        <% orchestra_link = Orchestra.find(invitation.orchestra_id)  %>
+                                          <%= link_to "More info", orchestra_path(orchestra_link), class:"card-link"%>
+                                        </h6>
                                       </div>
                                   </div>
                                 </div>
@@ -149,8 +153,10 @@
                                           <h2><strong>Frequency:</strong> <%= Orchestra.find(invitation.orchestra_id).frequency %></h2>
                                           <%# <h2>Frequency: <%= orchestra.frequency %>
                                           <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
-                                          <h5>
-                                          </h5>
+                                          <h6> More info
+                                            <% orchestra_link = Orchestra.find(invitation.orchestra_id)  %>
+                                              <%= link_to "More info", orchestra_path(orchestra_link), class:"card-link"%>
+                                          </h6>
                                         </div>
                                     </div>
                                   </div>
@@ -201,6 +207,10 @@
                                           <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
                                         <% end %>
                                       </h3>
+                                      <h6> More info
+                                        <% musician_link = Musician.find(invitation.musician_id)  %>
+                                          <%= link_to "More info", musician_path(musician_link), class:"card-link"%>
+                                        </h6>
                                     </div>
                                 </div>
                               </div>
@@ -253,6 +263,10 @@
                                           <%=link_to 'Cancel', invitation_path(invitation, status: :rejected),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
                                         <% end %>
                                       </h3>
+                                      <h6> More info
+                                        <% musician_link = Musician.find(invitation.musician_id)  %>
+                                          <%= link_to "More info", musician_path(musician_link), class:"card-link"%>
+                                      </h6>
                                     </div>
                                 </div>
                               </div>
@@ -295,6 +309,10 @@
                                       <h1><strong>Level:</strong> <%= Musician.find(invitation.musician_id).level %></h1>
                                       <h2><strong>Instrument:</strong> <%= Musician.find(invitation.musician_id).instrument %></h2>
                                       <h2><strong>Style:</strong> <%= Musician.find(invitation.musician_id).style %></h2>
+                                      <h6> More info
+                                        <% musician_link = Musician.find(invitation.musician_id)  %>
+                                          <%= link_to "More info", musician_path(musician_link), class:"card-link"%>
+                                      </h6>
                                     </div>
                                 </div>
                               </div>
