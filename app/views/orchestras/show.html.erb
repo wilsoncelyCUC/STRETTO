@@ -33,17 +33,15 @@
       </div>
       <div class="show-image col-6">
         <% if @orchestra.photo.key.nil? %>
-        <div class="image">
-          <%=  image_tag 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', height: 300, width: 400, crop: :fill, :id => 'orchestra-banner' %>
-        </div>
+          <div class="image">
+            <%=  image_tag 'http://philhar.com/wp-content/uploads/2019/11/180609-La-Pilhar-0025-Pano.jpg', height: 300, width: 400, crop: :fill, :id => 'orchestra-banner' %>
+          </div>
         <% else %>
         <div class="image">
             <%= cl_image_tag @orchestra.photo.key,  :id => 'orchestra-banner'%>
         </div>
         <% end %>
       </div>
-
-
     </div>
 
     <div class="show-description">
