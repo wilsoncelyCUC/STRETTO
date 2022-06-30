@@ -38,10 +38,10 @@
 
             <li class="nav-item dropdown">
               <%# byebug %>
-              <% if Musician.find_by(user_id: current_user.id) && @musician_nav.photo.key %>
-                <%= cl_image_tag @musician.photo.key, class: "avatar dropdown-toggle", alt: 'Profile Picture', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <% elsif Orchestra.find_by(user_id: current_user.id) && @orchestra_nav.photo.key   %>
-                <%= cl_image_tag @orchestra.photo.key, class: "avatar dropdown-toggle", alt: 'Profile Picture',  id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% if Musician.find_by(user_id: current_user.id) && !@musician_nav.photo.key.nil? %>
+                <%= cl_image_tag @musician_nav.photo.key, class: "avatar dropdown-toggle", alt: 'Profile Picture', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% elsif Orchestra.find_by(user_id: current_user.id) && !@orchestra_nav.photo.key.nil?  %>
+                <%= cl_image_tag @orchestra_nav.photo.key, class: "avatar dropdown-toggle", alt: 'Profile Picture',  id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% else %>
                 <%= image_tag "https://i1.wp.com/suiteplugins.com/wp-content/uploads/2019/10/blank-avatar.jpg?ssl=1", alt: 'Profile Picture', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
