@@ -19,14 +19,18 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%# byebug %>
+
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
             <li class="nav-item"><%= link_to "Messages", "#", class: "nav-link" %></li>
             <li class="nav-item">
-              <% if @musician = Musician.find_by(user_id: current_user.id) %>
-                  <%= link_to "Dashboard", musician_invitations_path(@musician), class: "nav-link" %>
-              <% elsif @orchestra = Orchestra.find_by(user_id: current_user.id)%>
-                <%= link_to "Dashboard", orchestra_invitations_path(@orchestra), class: "nav-link" %>
+              <% if !Musician.find_by(user_id: current_user.id).nil? %>
+                  <% musician_redirect = Musician.find_by(user_id: current_user.id) %>
+                  <%= link_to "Dashboard", musician_invitations_path(musician_redirect ), class: "nav-link" %>
+              <% elsif !Orchestra.find_by(user_id: current_user.id).nil?%>
+                <% orchestra_redirect = Orchestra.find_by(user_id: current_user.id) %>
+                <%= link_to "Dashboard", orchestra_invitations_path(orchestra_redirect), class: "nav-link" %>
               <% else %>
                 <%= link_to "Dashboard","#", class: "nav-link" %>
               <% end%>
@@ -34,9 +38,9 @@
 
             <li class="nav-item dropdown">
               <%# byebug %>
-              <% if Musician.find_by(user_id: current_user.id) && @musician.photo.key %>
+              <% if Musician.find_by(user_id: current_user.id) && @musician_nav.photo.key %>
                 <%= cl_image_tag @musician.photo.key, class: "avatar dropdown-toggle", alt: 'Profile Picture', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <% elsif Orchestra.find_by(user_id: current_user.id) && @orchestra.photo.key %>
+              <% elsif Orchestra.find_by(user_id: current_user.id) && @orchestra_nav.photo.key   %>
                 <%= cl_image_tag @orchestra.photo.key, class: "avatar dropdown-toggle", alt: 'Profile Picture',  id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% else %>
                 <%= image_tag "https://i1.wp.com/suiteplugins.com/wp-content/uploads/2019/10/blank-avatar.jpg?ssl=1", alt: 'Profile Picture', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
