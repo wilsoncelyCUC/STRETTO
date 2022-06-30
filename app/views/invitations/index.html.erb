@@ -47,15 +47,15 @@
                                               <h1><%= Orchestra.find(invitation.orchestra_id).name %></h1>
                                             </div>
                                             <div class="col-6">
-                                              <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
+                                              <%# <img class="large-orchestra" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap"> %>
                                               <% orchestra_photo = Orchestra.find(invitation.orchestra_id) %>
                                               <% if orchestra_photo.photo.key.nil? %>
-                                              <div class="large-orchestra">
-                                                <%=  image_tag 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', height: 300, width: 400, crop: :fill, class: "large-orchestra" %>
+                                              <div class="large-orchestra-dashboard">
+                                                <%=  image_tag 'https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', class: "large-orchestra" %>
                                               </div>
                                               <% else %>
-                                              <div class="large-orchestra">
-                                                <%= cl_image_tag orchestra_photo.photo.key, height: 300, width: 400, crop: :fill, class: "large-orchestra"%>
+                                              <div class="large-orchestra-dashboard">
+                                                <%= cl_image_tag orchestra_photo.photo.key, class: "large-orchestra-dashboard"%>
                                               </div>
                                               <% end %>
                                             </div>
@@ -66,20 +66,14 @@
                                             <h2><strong>Zip Code:</strong> <%= Orchestra.find(invitation.orchestra_id).zip_code %></h2>
                                             <h2><strong>Style:</strong> <%= Orchestra.find(invitation.orchestra_id).style %></h2>
                                             <h2><strong>Frequency:</strong> <%= Orchestra.find(invitation.orchestra_id).frequency %></h2>
-                                            <%# <h6>
-                                              <% orchestra_link = Orchestra.find(invitation.orchestra_id)  %>
-                                              <%# <%= link_to "More info", orchestra_path(orchestra_link), class:"card-link"%>
-                                            <%# </h6> %>
-                                            <%# <h2>Frequency: <%= orchestra.frequency %>
-                                            <%# <h2><strong>Zip Code:</strong> <%= orchestra.zip_code %>
                                             <div class="accepted-rejected">
                                                 <% if invitation.accepted? %>
                                                   <h2>Invitation accepted 👍</h2>
                                                 <% elsif invitation.rejected? %>
                                                   <p><strong>Keep trying! 👎</strong></p>
                                                 <% else %>
-                                                    <%=link_to 'Accept', invitation_path(invitation, status: :accepted, orchestraparams: Orchestra.find(invitation.orchestra_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
-                                                    <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, orchestraparams: Orchestra.find(invitation.orchestra_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                                                    <%=link_to 'Accept', invitation_path(invitation, status: :accepted, orchestraparams: Orchestra.find(invitation.orchestra_id).id), method: :patch ,  class: "nav-item px-1 accept-btn", id:"accept-btn" %>
+                                                    <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, orchestraparams: Orchestra.find(invitation.orchestra_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1 reject-btn", id:"reject-btn" %>
                                                 <% end %>
                                                 <h6>
                                                   <% orchestra_link = Orchestra.find(invitation.orchestra_id)  %>
@@ -226,24 +220,26 @@
                                       </div>
                                     </div>
                                   </div>
-                                    <div class="musician-infos">
+                                    <div class="dashboard-bottom-infos">
                                       <h1><strong>Level:</strong> <%= Musician.find(invitation.musician_id).level %></h1>
                                       <h2><strong>Instrument:</strong> <%= Musician.find(invitation.musician_id).instrument %></h2>
                                       <h2><strong>Style:</strong> <%= Musician.find(invitation.musician_id).style %></h2>
                                       <h3>
+                                      <div class="accepted-rejected">
                                         <% if invitation.accepted? %>
                                           <h2>invitation accepted 👍</h2>
                                         <% elsif invitation.rejected? %>
                                           <p><strong>Keep trying! 👎</strong></p>
                                         <% else %>
-                                          <%=link_to 'Accept', invitation_path(invitation, status: :accepted, musicianparams: Musician.find(invitation.musician_id).id), method: :patch ,  class: "nav-item px-1", id:"accept-btn" %>
-                                          <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, musicianparams: Musician.find(invitation.musician_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1", id:"reject-btn" %>
+                                          <%=link_to 'Accept', invitation_path(invitation, status: :accepted, musicianparams: Musician.find(invitation.musician_id).id), method: :patch ,  class: "nav-item px-1 accept-btn", id:"accept-btn" %>
+                                          <%=link_to 'Cancel', invitation_path(invitation, status: :rejected, musicianparams: Musician.find(invitation.musician_id).id),  method: :patch, data: { confirm: "Are you sure?" }, class: "nav-item px-1 reject-btn", id:"reject-btn" %>
                                         <% end %>
                                       </h3>
-                                      <h6> More info
+                                      <h6>
                                         <% musician_link = Musician.find(invitation.musician_id)  %>
-                                          <%= link_to "More info", musician_path(musician_link), class:"card-link"%>
-                                        </h6>
+                                          <%= link_to " ", musician_path(musician_link), class:"card-link"%>
+                                      </h6>
+                                      </div>
                                     </div>
                                 </div>
                               </div>
@@ -338,7 +334,7 @@
                                           <% else %>
                                             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large-musician" %>
                                           <%  end %>
-                                      </div>
+rails                                      </div>
                                     </div>
                                   </div>
                                     <div class="musician-infos">
