@@ -38,7 +38,7 @@
         </div>
         <% else %>
         <div class="image">
-            <%= cl_image_tag @orchestra.photo.key, height: 300, width: 400, crop: :fill,  :id => 'orchestra-banner'%>
+            <%= cl_image_tag @orchestra.photo.key,  :id => 'orchestra-banner'%>
         </div>
         <% end %>
       </div>
