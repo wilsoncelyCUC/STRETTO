@@ -323,7 +323,6 @@
                                         <h1> <%= Musician.find(invitation.musician_id).last_name %></h1>
                                       </div>
                                       <div class="col-4">
-                                        <img class="avatar-large-musician" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="Card image cap">
                                           <% musician_photo = Musician.find(invitation.musician_id) %>
                                           <% if musician_photo.url_photo %>
                                             <%= image_tag  musician_photo.url_photo, class: "avatar-large-musician" %>
