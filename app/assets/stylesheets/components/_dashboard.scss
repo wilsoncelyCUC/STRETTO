@@ -91,7 +91,33 @@
 .card-profile .card-link-link {
   position: absolute;
   width: 100%;
-  height: 50%;
+  height: 60%;
   top: 0px;
   left: 0px;
+}
+
+.accept-btn :hover {
+  color: green;
+}
+
+.reject-btn :hover {
+  color: red;
+}
+
+.dashboard-bottom-infos .accepted-rejected > a {
+  text-align: center;
+}
+
+.accepted-rejected {
+  text-align: center;
+}
+
+
+.large-orchestra-dashboard {
+  width: 100px;
+  border-radius: 3%;
+  height: 60px;
+  margin-top: 10px;
+  margin-right: 20px;
+  opacity: 1;
 }
