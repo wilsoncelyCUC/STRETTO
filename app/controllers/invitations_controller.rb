@@ -1,4 +1,8 @@
 class InvitationsController < ApplicationController
+  before_action :find_musician_nav
+  before_action :find_orchestra_nav
+
+
   def index
     #route musician to invitations
     if Musician.find_by(user_id: current_user.id)
@@ -88,5 +92,13 @@ class InvitationsController < ApplicationController
 
   def invitation_params
     params.require(:invitation)
+  end
+
+  def find_musician_nav
+    @musician_nav = Musician.find_by(user_id: current_user.id)
+  end
+
+  def find_orchestra_nav
+    @orchestra_nav = Orchestra.find_by(user_id: current_user.id)
   end
 end
